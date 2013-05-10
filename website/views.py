@@ -40,7 +40,7 @@ def charges(reques, drug):
     if not result:
         drugs = Drug.objects.filter(description=drug)
 
-        result = "size,lat,lon,name\n"
+        result = "size,lat,lon,price,name\n"
 
         data = []
         for d in drugs:
@@ -54,7 +54,7 @@ def charges(reques, drug):
             max_price = max(d[0], max_price)
 
         for d in data:
-            result += "%s,%s,%s,%s\n" % (scale(d[0], (min_price, max_price), (2, 12)), d[1], d[2], d[3])
+            result += "%s,%s,%s,%s,%s\n" % (scale(d[0], (min_price, max_price), (2, 12)), d[1], d[2], d[0], d[3])
 
         r.set(drug, result)
 

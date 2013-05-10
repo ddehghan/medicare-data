@@ -14,6 +14,10 @@
             stroke-width: 0.25px;
             fill: grey;
         }
+
+        .hover-text {
+            height: 50px;
+        }
     </style>
     <script src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/topojson.v0.min.js"></script>
@@ -27,7 +31,7 @@
 
 {% block maincontent %}
 
-    <h1>Medicare Provider Charge Data:</h1>
+    <h2>Medicare Provider Charge Data:</h2>
 
     <br>
     <div>
@@ -128,7 +132,9 @@
                         title: function () {
                             var d = this.__data__;
 
-                            return d.name;
+                            return "<div class='hover-text'><div class='name'>" + d.name
+                                    + "</div><div class='name'>Average Price: $" + formatMoney(d.price, 0, '.', ',')
+                                    + "</div></div>";
                         }
                     });
 
@@ -147,5 +153,15 @@
 
         }
 
+
+        function formatMoney(n, c, d, t) {
+            var c = isNaN(c = Math.abs(c)) ? 2 : c,
+                    d = d == undefined ? "." : d,
+                    t = t == undefined ? "," : t,
+                    s = n < 0 ? "-" : "",
+                    i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+                    j = (j = i.length) > 3 ? j % 3 : 0;
+            return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+        }
     </script>
 {% endblock %}
