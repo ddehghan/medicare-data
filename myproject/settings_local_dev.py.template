@@ -49,3 +49,7 @@ TO_EMAIL = ["xxxxxxx@gmail.com"]
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
+#Redis parameters
+REDIS_SERVER = ''
+REDIS_DB = ''
+REDIS_PASSWORD = ''
