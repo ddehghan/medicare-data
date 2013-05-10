@@ -3,6 +3,8 @@ South
 psycopg2
 werkzeug
 
+redis
+
 dj-database-url
 django-social-auth
 boto
