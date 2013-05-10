@@ -18,6 +18,10 @@
         .hover-text {
             height: 50px;
         }
+        .hover-text .avg-price{
+            font-size: 16px;
+        }
+
     </style>
     <script src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/topojson.v0.min.js"></script>
@@ -132,8 +136,8 @@
                         title: function () {
                             var d = this.__data__;
 
-                            return "<div class='hover-text'><div class='name'>" + d.name
-                                    + "</div><div class='name'>Average Price: $" + formatMoney(d.price, 0, '.', ',')
+                            return "<div class='hover-text'><div class='hospital-name'>" + d.name
+                                    + "</div><div class='avg-price'>Average Price: $" + formatMoney(d.price, 0, '.', ',')
                                     + "</div></div>";
                         }
                     });
