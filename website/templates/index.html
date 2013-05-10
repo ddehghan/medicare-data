@@ -27,7 +27,7 @@
 
 {% block maincontent %}
 
-    <h1>Data:</h1>
+    <h1>Medicare Provider Charge Data:</h1>
 
     <br>
     <div>
@@ -36,9 +36,7 @@
             <option value="2">039 - EXTRACRANIAL PROCEDURES W/O CC/MCC</option>
             <option value="3">291 - HEART FAILURE & SHOCK W MCC</option>
         </select>
-        <img id="spinner" src="{{ STATIC_URL }}images/ajax-loader.gif" style="visibility: hidden;display: inline;">
-        <button type="button" onclick="spinner_on()" style="display: inline;">ON</button>
-        <button type="button" onclick="spinner_off()" style="display: inline;">OFF</button>
+        <button type="button" onclick="spinner_on()" style="display: inline;">Display</button>
     </div>
     <div id="chart"></div>
 
@@ -53,8 +51,10 @@
         {#    http://www.schneidy.com/Tutorials/MapsTutorial.html#}
 
         function draw_chart(drug) {
-            var width = 960,
-                    height = 500;
+
+            var centered;
+
+            var width = 1200, height = 700;
 
             var svg = d3.select("#chart").append("svg")
                     .attr("width", width)
@@ -63,6 +63,8 @@
             var group = svg.append("g");
 
             var projection = d3.geo.albersUsa();
+            var path = d3.geo.path().projection(projection);
+
             group.attr('transorm', 'scale(.3, .3)');
 
             d3.json('{{ STATIC_URL }}json/us-states.json', function (collection) {
@@ -75,7 +77,34 @@
                         })
                         .style('fill', 'gray')
                         .style('stroke', 'white')
-                        .style('stroke-width', 1);
+                        .style('stroke-width', 1)
+                        .on('click', click);
+
+                function click(d) {
+                    var x = 0,
+                            y = 0,
+                            k = .8;
+
+                    if (d && centered !== d) {
+                        var centroid = path.centroid(d);
+                        x = -centroid[0] + width / 8;
+                        y = -centroid[1] + height / 8;
+                        k = 4;
+                        centered = d;
+                    } else {
+                        centered = null;
+                    }
+
+                    group.selectAll("path")
+                            .classed("active", centered && function (d) {
+                                return d === centered;
+                            });
+
+                    group.transition()
+                            .duration(1000)
+                            .attr("transform", "scale(" + k + ")translate(" + x + width / 4 + "," + y + ")")
+                            .style("stroke-width", 1.5 / k + "px");
+                }
 
                 d3.csv("charges/" + drug, function (error, data) {
                     group.selectAll("circle")
@@ -108,33 +137,15 @@
             });
         }
 
-        var e = document.getElementById("drug_name");
-        var drug = e.options[e.selectedIndex].text;
-
         function spinner_on() {
             $("svg").remove();
-            $("#spinner").css("visibility", "inherit");
+
+            var e = document.getElementById("drug_name");
+            var drug = e.options[e.selectedIndex].text;
+
             draw_chart(drug);
 
         }
-        function spinner_off() {
-            $("#spinner").css("visibility", "hidden");
-        }
-
-
-        // zoom and pan
-        //var zoom = d3.behavior.zoom()
-        //    .on("zoom",function() {
-        //        g.attr("transform","translate("+
-        //            d3.event.translate.join(",")+")scale("+d3.event.scale+")");
-        //        g.selectAll("circle")
-        //            .attr("d", path.projection(projection));
-        //        g.selectAll("path")
-        //            .attr("d", path.projection(projection));
-        <!---->
-        //  });
-        <!---->
-        //svg.call(zoom)
 
     </script>
 {% endblock %}

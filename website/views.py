@@ -1,8 +1,12 @@
-import json
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
+
+import cStringIO
+import gzip
+from django.utils.six import BytesIO
+import redis
 
 from website.lib.ses_email import send_email
 
@@ -24,23 +28,29 @@ def scale(val, src, dst):
 
 
 def charges(reques, drug):
-    drugs = Drug.objects.filter(description=drug)
+    r = redis.StrictRedis(host='localhost', port=6379, db=0)
+    result = r.get(drug)
 
-    result = "size,lat,lon,name\n"
+    if not result:
+        drugs = Drug.objects.filter(description=drug)
 
-    data = []
-    for d in drugs:
-        if not d.hospital.lat == 0 and not d.hospital.lon == 0:
-            data.append([d.avg_charges, d.hospital.lat, d.hospital.lon, d.hospital.name])
+        result = "size,lat,lon,name\n"
 
-    min_price = 10000000
-    max_price = 0
-    for d in data:
-        min_price = min(d[0], min_price)
-        max_price = max(d[0], max_price)
+        data = []
+        for d in drugs:
+            if not d.hospital.lat == 0 and not d.hospital.lon == 0:
+                data.append([d.avg_charges, d.hospital.lat, d.hospital.lon, d.hospital.name])
 
-    for d in data:
-        result += "%s,%s,%s,%s\n" % (scale(d[0], (min_price, max_price), (2, 12)), d[1], d[2], d[3])
+        min_price = 10000000
+        max_price = 0
+        for d in data:
+            min_price = min(d[0], min_price)
+            max_price = max(d[0], max_price)
+
+        for d in data:
+            result += "%s,%s,%s,%s\n" % (scale(d[0], (min_price, max_price), (2, 12)), d[1], d[2], d[3])
+
+        r.set(drug, result)
 
     return HttpResponse(result, mimetype="text")
 
