@@ -38,3 +38,7 @@ TO_EMAIL = ["xxxxxxx@gmail.com"]
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.environ['SECRET_KEY']
+
+
+#Redis parameters
+REDIS_URL = os.environ['REDIS_URL']

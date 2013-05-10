@@ -1,17 +1,23 @@
+import os
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
 
-import cStringIO
-import gzip
-from django.utils.six import BytesIO
 import redis
 
 from website.lib.ses_email import send_email
 
 from website.models import LandingForm, ContributeForm
 from website.models import Hospital, Drug
+
+DEPLOY_ENV = os.environ['DEPLOY_ENV']
+
+if DEPLOY_ENV == 'dev':
+    from myproject.settings_local_dev import *
+
+elif DEPLOY_ENV == 'prod':
+    from myproject.settings_local_prod import *
 
 
 def home(request):
@@ -28,7 +34,7 @@ def scale(val, src, dst):
 
 
 def charges(reques, drug):
-    r = redis.StrictRedis(host='localhost', port=6379, db=0)
+    r = redis.from_url(REDIS_URL) #redis.StrictRedis(host=REDIS_SERVER,  port=18654, db=0)
     result = r.get(drug)
 
     if not result:
