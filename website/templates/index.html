@@ -37,11 +37,12 @@
             font-size: 22px;
             line-height: 35px;
         }
-        .big-arrow{
+
+        .big-arrow {
             margin-bottom: 30px;
         }
 
-        .big-top-margin{
+        .big-top-margin {
             margin-top: 75px;
         }
 
@@ -107,7 +108,8 @@
 
             <div class="instructions">
                 1) Select a Procedure <br>
-                2) View prices
+                2) View prices <br>
+                3) Hover over dots
             </div>
         </div>
     </div>
@@ -315,6 +317,10 @@
                     j = (j = i.length) > 3 ? j % 3 : 0;
             return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
         }
+
+        spinner_on();
+
+
     </script>
 
     <script type="text/javascript">
