@@ -23,6 +23,15 @@
             font-size: 16px;
         }
 
+        #default_image {
+            height: 300px;
+        }
+
+        #drug_name {
+            display: inline;
+            width: 500px;
+        }
+
     </style>
     <script src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/topojson.v0.min.js"></script>
@@ -35,11 +44,30 @@
 
 
 {% block maincontent %}
+    <div class="promotion-row row-fluid">
+        <div class="span6">
+            <h2>Vastly different price for the same procedure</h2>
+
+            <div class="social-box">
+                <span class='st_facebook_hcount' displayText='Facebook'></span>
+                <span class='st_twitter_hcount' displayText='Tweet' st_via='drawtf'
+                      st_title='Help me fund education of kids at this school. #drawthefuture #education'></span>
+                <span class='st_googleplus_hcount' displayText='Google +'></span>
+                <span class='st_sharethis_hcount' displayText='Share'></span>
+            </div>
+
+        </div>
+        <div class="span6">
+            <div id="default_image">
+                <img src="{{ STATIC_URL }}images/default_image.png">
+            </div>
+        </div>
+    </div>
 
     <div class="promotion-row row-fluid">
         <div class="span12">
             <h2>Medicare Provider Charge Data:</h2>
-            <select id="drug_name" style="display: inline; width: 700px;">
+            <select id="drug_name">
                 <option value="1" selected="selected">247 - PERC CARDIOVASC PROC W DRUG-ELUTING STENT W/O MCC</option>
                 <option value="2">039 - EXTRACRANIAL PROCEDURES W/O CC/MCC</option>
                 <option value="3">291 - HEART FAILURE & SHOCK W MCC</option>
@@ -229,4 +257,18 @@
             return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
         }
     </script>
+
+    <script type="text/javascript">
+        var switchTo5x = false;
+    </script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+        stLight.options({
+            publisher: "6d8da8ae-b61c-486f-a29b-e4c32b2e3259",
+            doNotHash: false,
+            doNotCopy: false,
+            hashAddressBar: false
+        });
+    </script>
+
 {% endblock %}
