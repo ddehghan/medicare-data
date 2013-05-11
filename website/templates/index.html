@@ -25,6 +25,7 @@
 
         #default_image {
             height: 300px;
+            margin-top: 80px;
         }
 
         #drug_name {
@@ -45,34 +46,44 @@
 
 {% block maincontent %}
     <div class="promotion-row row-fluid">
-        <div class="span6">
+        <div class="span7">
             <h2>Vastly different price for the same procedure</h2>
-
-            <div class="social-box">
-                <span class='st_facebook_hcount' displayText='Facebook'></span>
-                <span class='st_twitter_hcount' displayText='Tweet' st_via='drawtf'
-                      st_title='Help me fund education of kids at this school. #drawthefuture #education'></span>
-                <span class='st_googleplus_hcount' displayText='Google +'></span>
-                <span class='st_sharethis_hcount' displayText='Share'></span>
-            </div>
-
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            bla bla bla bla bla bla bla bla bla bla bla bla bla bla
         </div>
-        <div class="span6">
+        <div class="span5">
             <div id="default_image">
                 <img src="{{ STATIC_URL }}images/default_image.png">
+            </div>
+            <div class="social-box">
+                <span class='st_facebook_hcount' displayText='Facebook'></span>
+                <span class='st_twitter_hcount' displayText='Tweet' st_via='ddehghan'
+                      st_title='Medicare price variation between hospitals #health #medicare'></span>
+                <span class='st_googleplus_hcount' displayText='Google +'></span>
+                <span class='st_sharethis_hcount' displayText='Share'></span>
             </div>
         </div>
     </div>
 
     <div class="promotion-row row-fluid">
         <div class="span12">
-            <h2>Medicare Provider Charge Data:</h2>
+            <h2>View Medicare pyament rate:</h2>
             <select id="drug_name">
                 <option value="1" selected="selected">247 - PERC CARDIOVASC PROC W DRUG-ELUTING STENT W/O MCC</option>
                 <option value="2">039 - EXTRACRANIAL PROCEDURES W/O CC/MCC</option>
                 <option value="3">291 - HEART FAILURE & SHOCK W MCC</option>
             </select>
-            <button type="button" onclick="spinner_on()" style="display: inline;">Display</button>
+            <button type="button" class="btn btn-danger" onclick="spinner_on()">View Prices</button>
 
             <div id="chart"></div>
         </div>
@@ -80,7 +91,10 @@
 
     <div class="promotion-row row-fluid">
         <div class="span12">
-            <h3>Medicare Provider Charge Data</h3>
+            <h3>Data from CMS.GOV</h3>
+
+            <a href="http://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/index.html">Medicare
+                Provider Charge Data</a>
 
             <p>As part of the Obama administration’s work to make our health care system more affordable and
                 accountable, data are being released that show significant variation across the country and within
