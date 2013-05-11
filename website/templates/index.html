@@ -30,7 +30,19 @@
 
         #drug_name {
             display: inline;
-            width: 500px;
+            width: 600px;
+        }
+
+        .instructions {
+            font-size: 22px;
+            line-height: 35px;
+        }
+        .big-arrow{
+            margin-bottom: 30px;
+        }
+
+        .big-top-margin{
+            margin-top: 75px;
         }
 
         .news-image {
@@ -48,7 +60,7 @@
 
 
 {% block maincontent %}
-    <div class="promotion-row row-fluid">
+    <div class="row-fluid">
         <div class="span7">
             <h2>Vastly different price for the same procedure</h2>
             bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
@@ -78,8 +90,8 @@
         </div>
     </div>
 
-    <div class="promotion-row row-fluid">
-        <div class="span12">
+    <div class="big-top-margin row-fluid">
+        <div class="offset1 span8">
             <h2>View Medicare pyament rate:</h2>
             <select id="drug_name">
                 <option value="1" selected="selected">247 - PERC CARDIOVASC PROC W DRUG-ELUTING STENT W/O MCC</option>
@@ -87,12 +99,26 @@
                 <option value="3">291 - HEART FAILURE & SHOCK W MCC</option>
             </select>
             <button type="button" class="btn btn-danger" onclick="spinner_on()">View Prices</button>
+        </div>
 
+        <div class="span3">
+            <img class="big-arrow" src="{{ STATIC_URL }}images/arrow_yellow.png">
+            <br>
+
+            <div class="instructions">
+                1) Select a Procedure <br>
+                2) View prices
+            </div>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
             <div id="chart"></div>
         </div>
     </div>
 
-    <div class="promotion-row row-fluid">
+    <div class="row-fluid">
         <div class="span12">
             <h3>Data from CMS.GOV</h3>
 
