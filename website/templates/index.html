@@ -33,6 +33,9 @@
             width: 500px;
         }
 
+        .news-image {
+        }
+
     </style>
     <script src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/topojson.v0.min.js"></script>
@@ -137,17 +140,33 @@
     </div>
 
     <div class="promotion-row row-fluid">
-        <div class="span6">
-            <img src="{{ STATIC_URL }}images/time_cover.jpg">
+        <div class="span12">
 
-            <h3>Bitter Pill: Why Medical Bills Are Killing Us</h3>
+            <h3>In the News:</h3>
 
-            <a href="http://www.time.com/time/magazine/article/0,9171,2136864,00.html#ixzz2Sw4Yxq6j">Read more</a> (Pay
-            Wall)
-            <a href="http://www.pharmacyreviewer.com/forum/news-related-online-pharmacies/33668-time-magazine-special-report-why-medical-bills-killing-us-mar-4-2013-chapter-1-a.html">Read
-                more</a>
-        </div>
-        <div class="span6">
+            <div class="news">
+                <table>
+                    <tr>
+                        <td>
+                            <img class="news-image" src="{{ STATIC_URL }}images/time_cover.jpg">
+
+                        </td>
+                        <td><h3>Bitter Pill: Why Medical Bills Are Killing Us</h3>
+
+                            <a href="http://www.time.com/time/magazine/article/0,9171,2136864,00.html#ixzz2Sw4Yxq6j">
+                                Read more (Pay Wall)</a>
+
+                            <a href="http://www.pharmacyreviewer.com/forum/news-related-online-pharmacies/33668-time-magazine-special-report-why-medical-bills-killing-us-mar-4-2013-chapter-1-a.html">Read
+                                more</a>
+                        </td>
+
+                    </tr>
+
+
+                </table>
+
+
+            </div>
         </div>
     </div>
 
