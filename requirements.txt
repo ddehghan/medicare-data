@@ -1,4 +1,4 @@
-django==1.5
+django==1.5.1
 South
 psycopg2
 werkzeug
