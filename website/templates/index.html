@@ -1,63 +1,17 @@
 {% extends 'theme/base.html' %}
 {% load i18n %}
 
-{% trans "This is the title" as the_title %}
+{% trans "Medicare cost" as the_title %}
 
 {% block meta_description %}{{ the_title }}{% endblock %}
 {% block title %}{{ the_title }}{% endblock %}
 
 {% block extra_css %}
 
-    <style>
-        path {
-            stroke: white;
-            stroke-width: 0.25px;
-            fill: grey;
-        }
-
-        .hover-text {
-            height: 50px;
-        }
-
-        .hover-text .avg-price {
-            font-size: 16px;
-        }
-
-        #default_image {
-            height: 300px;
-            margin-top: 80px;
-        }
-
-        #drug_name {
-            display: inline;
-            width: 600px;
-        }
-
-        .instructions {
-            font-size: 22px;
-            line-height: 35px;
-        }
-
-        .big-arrow {
-            margin-bottom: 30px;
-        }
-
-        .big-top-margin {
-            margin-top: 75px;
-        }
-
-        .news-image {
-        }
-
-    </style>
-
     <script src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/topojson.v0.min.js"></script>
-
     <script src="{{ STATIC_URL }}js/jquery.tipsy.js"></script>
-
     <link href="{{ STATIC_URL }}css/tipsy.css" rel="stylesheet">
-
     <script src="{{ STATIC_URL }}js/main.js"></script>
 
 {% endblock %}
@@ -207,11 +161,6 @@
 
 
 {% block bottomscript %}
-    <script>
-
-
-
-    </script>
 
     <script type="text/javascript">
         var switchTo5x = false;

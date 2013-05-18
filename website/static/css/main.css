@@ -1,3 +1,39 @@
-.test-test {
-    margin-left: 30px;
+path {
+    stroke: white;
+    stroke-width: 0.25px;
+    fill: grey;
+}
+
+.hover-text {
+    height: 50px;
+}
+
+.hover-text .avg-price {
+    font-size: 16px;
+}
+
+#default_image {
+    height: 300px;
+    margin-top: 80px;
+}
+
+#drug_name {
+    display: inline;
+    width: 600px;
+}
+
+.instructions {
+    font-size: 22px;
+    line-height: 35px;
+}
+
+.big-arrow {
+    margin-bottom: 30px;
+}
+
+.big-top-margin {
+    margin-top: 75px;
+}
+
+.news-image {
 }
