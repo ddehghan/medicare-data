@@ -1,11 +1,27 @@
+#!/usr/bin/env /var/django/env/my_project/bin/python
+import os
+import sys
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print PROJECT_ROOT
+print PROJECT_ROOT
+print PROJECT_ROOT
+#
+# sys.path.append(PROJECT_ROOT)
+sys.path.append('/Users/daviddehghan/gitroot/hackatons/medicare')
+sys.path.append('/Users/daviddehghan/gitroot/hackatons/medicare/myproject')
+
+print sys.path
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
+os.environ.setdefault("DEPLOY_ENV", "dev")
+
 import csv
 import os
 from models import Hospital, Drug
 from pygeocoder import Geocoder, GeocoderError
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-print PROJECT_ROOT
 
 
 def read_hospitals():
@@ -92,3 +108,4 @@ def read_charges():
         f.close()
 
     return
+
