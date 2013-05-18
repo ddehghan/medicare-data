@@ -94,7 +94,7 @@
     <div class="big-top-margin row-fluid">
         <div class="offset1 span8">
             <h2>View Medicare pyament rate:</h2>
-            <select id="drug_name">
+            <select id="drug_name" onChange="get_data();">
                 <option value='1' selected="selected">563 - FX, SPRN, STRN & DISL EXCEPT FEMUR, HIP, PELVIS & THIGH W/O MCC</option>
                 <option value='2'>287 - CIRCULATORY DISORDERS EXCEPT AMI, W CARD CATH W/O MCC</option>
                 <option value='3'>480 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W MCC</option>
@@ -196,7 +196,6 @@
                 <option value='99'>101 - SEIZURES W/O MCC</option>
                 <option value='100'>246 - PERC CARDIOVASC PROC W DRUG-ELUTING STENT W MCC OR 4+ VESSELS/STENTS</option>
             </select>
-            <button type="button" class="btn btn-danger" onclick="spinner_on()">View Prices</button>
         </div>
 
         <div class="span3 visible-desktop">
@@ -397,7 +396,7 @@
             });
         }
 
-        function spinner_on() {
+        function get_data() {
             $("svg").remove();
 
             var e = document.getElementById("drug_name");
@@ -418,7 +417,7 @@
             return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
         }
 
-        spinner_on();
+        get_data();
 
 
     </script>
