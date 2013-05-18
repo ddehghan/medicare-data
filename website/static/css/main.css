@@ -1,9 +1,3 @@
-path {
-    stroke: white;
-    stroke-width: 0.25px;
-    fill: grey;
-}
-
 .hover-text {
     height: 50px;
 }
@@ -32,7 +26,7 @@ path {
 }
 
 .big-top-margin {
-    margin-top: 75px;
+    margin-top: 30px;
 }
 
 .news-image {

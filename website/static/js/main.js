@@ -4,7 +4,7 @@ function draw_chart(drg_num) {
 
     var centered;
 
-    var width = 1200, height = 700;
+    var width = 1000, height = 500;
 
     var svg = d3.select("#chart").append("svg")
         .attr("width", width)
