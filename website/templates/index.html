@@ -95,7 +95,9 @@
         <div class="offset1 span8">
             <h2>View Medicare pyament rate:</h2>
             <select id="drug_name" onChange="get_data();">
-                <option value='1' selected="selected">563 - FX, SPRN, STRN & DISL EXCEPT FEMUR, HIP, PELVIS & THIGH W/O MCC</option>
+                <option value='1' selected="selected">563 - FX, SPRN, STRN & DISL EXCEPT FEMUR, HIP, PELVIS & THIGH W/O
+                    MCC
+                </option>
                 <option value='2'>287 - CIRCULATORY DISORDERS EXCEPT AMI, W CARD CATH W/O MCC</option>
                 <option value='3'>480 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W MCC</option>
                 <option value='4'>057 - DEGENERATIVE NERVOUS SYSTEM DISORDERS W/O MCC</option>
@@ -417,6 +419,15 @@
             return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
         }
 
+        function LoadOptions() {
+            $.getJSON('{{ STATIC_URL }}data/drg_options.json', function (jsonData) {
+                $.each(jsonData, function (i, j) {
+                    $('#drug_name').append($('<option></option>').val(j.value).html(j.text));
+                });
+            });
+        }
+
+        LoadOptions();
         get_data();
 
 
