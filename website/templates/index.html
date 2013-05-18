@@ -53,6 +53,7 @@
             <h2>View Medicare pyament rate:</h2>
             <select id="drug_name" onChange="get_data();">
             </select>
+
             <div id="selected_drg"></div>
         </div>
 
@@ -122,35 +123,31 @@
     </div>
 
     <div class="big-top-margin row-fluid">
-        <div class="span12">
+    <div class="span12">
 
-            <h3>In the News:</h3>
+    <h3>In the News:</h3>
 
-            <div class="news">
-                <table>
-                    <tr>
-                        <td>
-                            <img class="news-image" src="{{ STATIC_URL }}images/time_cover.jpg">
-                        </td>
-                        <td><h3>Bitter Pill: Why Medical Bills Are Killing Us</h3>
-                            <a href="http://www.time.com/time/magazine/article/0,9171,2136864,00.html#ixzz2Sw4Yxq6j">
-                                Read more (Pay Wall)</a>
-                            <a href="http://www.pharmacyreviewer.com/forum/news-related-online-pharmacies/33668-time-magazine-special-report-why-medical-bills-killing-us-mar-4-2013-chapter-1-a.html">Read
-                                more</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img class="news-image" src="{{ STATIC_URL }}images/planet_money.png">
-                        </td>
-                        <td><h3>Planet Money: The Mysterious Power Of A Hospital Bill</h3>
-                            <a href="http://www.npr.org/blogs/money/2013/02/26/172996963/episode-439-the-mysterious-power-of-a-hospital-bill">
-                                Read more</a>
-                        </td>
-                    </tr>
-                </table>
-
-
+    <div class="news">
+        <div class="border-row">
+            <div class="image-col">
+                <img class="news-image" src="{{ STATIC_URL }}images/time_cover.jpg">
+            </div>
+            <div>
+                <h3>Bitter Pill: Why Medical Bills Are Killing Us</h3>
+                <a href="http://www.time.com/time/magazine/article/0,9171,2136864,00.html#ixzz2Sw4Yxq6j">
+                    Read more (Pay Wall)</a>
+                <a href="http://www.pharmacyreviewer.com/forum/news-related-online-pharmacies/33668-time-magazine-special-report-why-medical-bills-killing-us-mar-4-2013-chapter-1-a.html">Read
+                    more</a>
+            </div>
+        </div>
+        <div class="border-row">
+            <div class="image-col">
+                <img class="news-image" src="{{ STATIC_URL }}images/planet_money.png">
+            </div>
+            <div>
+                <h3>Planet Money: The Mysterious Power Of A Hospital Bill</h3>
+                <a href="http://www.npr.org/blogs/money/2013/02/26/172996963/episode-439-the-mysterious-power-of-a-hospital-bill">
+                    Read more</a>
             </div>
         </div>
     </div>

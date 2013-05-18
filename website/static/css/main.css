@@ -36,4 +36,26 @@ path {
 }
 
 .news-image {
+    height: 105px;
+}
+
+.image-col {
+    float: left;
+    width: 200px;
+    text-align: center;
+}
+
+.border-row {
+    margin: 2px 0;
+    padding: 10px;
+    border: solid #ddd 1px;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+
+    clear: both;
+    height: 110px;
 }
