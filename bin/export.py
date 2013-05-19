@@ -10,6 +10,7 @@ os.environ.setdefault("DEPLOY_ENV", "dev")
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print PROJECT_ROOT
+DATA_ROOT = os.path.join(PROJECT_ROOT, "website", "static", "data")
 
 from project.website.models import Hospital, Drug
 
@@ -23,7 +24,7 @@ def write_options(drg, file_name):
 
     result = []
 
-    with open('data/' + file_name, 'wb') as f:
+    with open(os.path.join(DATA_ROOT, file_name), 'wb') as f:
         for d in drg:
             result.append({"value": i, "text": d['description']})
             i += 1
@@ -34,24 +35,29 @@ def write_options(drg, file_name):
 
 
 def write_csv(drgs, file_name):
-    with open('data/%s.csv' % file_name, 'wb') as f:
-        f.write("size,lat,lon,price,name\n")
+    with open(os.path.join(DATA_ROOT, '%s.csv' % file_name), 'wb') as f:
+        f.write("size_charge,size_pay,lat,lon,charge,pay,name\n")
 
-        min_price = 10000000
-        max_price = 0
-        for c in drgs:
-            if not c.hospital.lat == 0 and not c.hospital.lon == 0:  # TODO: fix the bug to find all lat and lon
-            # and remove this
-                min_price = min(c.avg_charges, min_price)
-                max_price = max(c.avg_charges, max_price)
+        min_charge = 10000000
+        max_charge = 0
+        min_pay = 10000000
+        max_pay = 0
 
         for c in drgs:
-            if not c.hospital.lat == 0 and not c.hospital.lon == 0:  # TODO: fix the bug to find all lat and lon
-                f.write("%.2f,%s,%s,%s,%s\n" % (scale(c.avg_charges, (min_price, max_price), (2, 12)),
-                                                c.hospital.lat,
-                                                c.hospital.lon,
-                                                c.avg_charges,
-                                                c.hospital.name))
+            min_charge = min(c.avg_charges, min_charge)
+            max_charge = max(c.avg_charges, max_charge)
+            min_pay = min(c.avg_total_payments, min_pay)
+            max_pay = max(c.avg_total_payments, max_pay)
+
+        for c in drgs:
+            f.write("%.2f,%.2f,%s,%s,%s,%s,%s\n" %
+                    (scale(c.avg_charges, (min_charge, max_charge), (2, 12)),
+                     scale(c.avg_total_payments, (min_pay, max_pay), (2, 12)),
+                     c.hospital.lat,
+                     c.hospital.lon,
+                     c.avg_charges,
+                     c.avg_total_payments,
+                     c.hospital.name))
     return
 
 
@@ -66,11 +72,11 @@ def export_data():
     unique_drugs = get_drg()
     write_options(unique_drugs, 'drg_options.json')
 
-    # i = 1
-    # for drg in unique_drugs:
-    #     write_csv(Drug.objects.filter(description=drg['description']), str(i))
-    #     i += 1
-    #     # break
+    i = 1
+    for drg in unique_drugs:
+        write_csv(Drug.objects.filter(description=drg['description']), str(i))
+        i += 1
+        # break
 
     return
 

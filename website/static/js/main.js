@@ -1,9 +1,7 @@
 //    http://www.schneidy.com/Tutorials/MapsTutorial.html
 
 function draw_chart(drg_num) {
-
     var centered;
-
     var width = 1000, height = 500;
 
     var svg = d3.select("#chart").append("svg")
@@ -11,7 +9,6 @@ function draw_chart(drg_num) {
         .attr("height", height);
 
     var group = svg.append("g");
-
     var projection = d3.geo.albersUsa();
     var path = d3.geo.path().projection(projection);
 
@@ -68,7 +65,7 @@ function draw_chart(drg_num) {
                     return projection([d.lon, d.lat])[1];
                 })
                 .attr("r", function (d) {
-                    return d.size;
+                    return d.size_charge;
                 })
                 .style("fill", "red")
                 .on("mouseover", function () {
@@ -85,12 +82,10 @@ function draw_chart(drg_num) {
                     var d = this.__data__;
 
                     return "<div class='hover-text'><div class='hospital-name'>" + d.name
-                        + "</div><div class='avg-price'>Average Price: $" + formatMoney(d.price, 0, '.', ',')
+                        + "</div><div class='avg-price'>Average Price: $" + formatMoney(d.charge, 0, '.', ',')
                         + "</div></div>";
                 }
             });
-
-
         });
     });
 }

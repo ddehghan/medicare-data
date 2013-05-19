@@ -1,27 +1,17 @@
-#!/usr/bin/env /var/django/env/my_project/bin/python
+#!/Users/daviddehghan/.virtualenvs/map/bin/python
 import os
 import sys
+import csv
+from pygeocoder import Geocoder, GeocoderError
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print PROJECT_ROOT
-print PROJECT_ROOT
-print PROJECT_ROOT
-#
-# sys.path.append(PROJECT_ROOT)
-sys.path.append('/Users/daviddehghan/gitroot/hackatons/medicare')
-sys.path.append('/Users/daviddehghan/gitroot/hackatons/medicare/myproject')
-
-print sys.path
-
+sys.path.append("/Users/daviddehghan/gitroot/hackatons/medicare/project")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
 os.environ.setdefault("DEPLOY_ENV", "dev")
 
-import csv
-import os
-from models import Hospital, Drug
-from pygeocoder import Geocoder, GeocoderError
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# print PROJECT_ROOT
 
-
+from project.website.models import Hospital, Drug
 
 
 def read_hospitals():
@@ -109,3 +99,32 @@ def read_charges():
 
     return
 
+
+def fix_addresses():
+    hospitals = Hospital.objects.filter(lat=0)
+
+    for h in hospitals:
+
+        # bug Some addressed in the data have the zero in the zipcode cut off
+        # address = "%s, %s, %s, %s, 0%s" % (h.name, h.street, h.city, h.state, h.zip_code)
+
+        address = "%s, %s, %s, %s, %s" % (h.name, h.street, h.city, h.state, h.zip_code)
+
+        try:
+            lat, lon = Geocoder.geocode(address=address).coordinates
+            h.lat = lat
+            h.lon = lon
+            h.save()
+
+            print h.name
+            print lat, lon
+
+        except GeocoderError:
+            print address
+            print "err"
+
+
+
+if __name__ == '__main__':
+
+    fix_addresses()
