@@ -1,9 +1,23 @@
 .hover-text {
-    height: 80px;
+    height: 160px;
 }
 
-.avg-price {
+.hospital-name {
+    font-family: helvetica sans-serif;
     font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.hover-label {
+    font-size: 16px;
+    line-height: 30px;
+    display: inline;
+}
+
+.hover-data {
+    font-size: 25px;
+    color: #ffff0f;
     line-height: 30px;
 }
 

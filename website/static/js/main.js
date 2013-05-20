@@ -83,16 +83,30 @@ function draw_chart(chart_position, drg_num, col_name) {
                 title: function () {
                     var d = this.__data__;
 
-                    return "<div class='hover-text'><div class='hospital-name'>" + d.name
-                        + "</div><div class='avg-price'>Original Hospital Bill: $" + formatMoney(d.charge, 0, '.', ',')
-                        + "</div><div class='avg-price'>Negotiated Medicare Payment: $" + formatMoney(d.pay, 0, '.', ',')
-                        + "</div></div>";
+                    var my_template = "<div class='hover-text'><div class='hospital-name'>%d_name%</div>"
+                        + "<div class='hover-label'>Hospital Bill:</div>"
+                        + "<div class='hover-data'> $%d_charge%</div>"
+                        + "<div class='hover-label'>Medicare reimbursement:</div>"
+                        + "<div class='hover-data'> $%d_pay%</div>"
+                        + "</div>";
+
+                    var data = {
+                        'd_name': d.name,
+                        'd_charge':formatMoney(d.charge, 0, '.', ','),
+                        'd_pay':formatMoney(d.pay, 0, '.', ',')
+                    };
+
+                    return template(my_template,data)
+
                 }
             });
         });
     });
 }
 
+function template(my_template,data){
+    return my_template.replace(/%(\w*)%/g,function(m,key){return data.hasOwnProperty(key)?data[key]:"";});
+}
 
 function get_data() {
     $("svg").remove();
