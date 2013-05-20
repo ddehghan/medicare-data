@@ -1,8 +1,10 @@
 #!/Users/daviddehghan/.virtualenvs/map/bin/python
+from decimal import Decimal
 import json
 
 import os
 import sys
+import math
 
 sys.path.append("/Users/daviddehghan/gitroot/hackatons/medicare/project")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
@@ -49,10 +51,15 @@ def write_csv(drgs, file_name):
             min_pay = min(c.avg_total_payments, min_pay)
             max_pay = max(c.avg_total_payments, max_pay)
 
+        min_charge = min(min_pay, min_charge)
+        max_charge = max(max_pay, max_charge)
+        min_pay = min(min_charge, min_pay)
+        max_pay = max(max_charge, max_pay)
+
         for c in drgs:
             f.write("%.2f,%.2f,%s,%s,%s,%s,%s\n" %
-                    (scale(c.avg_charges, (min_charge, max_charge), (2, 12)),
-                     scale(c.avg_total_payments, (min_pay, max_pay), (2, 12)),
+                    (scale(c.avg_charges, (min_charge, max_charge), (Decimal(2), Decimal(30))),
+                     scale(c.avg_total_payments, (min_pay, max_pay), (Decimal(2), Decimal(30))),
                      c.hospital.lat,
                      c.hospital.lon,
                      c.avg_charges,
@@ -65,6 +72,8 @@ def scale(val, src, dst):
     """
     Scale the given value from the scale of src to the scale of dst.
     """
+    # return math.log(((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0], 2)
+    # return math.sqrt(((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0]) * 10
     return ((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0]
 
 
@@ -76,7 +85,7 @@ def export_data():
     for drg in unique_drugs:
         write_csv(Drug.objects.filter(description=drg['description']), str(i))
         i += 1
-        # break
+        break
 
     return
 

@@ -1,10 +1,10 @@
 //    http://www.schneidy.com/Tutorials/MapsTutorial.html
 
-function draw_chart(drg_num) {
+function draw_chart(chart_position, drg_num, col_name) {
     var centered;
     var width = 1000, height = 500;
 
-    var svg = d3.select("#chart").append("svg")
+    var svg = d3.select(chart_position).append("svg")
         .attr("width", width)
         .attr("height", height);
 
@@ -65,9 +65,11 @@ function draw_chart(drg_num) {
                     return projection([d.lon, d.lat])[1];
                 })
                 .attr("r", function (d) {
-                    return d.size_charge;
+                    return d[col_name];
                 })
                 .style("fill", "red")
+                .style("opacity",.5)
+                .style("stroke","#2F0000")
                 .on("mouseover", function () {
                     d3.select(this).style("fill", "blue");
                 })
@@ -82,7 +84,8 @@ function draw_chart(drg_num) {
                     var d = this.__data__;
 
                     return "<div class='hover-text'><div class='hospital-name'>" + d.name
-                        + "</div><div class='avg-price'>Average Price: $" + formatMoney(d.charge, 0, '.', ',')
+                        + "</div><div class='avg-price'>Original Hospital Bill: $" + formatMoney(d.charge, 0, '.', ',')
+                        + "</div><div class='avg-price'>Negotiated Medicare Payment: $" + formatMoney(d.pay, 0, '.', ',')
                         + "</div></div>";
                 }
             });
@@ -96,11 +99,12 @@ function get_data() {
 
     var e = document.getElementById("drug_name");
 
-    $("#selected_drg").html(e.options[e.selectedIndex].text);
+    $(".selected_drg").html(e.options[e.selectedIndex].text);
 
     var drg_num = e.options[e.selectedIndex].value;
 
-    draw_chart(drg_num);
+    draw_chart('#chart1', drg_num, 'size_charge');
+    draw_chart('#chart2', drg_num, 'size_pay');
 
 }
 

@@ -1,9 +1,10 @@
 .hover-text {
-    height: 50px;
+    height: 80px;
 }
 
-.hover-text .avg-price {
+.avg-price {
     font-size: 16px;
+    line-height: 30px;
 }
 
 #default_image {
