@@ -85,7 +85,7 @@ def export_data():
     for drg in unique_drugs:
         write_csv(Drug.objects.filter(description=drg['description']), str(i))
         i += 1
-        break
+        # break
 
     return
 
