@@ -16,6 +16,9 @@ urlpatterns = patterns('',
 
                        url(r'^charges/(?P<drug>.*)$', 'website.views.charges', name='charges'),
 
+                       # Static pages
+                       url("^about-data", TemplateView.as_view(template_name='about-data.html'), name="about-data"),
+
                        # url("^index", TemplateView.as_view(template_name='index.html'), name="mission"),
 
                        # Admin site
