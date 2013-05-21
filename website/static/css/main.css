@@ -1,5 +1,7 @@
+/* Hover Text  --------------------------------------  */
+
 .hover-text {
-    height: 160px;
+    height: 140px;
 }
 
 .hospital-name {
@@ -11,8 +13,7 @@
 
 .hover-label {
     font-size: 16px;
-    line-height: 30px;
-    display: inline;
+    height: 50px;
 }
 
 .hover-data {
@@ -20,6 +21,17 @@
     color: #ffff0f;
     line-height: 30px;
 }
+
+.pull-left{
+    float: left;
+    width: 50%;
+}
+.pull-right{
+    float: right;
+    width: 50%;
+}
+
+/* ------------------------------------------------  */
 
 #default_image {
     height: 300px;

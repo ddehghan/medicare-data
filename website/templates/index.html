@@ -11,10 +11,14 @@
     <script id="tooltip-template" type="text/x-handlebars-template">
         <div class='hover-text'>
             <div class='hospital-name'>{{ d_name }}</div>
-            <div class='hover-label'>Hospital Bill:</div>
-            <div class='hover-data'> ${{ d_charge }}</div>
-            <div class='hover-label'>Medicare reimbursement:</div>
-            <div class='hover-data'> ${{ d_pay }}</div>
+            <div class="pull-left">
+                <div class='hover-label'>Hospital Bill:</div>
+                <div class='hover-data'> ${{ d_charge }}</div>
+            </div>
+            <div class="pull-right">
+                <div class='hover-label'>Medicare<br>reimbursement:</div>
+                <div class='hover-data'> ${{ d_pay }}</div>
+            </div>
         </div>
     </script>
     {% endverbatim %}
