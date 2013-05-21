@@ -7,12 +7,27 @@
 {% block title %}{{ the_title }}{% endblock %}
 
 {% block extra_css %}
+    {% verbatim %}
+    <script id="tooltip-template" type="text/x-handlebars-template">
+        <div class='hover-text'>
+            <div class='hospital-name'>{{ d_name }}</div>
+            <div class='hover-label'>Hospital Bill:</div>
+            <div class='hover-data'> ${{ d_charge }}</div>
+            <div class='hover-label'>Medicare reimbursement:</div>
+            <div class='hover-data'> ${{ d_pay }}</div>
+        </div>
+    </script>
+    {% endverbatim %}
 
     <script src="{{ STATIC_URL }}js/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/topojson.v0.min.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.tipsy.js"></script>
     <link href="{{ STATIC_URL }}css/tipsy.css" rel="stylesheet">
+    <script src="{{ STATIC_URL }}js/handlebars.js"></script>
     <script src="{{ STATIC_URL }}js/main.js"></script>
+
+
+
 
 {% endblock %}
 
@@ -84,8 +99,9 @@
         <div class="span12">
 
             <h3>About the data:</h3>
+
             <p>The graphs on this page are plotted with the "Medicare Provider Charge Data" released by CMS.GOV.
-            <a href="/about-data">Find out more</a> about this dataset. </p>
+                <a href="/about-data">Find out more</a> about this dataset. </p>
 
             <br>
 

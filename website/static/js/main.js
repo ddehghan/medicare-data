@@ -68,8 +68,8 @@ function draw_chart(chart_position, drg_num, col_name) {
                     return d[col_name];
                 })
                 .style("fill", "red")
-                .style("opacity",.5)
-                .style("stroke","#2F0000")
+                .style("opacity", .5)
+                .style("stroke", "#2F0000")
                 .on("mouseover", function () {
                     d3.select(this).style("fill", "blue");
                 })
@@ -83,29 +83,25 @@ function draw_chart(chart_position, drg_num, col_name) {
                 title: function () {
                     var d = this.__data__;
 
-                    var my_template = "<div class='hover-text'><div class='hospital-name'>%d_name%</div>"
-                        + "<div class='hover-label'>Hospital Bill:</div>"
-                        + "<div class='hover-data'> $%d_charge%</div>"
-                        + "<div class='hover-label'>Medicare reimbursement:</div>"
-                        + "<div class='hover-data'> $%d_pay%</div>"
-                        + "</div>";
-
                     var data = {
                         'd_name': d.name,
-                        'd_charge':formatMoney(d.charge, 0, '.', ','),
-                        'd_pay':formatMoney(d.pay, 0, '.', ',')
+                        'd_charge': formatMoney(d.charge, 0, '.', ','),
+                        'd_pay': formatMoney(d.pay, 0, '.', ',')
                     };
 
-                    return template(my_template,data)
-
+                    var template = $('#tooltip-template').html();
+                    var compiledTemplate = Handlebars.compile(template);
+                    return compiledTemplate(data);
                 }
             });
         });
     });
 }
 
-function template(my_template,data){
-    return my_template.replace(/%(\w*)%/g,function(m,key){return data.hasOwnProperty(key)?data[key]:"";});
+function template(my_template, data) {
+    return my_template.replace(/%(\w*)%/g, function (m, key) {
+        return data.hasOwnProperty(key) ? data[key] : "";
+    });
 }
 
 function get_data() {
