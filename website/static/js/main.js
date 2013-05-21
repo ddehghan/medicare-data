@@ -94,6 +94,7 @@ function draw_chart(chart_position, drg_num, col_name) {
                     return compiledTemplate(data);
                 }
             });
+
         });
     });
 }
