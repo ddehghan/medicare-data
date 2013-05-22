@@ -227,6 +227,8 @@ function list_hospitals(Lat, Lon) {
     });
 
     result.splice(1, result.length - 2);
+    result[0].isMax = true;
+    result[1].isMin = true;
 
     $('#hlist').html(compiledTemplate({'hospitals': result}));
 }

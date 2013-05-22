@@ -36,7 +36,7 @@
 /* Hospital List  ---------------------------------  */
 
 .h-row{
-    height: 100px;
+    min-height: 100px;
 
     margin: 2px 0;
     padding: 10px;
@@ -52,10 +52,29 @@
 }
 .h-row .hbill{
     margin-top: 15px;
-    display: inline;
 }
+
+.h-numbers{
+        vertical-align: middle;
+}
+
 .h-row .hname{
     margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.hlist .max-value {
+    background-color: #ffbbbb;
+}
+
+.hlist .min-value {
+    background-color: #bbffbb;
+}
+
+.h-row .hlist-head{
+    float: right;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 /* ------------------------------------------------  */

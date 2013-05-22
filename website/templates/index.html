@@ -27,10 +27,18 @@
 
         <div class='hlist'>
             {{#list hospitals}}
-            <div class="h-row">
+            <div class="h-row  {{#if isMax }} max-value {{else}} min-value {{/if}}">
+                <div class="hlist-head"><p>
+                    {{#if isMax }} $$$ {{/if}}
+                    {{#if isMin }} $ {{/if}}
+                </p>
+                </div>
                 <div class='hname'>{{ name }}</div>
-                Charge: <div class='hbill'>${{ charge }}</div><br>
-                Reimbursement<div class='hbill'>${{ pay }}</div>
+                <div class="h-numbers">
+                    Charge: <span class='hbill'>${{ charge }}</span>
+                    <br>
+                    Reimbursement: <span class='hbill'>${{ pay }}</span>
+                </div>
             </div>
             {{/list}}
         </div>
