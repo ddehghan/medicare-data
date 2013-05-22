@@ -29,7 +29,8 @@
             {{#list hospitals}}
             <div class="h-row">
                 <div class='hname'>{{ name }}</div>
-                <div class='hbill'>${{ charge }}</div>
+                Charge: <div class='hbill'>${{ charge }}</div><br>
+                Reimbursement<div class='hbill'>${{ pay }}</div>
             </div>
             {{/list}}
         </div>
@@ -38,6 +39,7 @@
 
     {% endverbatim %}
 
+    <script src="{{ STATIC_URL }}js/libs/jquery-1.9.1.js"></script>
     <script src="{{ STATIC_URL }}js/libs/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/topojson.v0.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/jquery.tipsy.js"></script>

@@ -206,13 +206,27 @@ function list_hospitals(Lat, Lon) {
     var template = $('#hlist-template').html();
     var compiledTemplate = Handlebars.compile(template);
 
-    var result = new Array();
+    var result = [];
     for (var i = 0; i < g_test.length; i++) {
         var d = getDistanceFromLatLonInKm(Lat, Lon, g_test[i].lat, g_test[i].lon);
         if (d < 100) {
-            result.push({'name': g_test[i].name, 'charge': formatMoney(g_test[i].charge, 0, '.', ',')});
+            result.push({
+                'name': g_test[i].name,
+                'charge': formatMoney(g_test[i].charge, 0, '.', ','),
+                'pay': formatMoney(g_test[i].pay, 0, '.', ',')
+            });
         }
     }
+
+    result = result.sort(function (a, b) {
+        if (a.charge < b.charge) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+
+    result.splice(1, result.length - 2);
 
     $('#hlist').html(compiledTemplate({'hospitals': result}));
 }
