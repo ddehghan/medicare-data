@@ -2,14 +2,24 @@
 
 var g_test = {};
 
+//Handlebars.registerHelper('list', function (items, options) {
+//    var out = "<ul>";
+//
+//    for (var i = 0, l = items.length; i < l; i++) {
+//        out = out + "<li>" + options.fn(items[i]) + "</li>";
+//    }
+//
+//    return out + "</ul>";
+//});
+
 Handlebars.registerHelper('list', function (items, options) {
-    var out = "<ul>";
+    var out = "";
 
     for (var i = 0, l = items.length; i < l; i++) {
-        out = out + "<li>" + options.fn(items[i]) + "</li>";
+        out = out + options.fn(items[i]);
     }
 
-    return out + "</ul>";
+    return out;
 });
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -81,7 +91,7 @@ function deg2rad(deg) {
 
 function draw_chart(chart_position, drg_num, col_name) {
     var centered;
-    var width = 1000, height = 500;
+    var width = 850, height = 500;
 
     var svg = d3.select(chart_position).append("svg")
         .attr("width", width)
@@ -200,7 +210,7 @@ function list_hospitals(Lat, Lon) {
     for (var i = 0; i < g_test.length; i++) {
         var d = getDistanceFromLatLonInKm(Lat, Lon, g_test[i].lat, g_test[i].lon);
         if (d < 100) {
-            result.push({'name': g_test[i].name, 'distance': d});
+            result.push({'name': g_test[i].name, 'charge': formatMoney(g_test[i].charge, 0, '.', ',')});
         }
     }
 

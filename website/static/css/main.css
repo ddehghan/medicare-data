@@ -33,6 +33,27 @@
 
 /* ------------------------------------------------  */
 
+/* Hospital List  ---------------------------------  */
+
+.h-row{
+    height: 50px;
+
+    margin: 2px 0;
+    padding: 10px;
+    border: solid #ddd 1px;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+
+    clear: both;
+}
+
+/* ------------------------------------------------  */
+
+
 #default_image {
     height: 300px;
     margin-top: 80px;
