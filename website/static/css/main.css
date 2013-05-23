@@ -22,11 +22,12 @@
     line-height: 30px;
 }
 
-.pull-left{
+.pull-left {
     float: left;
     width: 50%;
 }
-.pull-right{
+
+.pull-right {
     float: right;
     width: 50%;
 }
@@ -35,7 +36,7 @@
 
 /* Hospital List  ---------------------------------  */
 
-.h-row{
+.h-row {
     min-height: 100px;
 
     margin: 2px 0;
@@ -50,15 +51,19 @@
 
     clear: both;
 }
-.h-row .hbill{
+
+.h-row .hbill {
     margin-top: 15px;
 }
 
-.h-numbers{
-        vertical-align: middle;
+.hlist {
 }
 
-.h-row .hname{
+.h-numbers {
+    vertical-align: middle;
+}
+
+.h-row .hname {
     margin-bottom: 15px;
     font-weight: bold;
 }
@@ -71,14 +76,13 @@
     background-color: #bbffbb;
 }
 
-.h-row .hlist-head{
+.h-row .hlist-head {
     float: right;
     font-weight: bold;
     font-size: 18px;
 }
 
 /* ------------------------------------------------  */
-
 
 #default_image {
     height: 300px;

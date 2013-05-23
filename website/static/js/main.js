@@ -184,7 +184,7 @@ function draw_chart(chart_position, drg_num, col_name) {
                     var template = $('#tooltip-template').html();
                     var compiledTemplate = Handlebars.compile(template);
 
-                    list_hospitals(d.lat, d.lon);
+                    list_hospitals(chart_position, d.lat, d.lon);
 
                     return compiledTemplate(data);
 
@@ -196,13 +196,8 @@ function draw_chart(chart_position, drg_num, col_name) {
     });
 }
 
-function template(my_template, data) {
-    return my_template.replace(/%(\w*)%/g, function (m, key) {
-        return data.hasOwnProperty(key) ? data[key] : "";
-    });
-}
 
-function list_hospitals(Lat, Lon) {
+function list_hospitals(position, Lat, Lon) {
     var template = $('#hlist-template').html();
     var compiledTemplate = Handlebars.compile(template);
 
@@ -230,7 +225,16 @@ function list_hospitals(Lat, Lon) {
     result[0].isMax = true;
     result[1].isMin = true;
 
-    $('#hlist').html(compiledTemplate({'hospitals': result}));
+    var $position;
+
+    if (position === "#chart1") {
+        $position = $('#first-last-list1');
+    }
+    else {
+        $position = $('#first-last-list2');
+    }
+
+    $position.html(compiledTemplate({'hospitals': result}));
 }
 
 function get_data() {
@@ -246,7 +250,6 @@ function get_data() {
     draw_chart('#chart2', drg_num, 'size_pay');
 
 }
-
 
 function formatMoney(n, c, d, t) {
     var c = isNaN(c = Math.abs(c)) ? 2 : c,
