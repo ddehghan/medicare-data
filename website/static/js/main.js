@@ -50,7 +50,7 @@ Handlebars.registerHelper('list', function (items, options) {
 //:::                                                                         :::
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-function distance(lat1, lon1, lat2, lon2, unit) {
+function latLonDistance(lat1, lon1, lat2, lon2, unit) {
     var radlat1 = Math.PI * lat1 / 180;
     var radlat2 = Math.PI * lat2 / 180;
     var radlon1 = Math.PI * lon1 / 180;
@@ -68,24 +68,6 @@ function distance(lat1, lon1, lat2, lon2, unit) {
         dist = dist * 0.8684;
     }
     return dist
-}
-
-function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-    var R = 6371; // Radius of the earth in km
-    var dLat = deg2rad(lat2 - lat1);  // deg2rad below
-    var dLon = deg2rad(lon2 - lon1);
-    var a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-                    Math.sin(dLon / 2) * Math.sin(dLon / 2)
-        ;
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c; // Distance in km
-    return d;
-}
-
-function deg2rad(deg) {
-    return deg * (Math.PI / 180)
 }
 
 
@@ -203,7 +185,7 @@ function list_hospitals(position, Lat, Lon) {
 
     var result = [];
     for (var i = 0; i < g_test.length; i++) {
-        var d = getDistanceFromLatLonInKm(Lat, Lon, g_test[i].lat, g_test[i].lon);
+        var d = latLonDistance(Lat, Lon, g_test[i].lat, g_test[i].lon,"N");
         if (d < 100) {
             result.push({
                 'name': g_test[i].name,

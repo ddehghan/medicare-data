@@ -21,7 +21,6 @@ body {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     border: 1px solid #8ca8b3;
-    padding: 20px;
 }
 
 .white-box {
@@ -31,7 +30,6 @@ body {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     border: 1px solid #b2bab7;
-    padding: 20px;
 }
 
 /* Hover Text  --------------------------------------  */
@@ -94,6 +92,7 @@ body {
     margin: 2px 0;
     padding: 10px;
     border: solid #888 1px;
+    background: #cfeced;
 
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -111,6 +110,7 @@ body {
 .hlist {
     margin-top: 80px;
     color: #333;
+    padding: 10px 10px;
 }
 
 .h-numbers {
@@ -127,6 +127,7 @@ body {
 .min-max-box{
     margin-top: 20px;
 }
+
 .min-max-box-header{
     color: #333;
     font-size: 20px;
