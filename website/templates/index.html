@@ -23,9 +23,9 @@
     </script>
 
     <script id="hlist-template" type="text/x-handlebars-template">
-        <h4>Nearby Hospitals' bill:</h4>
+        <h4 class="section-title min-max-box-header">Nearby Hospitals:</h4>
 
-        <div class='hlist'>
+        <div class='min-max-box'>
             {{#list hospitals}}
             <div class="h-row  {{#if isMax }} max-value {{else}} min-value {{/if}}">
                 <div class="hlist-head"><p>
@@ -67,7 +67,7 @@
 {% block maincontent %}
     <div class="big-top-margin row-fluid">
         <div class="span7">
-            <h2>Vastly different price for the same procedure</h2>
+            <h2  class="main-title">Vastly different price for the same procedure</h2>
             bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
             bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
             bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
@@ -97,7 +97,7 @@
 
     <div class="big-top-margin row-fluid">
         <div class="offset1 span8">
-            <h3>Select a procedure:</h3>
+            <h3 class="section-title">Select a procedure:</h3>
             <select id="drug_name" onChange="get_data();">
             </select>
         </div>
@@ -122,7 +122,7 @@
 
         </div>
         <div class="span3">
-            <div class="hlist" id="first-last-list1"></div>
+            <div class="hlist blue-box" id="first-last-list1"></div>
         </div>
     </div>
 
@@ -135,7 +135,7 @@
             <div id="chart2"></div>
         </div>
         <div class="span3">
-            <div class="hlist" id="first-last-list2"></div>
+            <div class="hlist blue-box" id="first-last-list2"></div>
         </div>
     </div>
 
@@ -151,7 +151,7 @@
 
             <br>
 
-            <h3>In the News:</h3>
+            <h3 class="color-3">In the News:</h3>
 
             <div class="news">
                 <div class="border-row">
