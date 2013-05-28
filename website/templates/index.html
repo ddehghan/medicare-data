@@ -23,32 +23,47 @@
     </script>
 
     <script id="hlist-template" type="text/x-handlebars-template">
-        <h4 class="section-title min-max-box-header">Nearby Hospitals:</h4>
+        {{#if hospitals }}
+        <div class="hlist blue-box">
 
-        <p>Hospitals within the 100 miles that charge the most or the least</p>
+            <h4 class="section-title min-max-box-header">Nearby Hospitals:</h4>
 
-        <div class='min-max-box'>
-            {{#list hospitals}}
-            <div class="h-row  {{#if isMax }} max-value {{else}} min-value {{/if}}">
-                <div class="hlist-head"><p>
-                    {{#if isMax }} $$$ {{/if}}
-                    {{#if isMin }} $ {{/if}}
-                </p>
+            <p>Hospitals within the 100 miles that charge the most or the least</p>
+
+            <div class='min-max-box'>
+                {{#list hospitals}}
+                <div class="h-row  {{#if isMax }} max-value {{else}} min-value {{/if}}">
+                    <div class="hlist-head"><p>
+                        {{#if isMax }} $$$ {{/if}}
+                        {{#if isMin }} $ {{/if}}
+                    </p>
+                    </div>
+                    <div class='hname'>{{this.name}}</div>
+                    <div class="h-numbers">
+                        Charge: <span class='hbill'>${{this.charge}}</span>
+                        <br>
+                        Reimbursement: <span class='hbill'>${{this.pay}}</span>
+
+                        <hr>
+                        {{Air}} Air Bubble in the Bloodstream
+                        <hr>
+                        {{BloodInf}} Blood infection from a catheter in a large vein
+                        <hr>
+                        {{Falls}} Falls and injuries
+                        <hr>
+                        {{UrinaryInf}} Infection from a Urinary Catheter
+                        <br>{{Mismatch}} Mismatched blood types
+                        <br>{{Objects}} Objects Accidentally Left in the Body After Surgery
+                        <br>{{Sores}} Severe pressure sores (bed sores)
+                        <br>{{Sugar}} Signs of Uncontrolled Blood Sugar
+
+                    </div>
                 </div>
-                <div class='hname'>{{ name }}</div>
-                <div class="h-numbers">
-                    Charge: <span class='hbill'>${{ charge }}</span>
-                    <br>
-                    Reimbursement: <span class='hbill'>${{ pay }}</span>
-
-                    <br>${{ Air }}
-                    <br>${{ BloodInf }}
-                    <br>${{ UrinaryInf }}
-
-                </div>
+                {{/list}}
             </div>
-            {{/list}}
         </div>
+
+        {{/if}}
     </script>
 
 
@@ -87,6 +102,7 @@
             bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
             bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
             bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+
         </div>
         <div class="span5">
             <div id="default_image">
@@ -129,7 +145,7 @@
 
         </div>
         <div class="span3">
-            <div class="hlist blue-box" id="first-last-list1"></div>
+            <div id="first-last-list1"></div>
         </div>
     </div>
 

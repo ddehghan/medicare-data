@@ -178,6 +178,15 @@ function draw_chart(chart_position, drg_num, col_name) {
     });
 }
 
+function ShallowCopy(o) {
+  var copy = Object.create(o);
+  for (prop in o) {
+    if (o.hasOwnProperty(prop)) {
+      copy[prop] = o[prop];
+    }
+  }
+  return copy;
+}
 
 function list_hospitals(position, Lat, Lon) {
     var template = $('#hlist-template').html();
@@ -185,13 +194,14 @@ function list_hospitals(position, Lat, Lon) {
 
     var result = [];
     for (var i = 0; i < g_test.length; i++) {
-        var d = latLonDistance(Lat, Lon, g_test[i].lat, g_test[i].lon,"N");
+        var d = latLonDistance(Lat, Lon, g_test[i].lat, g_test[i].lon, "N");
         if (d < 100) {
-            result.push({
-                'name': g_test[i].name,
-                'charge': formatMoney(g_test[i].charge, 0, '.', ','),
-                'pay': formatMoney(g_test[i].pay, 0, '.', ',')
-            });
+            result.push(ShallowCopy(g_test[i]));
+//            result.push({
+//                'name': g_test[i].name,
+//                'charge': formatMoney(g_test[i].charge, 0, '.', ','),
+//                'pay': formatMoney(g_test[i].pay, 0, '.', ',')
+//            });
         }
     }
 
@@ -203,9 +213,15 @@ function list_hospitals(position, Lat, Lon) {
         }
     });
 
-    result.splice(1, result.length - 2);
-    result[0].isMax = true;
-    result[1].isMin = true;
+    if (result.length > 2) {
+        result.splice(1, result.length - 2);
+        result[0].isMax = true;
+        result[0].pay = formatMoney(result[0].pay, 0, '.', ',');
+        result[0].charge = formatMoney(result[0].charge, 0, '.', ',');
+        result[1].isMin = true;
+        result[1].pay = formatMoney(result[1].pay, 0, '.', ',');
+        result[1].charge = formatMoney(result[1].charge, 0, '.', ',');
+    }
 
     var $position;
 
@@ -216,6 +232,7 @@ function list_hospitals(position, Lat, Lon) {
         $position = $('#first-last-list2');
     }
 
+    $position.html("");
     $position.html(compiledTemplate({'hospitals': result}));
 }
 
