@@ -2,6 +2,7 @@ from decimal import Decimal
 import json
 
 import os
+import string
 import sys
 from project.bin.export_sql import HospitalData
 
@@ -38,7 +39,7 @@ def write_options(drg, file_name):
 def write_csv(drgs, file_name):
     with open(os.path.join(DATA_ROOT, '%s.csv' % file_name), 'wb') as f:
         f.write(
-            "size_charge,size_pay,lat,lon,charge,pay,name,Air,BloodInf,UrinaryInf,Falls double,Mismatch,Objects,Sores,Sugar\n")
+            "size_charge,size_pay,lat,lon,charge,pay,Air,BloodInf,UrinaryInf,Falls,Mismatch,Objects,Sores,Sugar,name\n")
 
         min_charge = 10000000
         max_charge = 0
@@ -63,7 +64,7 @@ def write_csv(drgs, file_name):
             ac = hospital_data.get_aquired_conditions(int(c.hospital.provider_id))
 
             if not ac:
-                ac = [0]*9
+                ac = [0] * 9
 
             f.write("%.2f,%.2f,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n" %
                     (scale(c.avg_charges, (min_charge, max_charge), (Decimal(2), Decimal(30))),
@@ -72,8 +73,9 @@ def write_csv(drgs, file_name):
                      c.hospital.lon,
                      c.avg_charges,
                      c.avg_total_payments,
-                     c.hospital.name,
-                     ac[1], ac[2], ac[3], ac[4], ac[5], ac[6], ac[7], ac[8]))
+                     ac[1], ac[2], ac[3], ac[4], ac[5], ac[6], ac[7], ac[8],
+                     string.replace(c.hospital.name, ',', ''),   # escape the ','
+                    ))
 
         hospital_data.disconnect()
 
