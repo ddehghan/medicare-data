@@ -89,19 +89,39 @@
 {% block maincontent %}
     <div class="big-top-margin row-fluid">
         <div class="span7">
-            <h2 class="main-title">Vastly different prices for the same procedures</h2>
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-            bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+            <h2 class="main-title">Simple price disparities US map</h2>
+
+            <p>
+                The lack of price transparency has long plagued the U.S. healthcare industry. Although all hospitals
+                have
+                list prices (a.k.a. “the chargemaster”) for every treatment, drug, and procedure, these prices are never
+                made public. In addition, private insurers and the government (i.e. Medicare) reimburse hospitals
+                according
+                to their own negotiated price list, which for the most part has also remained shrouded in mystery—until
+                now.
+                Recently, Medicare released data regarding the payments for the top 100 medical conditions by patient
+                volume. It’s no surprise that there are huge disparities between what hospitals charge for the same
+                treatment. The map below shows the price disparity between hospitals located in the same hospital
+                referral
+                region.
+            </p>
+
+            <p> Footnotes/References:
+                How Medicare pays hospitals:
+                Medicare pays hospital for each patient treated. This rate not only varies with the type of disease that
+                the patient has but with comorbid conditions, geographical location, and demographics of the hospital’s
+                patient population. For example, hospitals located in a region with a higher cost of living would be
+                reimbursed at a higher rate—as would hospitals that have a high percentage of underserved populations or
+                teaching hospitals.
+                Medicare’s reimbursement schedule is designed to cover the actual cost of the treatment plus a small
+                percentage to cover. Private insurers generally pay more than Medicare.
+            </p>
+
+            <p>
+                Definitions:
+                Disease Related Groups (or DRGs) are a grouping of healthcare claims codes (known as ICD or
+                International Classification of Disease codes).
+            </p>
 
         </div>
         <div class="span5">
@@ -119,7 +139,17 @@
     </div>
 
     <div class="big-top-margin row-fluid">
-        <div class="offset1 span8">
+        <div class="span8">
+
+            <h2 class="main-title"> How much does my hospital charge for [condition]?</h2>
+
+            <p>Medicare recently released data regarding the payments for the top 100 medical conditions by patient
+                volume. How much would your bill be if you went to your hospital with chest pain as an uninsured
+                patient? And how much would Medicare reimburse that same hospital if you had Medicare? What if you went
+                to a neighboring hospital?
+                Select a city, state and a condition.
+            </p>
+
             <h3 class="section-title">Select a procedure:</h3>
             <select id="drug_name" onChange="get_data();">
             </select>
