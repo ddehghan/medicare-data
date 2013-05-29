@@ -1,0 +1,92 @@
+{% extends 'theme/base.html' %}
+{% load i18n %}
+
+{% trans "Medicare cost" as the_title %}
+
+{% block meta_description %}{{ the_title }}{% endblock %}
+{% block title %}{{ the_title }}{% endblock %}
+
+{% block extra_css %}
+    {% verbatim %}
+    <script id="tooltip-template" type="text/x-handlebars-template">
+        <div class='hover-text'>
+            <div class='hospital-name'>{{ d_name }}</div>
+            <div class="pull-left">
+                <div class='hover-label'>Hospital Bill:</div>
+                <div class='hover-data'> ${{ d_charge }}</div>
+            </div>
+            <div class="pull-right">
+                <div class='hover-label'>Medicare<br>reimbursement:</div>
+                <div class='hover-data'> ${{ d_pay }}</div>
+            </div>
+        </div>
+    </script>
+
+
+    {% endverbatim %}
+
+    <script src="{{ STATIC_URL }}js/libs/jquery-1.9.1.js"></script>
+    <script src="{{ STATIC_URL }}js/libs/d3.v3.min.js"></script>
+    <script src="{{ STATIC_URL }}js/libs/jquery.tipsy.js"></script>
+    <link href="{{ STATIC_URL }}css/tipsy.css" rel="stylesheet">
+    <script src="{{ STATIC_URL }}js/libs/handlebars-1.0.0-rc.3.js"></script>
+
+    <script src="{{ STATIC_URL }}js/plot.js"></script>
+
+    <style>
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .dot {
+        stroke: #000;
+    }
+
+</style>
+
+
+{% endblock %}
+
+{% block maincontent %}
+    <div class="big-top-margin row-fluid">
+        <div class="span7">
+            <h2 class="main-title">Simple price disparities US map</h2>
+            <div id="chart"></div>
+        </div>
+        <div class="span5">
+            <div class="social-box">
+                <span class='st_facebook_hcount' displayText='Facebook'></span>
+                <span class='st_twitter_hcount' displayText='Tweet' st_via='ddehghan'
+                      st_title='Medicare price variation between hospitals #health #medicare'></span>
+                <span class='st_googleplus_hcount' displayText='Google +'></span>
+                <span class='st_sharethis_hcount' displayText='Share'></span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+{% block bottomscript %}
+
+    {#    <script type="text/javascript">#}
+    {#        var switchTo5x = false;#}
+    {#    </script>#}
+    {#    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>#}
+    {#    <script type="text/javascript">#}
+    {#        stLight.options({#}
+    {#            publisher: "6d8da8ae-b61c-486f-a29b-e4c32b2e3259",#}
+    {#            doNotHash: false,#}
+    {#            doNotCopy: false,#}
+    {#            hashAddressBar: false#}
+    {#        });#}
+    {#    </script>#}
+
+{% endblock %}

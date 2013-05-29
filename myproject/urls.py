@@ -19,7 +19,7 @@ urlpatterns = patterns('',
                        # Static pages
                        url("^about-data", TemplateView.as_view(template_name='about-data.html'), name="about-data"),
 
-                       # url("^index", TemplateView.as_view(template_name='index.html'), name="mission"),
+                       url("^plot$", TemplateView.as_view(template_name='plot.html'), name="plot"),
 
                        # Admin site
                        #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
