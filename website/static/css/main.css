@@ -141,6 +141,10 @@ body {
     margin-left: 5px;
 }
 
+.hlist td {
+    vertical-align: top;
+}
+
 /* ------------------------------------------------  */
 
 #default_image {
