@@ -25,28 +25,30 @@
 
     {% endverbatim %}
 
+
+
     <script src="{{ STATIC_URL }}js/libs/jquery-1.9.1.js"></script>
     <script src="{{ STATIC_URL }}js/libs/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/jquery.tipsy.js"></script>
     <link href="{{ STATIC_URL }}css/tipsy.css" rel="stylesheet">
     <script src="{{ STATIC_URL }}js/libs/handlebars-1.0.0-rc.3.js"></script>
 
-    <script src="{{ STATIC_URL }}js/plot.js"></script>
+
 
     <style>
 
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-    }
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
 
-    .dot {
-        stroke: #000;
-    }
+        .dot {
+            stroke: #000;
+        }
 
-</style>
+    </style>
 
 
 {% endblock %}
@@ -54,8 +56,10 @@
 {% block maincontent %}
     <div class="big-top-margin row-fluid">
         <div class="span7">
-            <h2 class="main-title">Simple price disparities US map</h2>
+            <h2 class="main-title">Price vs Quality</h2>
+
             <div id="chart"></div>
+
         </div>
         <div class="span5">
             <div class="social-box">
@@ -75,6 +79,9 @@
 
 
 {% block bottomscript %}
+
+    <script src="{{ STATIC_URL }}js/plot.js"></script>
+
 
     {#    <script type="text/javascript">#}
     {#        var switchTo5x = false;#}
