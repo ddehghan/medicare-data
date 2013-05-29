@@ -13,11 +13,11 @@
             <div class='hospital-name'>{{ d_name }}</div>
             <div class="pull-left">
                 <div class='hover-label'>Hospital Bill:</div>
-                <div class='hover-data'> ${{ d_charge }}</div>
+                <div class='hover-data'> {{ d_charge }}</div>
             </div>
             <div class="pull-right">
                 <div class='hover-label'>Medicare<br>reimbursement:</div>
-                <div class='hover-data'> ${{ d_pay }}</div>
+                <div class='hover-data'> {{ d_pay }}</div>
             </div>
         </div>
     </script>
@@ -40,9 +40,9 @@
                     </div>
                     <div class='hname'>{{this.name}}</div>
                     <div class="h-numbers">
-                        Charge: <span class='hbill'>${{this.charge}}</span>
+                        Charge: <span class='hbill'>{{this.charge}}</span>
                         <br>
-                        Reimbursement: <span class='hbill'>${{this.pay}}</span>
+                        Reimbursement: <span class='hbill'>{{this.pay}}</span>
 
                         <table>
                             <tr>
@@ -90,17 +90,11 @@
 
     {% endverbatim %}
 
-    <script src="{{ STATIC_URL }}js/libs/jquery-1.9.1.js"></script>
     <script src="{{ STATIC_URL }}js/libs/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/topojson.v0.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/jquery.tipsy.js"></script>
     <link href="{{ STATIC_URL }}css/tipsy.css" rel="stylesheet">
-    {#    <script src="{{ STATIC_URL }}js/handlebars.js"></script>#}
-
-    {#    <script src="{{ STATIC_URL }}js/libs/jquery-1.9.1.js"></script>#}
-    <script src="{{ STATIC_URL }}js/libs/handlebars-1.0.0-rc.3.js"></script>
     {#    <script src="{{ STATIC_URL }}js/libs/ember-1.0.0-rc.3.js"></script>#}
-    {#    <script src="{{ STATIC_URL }}js/app.js"></script>#}
 
     <script src="{{ STATIC_URL }}js/main.js"></script>
 

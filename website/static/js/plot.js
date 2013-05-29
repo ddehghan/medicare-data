@@ -1,16 +1,7 @@
-Handlebars.registerHelper('list', function (items, options) {
-    var out = "";
-
-    for (var i = 0, l = items.length; i < l; i++) {
-        out = out + options.fn(items[i]);
-    }
-
-    return out;
-});
 
 
 function main() {
-    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    var margin = {top: 20, right: 20, bottom: 30, left: 60},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
@@ -36,17 +27,17 @@ function main() {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.tsv("/static/test/data.tsv", function (error, data) {
+    d3.csv("/static/data/1.csv", function (error, data) {
         data.forEach(function (d) {
-            d.sepalLength = +d.sepalLength;
-            d.sepalWidth = +d.sepalWidth;
+            d.charge = +d.charge;
+            d.pay = +d.pay;
         });
 
         x.domain(d3.extent(data, function (d) {
-            return d.sepalWidth;
+            return d.charge;
         })).nice();
         y.domain(d3.extent(data, function (d) {
-            return d.sepalLength;
+            return d.pay;
         })).nice();
 
         svg.append("g")
@@ -58,7 +49,7 @@ function main() {
             .attr("x", width)
             .attr("y", -6)
             .style("text-anchor", "end")
-            .text("Sepal Width (cm)");
+            .text("Medicare Reimbursement");
 
         svg.append("g")
             .attr("class", "y axis")
@@ -69,7 +60,7 @@ function main() {
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text("Sepal Length (cm)");
+            .text("Hospital Bill");
 
         svg.selectAll(".dot")
             .data(data)
@@ -79,14 +70,16 @@ function main() {
                 return 3; //d.petalLength;
             })
             .attr("cx", function (d) {
-                return x(d.sepalWidth);
+                return x(d.charge);
             })
             .attr("cy", function (d) {
-                return y(d.sepalLength);
+                return y(d.pay);
             })
-            .style("fill", function (d) {
-                return color(d.species);
-            });
+            .style("fill", "red");
+//            .style("fill", function (d) {
+//                return '#ccc';
+//                color(d.species);
+//            });
 
 
         var legend = svg.selectAll(".legend")
@@ -119,19 +112,16 @@ function main() {
             title: function () {
                 var d = this.__data__;
 
-//                var data = {
-//                    'd_name': d.name,
-//                    'd_charge': formatMoney(d.charge, 0, '.', ','),
-//                    'd_pay': formatMoney(d.pay, 0, '.', ',')
-//                };
-//
-//                var template = $('#tooltip-template').html();
-//                var compiledTemplate = Handlebars.compile(template);
-//
-//                list_hospitals(chart_position, d.lat, d.lon);
-//
-//                return compiledTemplate(data);
-return "xxxx";
+                var data = {
+                    'd_name': d.name,
+                    'd_charge': MEDICARE.formatMoney(d.charge, 0, '.', ','),
+                    'd_pay': MEDICARE.formatMoney(d.pay, 0, '.', ',')
+                };
+
+                var template = $('#tooltip-template').html();
+                var compiledTemplate = Handlebars.compile(template);
+
+                return compiledTemplate(data);
 
             }
         });
