@@ -112,6 +112,31 @@ function main() {
                 return d;
             });
 
+
+        $('svg circle').tipsy({
+            gravity: 'w',
+            html: true,
+            title: function () {
+                var d = this.__data__;
+
+//                var data = {
+//                    'd_name': d.name,
+//                    'd_charge': formatMoney(d.charge, 0, '.', ','),
+//                    'd_pay': formatMoney(d.pay, 0, '.', ',')
+//                };
+//
+//                var template = $('#tooltip-template').html();
+//                var compiledTemplate = Handlebars.compile(template);
+//
+//                list_hospitals(chart_position, d.lat, d.lon);
+//
+//                return compiledTemplate(data);
+return "xxxx";
+
+            }
+        });
+
+
     });
 }
 
