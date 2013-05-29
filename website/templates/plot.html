@@ -51,7 +51,12 @@
 {% block maincontent %}
     <div class="big-top-margin row-fluid">
         <div class="span7">
-            <h2 class="main-title">Price vs Quality</h2>
+{#            <h2 class="main-title">Price vs Quality</h2>#}
+
+            <h3 class="section-title">Select a procedure:</h3>
+            <select id="drug_name" onChange="get_data();">
+            </select>
+
 
             <div id="chart"></div>
 
