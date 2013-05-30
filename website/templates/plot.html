@@ -40,7 +40,7 @@
         }
 
         .dot {
-{#            stroke: #000;#}
+        {#            stroke: #000;#}
         }
 
     </style>
@@ -51,14 +51,14 @@
 {% block maincontent %}
     <div class="big-top-margin row-fluid">
         <div class="span7">
-{#            <h2 class="main-title">Price vs Quality</h2>#}
+            {#            <h2 class="main-title">Price vs Quality</h2>#}
 
             <h3 class="section-title">Select a procedure:</h3>
             <select id="drug_name" onChange="get_data();">
             </select>
 
 
-            <div id="chart"></div>
+            <div id="chart3"></div>
 
         </div>
         <div class="span5">
@@ -81,6 +81,15 @@
 {% block bottomscript %}
 
     <script src="{{ STATIC_URL }}js/plot.js"></script>
+
+    <script type="text/javascript">
+        MEDICARE.LoadOptions(function () {
+           var drg_num = MEDICARE.get_drg();
+
+            MEDICARE.plotXY(drg_num);
+
+        });
+    </script>
 
 
     {#    <script type="text/javascript">#}

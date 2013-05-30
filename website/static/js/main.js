@@ -2,7 +2,7 @@
 
 var g_test = {};
 
-function draw_chart(chart_position, drg_num, col_name) {
+MEDICARE.draw_chart = function (chart_position, drg_num, col_name) {
     var centered;
     var width = 850, height = 500;
 
@@ -97,7 +97,7 @@ function draw_chart(chart_position, drg_num, col_name) {
                     var template = $('#tooltip-template').html();
                     var compiledTemplate = Handlebars.compile(template);
 
-                    list_hospitals(chart_position, d.lat, d.lon);
+                    MEDICARE.list_hospitals(chart_position, d.lat, d.lon);
 
                     return compiledTemplate(data);
 
@@ -107,10 +107,10 @@ function draw_chart(chart_position, drg_num, col_name) {
 
         });
     });
-}
+};
 
 
-function list_hospitals(position, Lat, Lon) {
+MEDICARE.list_hospitals = function (position, Lat, Lon) {
     var template = $('#hlist-template').html();
     var compiledTemplate = Handlebars.compile(template);
 
@@ -156,31 +156,27 @@ function list_hospitals(position, Lat, Lon) {
 
     $position.html("");
     $position.html(compiledTemplate({'hospitals': result}));
-}
+};
 
-function get_data() {
+
+MEDICARE.get_drg = function () {
     $("svg").remove();
 
     var e = document.getElementById("drug_name");
 
     $(".selected_drg").html(e.options[e.selectedIndex].text);
 
-    var drg_num = e.options[e.selectedIndex].value;
-
-    draw_chart('#chart1', drg_num, 'size_charge');
-    draw_chart('#chart2', drg_num, 'size_pay');
-
-}
+    return e.options[e.selectedIndex].value;
+};
 
 
-function LoadOptions() {
+MEDICARE.LoadOptions = function (callback) {
     $.getJSON('/static/data/drg_options.json', function (jsonData) {
         $.each(jsonData, function (i, j) {
             $('#drug_name').append($('<option></option>').val(j.value).html(j.text));
         });
 
-        get_data();
+        callback();
     });
-}
+};
 
-LoadOptions();

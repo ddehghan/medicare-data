@@ -1,6 +1,4 @@
-
-
-function main(drg_num) {
+MEDICARE.plotXY = function (drg_num) {
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
@@ -21,13 +19,13 @@ function main(drg_num) {
         .scale(y)
         .orient("left");
 
-    var svg = d3.select("#chart").append("svg")
+    var svg = d3.select("#chart3").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        d3.csv('/static/data/' + drg_num + '.csv', function (error, data) {
+    d3.csv('/static/data/' + drg_num + '.csv', function (error, data) {
         data.forEach(function (d) {
             d.charge = +d.charge;
             d.pay = +d.pay;
@@ -125,34 +123,29 @@ function main(drg_num) {
 
             }
         });
-
-
     });
-}
+};
 
 
-function get_data() {
+
+MEDICARE.get_drg = function () {
     $("svg").remove();
 
     var e = document.getElementById("drug_name");
 
     $(".selected_drg").html(e.options[e.selectedIndex].text);
 
-    var drg_num = e.options[e.selectedIndex].value;
-
-    main(drg_num);
-
-}
+    return e.options[e.selectedIndex].value;
+};
 
 
-function LoadOptions() {
+MEDICARE.LoadOptions = function (callback) {
     $.getJSON('/static/data/drg_options.json', function (jsonData) {
         $.each(jsonData, function (i, j) {
             $('#drug_name').append($('<option></option>').val(j.value).html(j.text));
         });
 
-        get_data();
+        callback();
     });
-}
+};
 
-LoadOptions();
