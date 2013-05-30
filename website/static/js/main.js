@@ -1,10 +1,9 @@
 //    http://www.schneidy.com/Tutorials/MapsTutorial.html
 
-var MYCHART = {'init': null, 'paint': null};
 
 var g_test = {};
 
-MEDICARE.draw_chart = function (chart_position, drg_num, col_name) {
+MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var centered;
     var width = 850, height = 500;
 
@@ -58,7 +57,7 @@ MEDICARE.draw_chart = function (chart_position, drg_num, col_name) {
                 .style("stroke-width", 1.5 / k + "px");
         }
 
-        d3.csv('/static/data/' + drg_num + '.csv', function (error, data) {
+        d3.csv(dataUrl, function (error, data) {
 
             g_test = data;
 
@@ -161,28 +160,3 @@ MEDICARE.list_hospitals = function (position, Lat, Lon) {
     $position.html(compiledTemplate({'hospitals': result}));
 };
 
-
-MEDICARE.get_drg = function () {
-    $(".chart-svg").remove();
-
-    var e = document.getElementById("drug_name");
-
-    $(".selected_drg").html(e.options[e.selectedIndex].text);
-
-    return e.options[e.selectedIndex].value;
-};
-
-
-MEDICARE.LoadOptions = function () {
-    $.getJSON('/static/data/drg_options.json', function (jsonData) {
-        $.each(jsonData, function (i, j) {
-            $('#drug_name').append($('<option></option>').val(j.value).html(j.text));
-        });
-
-        MYCHART.paint();
-    });
-};
-
-MYCHART.paint = function () {
-    MEDICARE.LoadOptions()
-};

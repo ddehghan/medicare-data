@@ -1,4 +1,4 @@
-MEDICARE.plotXY = function (drg_num) {
+MEDICARE.plotXY = function (dataUrl) {
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
@@ -25,7 +25,7 @@ MEDICARE.plotXY = function (drg_num) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.csv('/static/data/' + drg_num + '.csv', function (error, data) {
+    d3.csv(dataUrl, function (error, data) {
         data.forEach(function (d) {
             d.charge = +d.charge;
             d.pay = +d.pay;
@@ -125,27 +125,3 @@ MEDICARE.plotXY = function (drg_num) {
         });
     });
 };
-
-
-
-MEDICARE.get_drg = function () {
-    $(".chart-svg").remove();
-
-    var e = document.getElementById("drug_name");
-
-    $(".selected_drg").html(e.options[e.selectedIndex].text);
-
-    return e.options[e.selectedIndex].value;
-};
-
-
-MEDICARE.LoadOptions = function (callback) {
-    $.getJSON('/static/data/drg_options.json', function (jsonData) {
-        $.each(jsonData, function (i, j) {
-            $('#drug_name').append($('<option></option>').val(j.value).html(j.text));
-        });
-
-        callback();
-    });
-};
-

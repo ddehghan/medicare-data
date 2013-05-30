@@ -132,7 +132,7 @@
             </p>
 
             <h3 class="section-title">Select a procedure:</h3>
-            <select id="drug_name" onChange="get_data();">
+            <select id="drug_name" onChange="MYCHART.paint();">
             </select>
         </div>
 
@@ -252,20 +252,19 @@
 
 {% block bottomscript %}
 
+    <script src="{{ STATIC_URL }}js/medicare.js"></script>
     <script src="{{ STATIC_URL }}js/main.js"></script>
     <script src="{{ STATIC_URL }}js/plot.js"></script>
 
     <script type="text/javascript">
 
-        MYCHART.init = function () {
-            var drg_num = MEDICARE.get_drg();
-
-            MEDICARE.draw_chart('#chart1', drg_num, 'size_charge');
-            MEDICARE.draw_chart('#chart2', drg_num, 'size_pay');
-            MEDICARE.plotXY(drg_num);
+        MYCHART.init = function (dataUrl) {
+            MEDICARE.draw_chart('#chart1', dataUrl, 'size_charge');
+            MEDICARE.draw_chart('#chart2', dataUrl, 'size_pay');
+            MEDICARE.plotXY(dataUrl);
         };
 
-    MYCHART.paint()
+        MYCHART.paint();
 
     </script>
 
