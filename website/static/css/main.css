@@ -232,13 +232,18 @@ body {
     border-radius: 5px;
 
     clear: both;
-    height: 110px;
+    /*height: 110px;*/
 }
 
 .news {
     background-color: #F5F5F5;
 }
 
+.chart-title{
+    background: #F5F5F5;
+
+    /*background: rgba(255, 255, 255, 0.6);*/
+}
 
 /* ------ SVG style ------------------------------------------  */
 
