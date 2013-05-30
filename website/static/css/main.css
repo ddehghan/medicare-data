@@ -5,11 +5,11 @@ body {
     -moz-font-smoothing: antialiased;
 }
 
-.main-title{
+.main-title {
     font-family: 'Racing Sans One', cursive;
 }
 
-.section-title{
+.section-title {
     font-family: 'Lemon', cursive;
 }
 
@@ -124,11 +124,11 @@ body {
     line-height: 15px;
 }
 
-.min-max-box{
+.min-max-box {
     margin-top: 20px;
 }
 
-.min-max-box-header{
+.min-max-box-header {
     color: #333;
     font-size: 20px;
     line-height: 28px;
@@ -148,47 +148,44 @@ body {
 /* ------------------------------------------------  */
 
 .post-img, .post-img a {
-	display:block;
-	position:relative;
+    display: block;
+    position: relative;
 }
 
 .post-img {
-	margin-bottom: 13px;
+    margin-bottom: 13px;
 }
 
 .post-img img {
-	padding: 0 !important;
+    padding: 0 !important;
 }
 
-
-
 .post-img a:after {
-	content: ' ';
-	display:block;
-	position:absolute;
-	width:100%;
-	height:100%;
-	top:0;
-	opacity: 0;
-	margin: 0;
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 0;
+    margin: 0;
 }
 
 .post-img a:hover:after {
-	background-color:#000;
-	opacity:0.2;
+    background-color: #000;
+    opacity: 0.2;
 }
 
 .post-img p {
-	position:absolute;
-	bottom:6px;
-	right:0;
-	margin:0;
-	color:#fff;
-	font-size:.8em;
-	background-color:rgba(0,0,0,0.4);
-	padding: 0 .25em;
+    position: absolute;
+    bottom: 6px;
+    right: 0;
+    margin: 0;
+    color: #fff;
+    font-size: .8em;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 0 .25em;
 }
-
 
 #default_image {
     height: 300px;
@@ -238,7 +235,16 @@ body {
     height: 110px;
 }
 
+.news {
+    background-color: #F5F5F5;
+}
 
-.news{
- background-color: #F5F5F5;
+
+/* ------ SVG style ------------------------------------------  */
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
