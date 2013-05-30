@@ -22,20 +22,9 @@
         </div>
     </script>
 
-    <script type="text/x-handlebars" data-template-name="index2">
-        <div class="well"><h5> SVG </h5>
-            <svg id="svg" width="300" height="60">
-            </svg>
-        </div>
-    </script>
-
-
     <script type="text/x-handlebars" data-template-name="index">
-        <ul>
-            {{#each item in model}}
-            <li>{{ item }}</li>
-            {{/each}}
-        </ul>
+        <h5> SVG </h5>
+            <svg id="svg" width="300" height="60"></svg>
     </script>
 
 
@@ -48,7 +37,6 @@
 
     <script src="{{ STATIC_URL }}js/libs/ember-1.0.0-rc.4.js"></script>
     <script src="http://builds.emberjs.com/ember-data-latest.js"></script>
-    <script src="{{ STATIC_URL }}js/app.js"></script>
 
 {% endblock %}
 
@@ -59,6 +47,14 @@
 
             <div id="app-container"></div>
 
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
 
             <h3 class="section-title">Select a procedure:</h3>
             <select id="drug_name" onChange="get_data();">
@@ -88,6 +84,7 @@
 {% block bottomscript %}
 
     <script src="{{ STATIC_URL }}js/plot.js"></script>
+    <script src="{{ STATIC_URL }}js/app.js"></script>
 
     <script type="text/javascript">
         MEDICARE.LoadOptions(function () {

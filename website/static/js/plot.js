@@ -129,7 +129,7 @@ MEDICARE.plotXY = function (drg_num) {
 
 
 MEDICARE.get_drg = function () {
-    $("svg").remove();
+    $(".chart-svg").remove();
 
     var e = document.getElementById("drug_name");
 

@@ -10,7 +10,8 @@ MEDICARE.draw_chart = function (chart_position, drg_num, col_name) {
 
     var svg = d3.select(chart_position).append("svg")
         .attr("width", width)
-        .attr("height", height);
+        .attr("height", height)
+        .attr("class", 'chart-svg');
 
     var group = svg.append("g");
     var projection = d3.geo.albersUsa();
@@ -162,7 +163,7 @@ MEDICARE.list_hospitals = function (position, Lat, Lon) {
 
 
 MEDICARE.get_drg = function () {
-    $("svg").remove();
+    $(".chart-svg").remove();
 
     var e = document.getElementById("drug_name");
 
