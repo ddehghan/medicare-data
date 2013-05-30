@@ -1,5 +1,7 @@
 //    http://www.schneidy.com/Tutorials/MapsTutorial.html
 
+var MYCHART = {'init': null, 'paint': null};
+
 var g_test = {};
 
 MEDICARE.draw_chart = function (chart_position, drg_num, col_name) {
@@ -170,13 +172,16 @@ MEDICARE.get_drg = function () {
 };
 
 
-MEDICARE.LoadOptions = function (callback) {
+MEDICARE.LoadOptions = function () {
     $.getJSON('/static/data/drg_options.json', function (jsonData) {
         $.each(jsonData, function (i, j) {
             $('#drug_name').append($('<option></option>').val(j.value).html(j.text));
         });
 
-        callback();
+        MYCHART.paint();
     });
 };
 
+MYCHART.paint = function () {
+    MEDICARE.LoadOptions()
+};

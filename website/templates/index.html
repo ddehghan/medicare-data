@@ -256,15 +256,17 @@
     <script src="{{ STATIC_URL }}js/plot.js"></script>
 
     <script type="text/javascript">
-        MEDICARE.LoadOptions(function () {
 
-           var drg_num = MEDICARE.get_drg();
+        MYCHART.init = function () {
+            var drg_num = MEDICARE.get_drg();
 
-            MEDICARE.draw_chart('#chart1',drg_num , 'size_charge');
+            MEDICARE.draw_chart('#chart1', drg_num, 'size_charge');
             MEDICARE.draw_chart('#chart2', drg_num, 'size_pay');
             MEDICARE.plotXY(drg_num);
+        };
 
-        });
+    MYCHART.paint()
+
     </script>
 
     {#    <script type="text/javascript">#}
