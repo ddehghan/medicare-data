@@ -28,34 +28,7 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
             })
             .style('fill', 'gray')
             .style('stroke', 'white')
-            .style('stroke-width', 1)
-            .on('click', click);
-
-        function click(d) {
-            var x = 0,
-                y = 0,
-                k = .8;
-
-            if (d && centered !== d) {
-                var centroid = path.centroid(d);
-                x = -centroid[0] + width / 8;
-                y = -centroid[1] + height / 8;
-                k = 4;
-                centered = d;
-            } else {
-                centered = null;
-            }
-
-            group.selectAll("path")
-                .classed("active", centered && function (d) {
-                    return d === centered;
-                });
-
-            group.transition()
-                .duration(1000)
-                .attr("transform", "scale(" + k + ")translate(" + x + width / 4 + "," + y + ")")
-                .style("stroke-width", 1.5 / k + "px");
-        }
+            .style('stroke-width', 1);
 
         d3.csv(dataUrl, function (error, data) {
 
