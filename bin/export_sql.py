@@ -19,10 +19,23 @@ class HospitalData():
 
         if not self.con:
             self.connect()
-
         try:
+            self.cur.execute('''
+                SELECT
+                  "dAcquiredInfect".score,
+                  "dAcquiredConditions".score,
+                  "dPatientSafetySummary".score
+                FROM
+                  public."dAcquiredConditions",
+                  public."dAcquiredInfect",
+                  public."dPatientSafetySummary"
+                WHERE
+                  "dAcquiredConditions".providerid = "dAcquiredInfect".providerid AND
+                  "dPatientSafetySummary".providerid = "dAcquiredConditions".providerid
+                  AND
+                  "dPatientSafetySummary".providerid=%d
+                ''' % provider_id)
 
-            self.cur.execute('SELECT * from "dHospitalAcquiredCondition" where ProviderId=%d' % provider_id)
             row = self.cur.fetchone()
 
             return row
@@ -31,3 +44,7 @@ class HospitalData():
             print 'Error %s' % e
             self.disconnect()
             sys.exit(1)
+
+
+
+

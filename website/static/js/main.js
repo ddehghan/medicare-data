@@ -93,7 +93,10 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
                     var data = {
                         'd_name': d.name,
                         'd_charge': MEDICARE.formatMoney(d.charge, 0, '.', ','),
-                        'd_pay': MEDICARE.formatMoney(d.pay, 0, '.', ',')
+                        'd_pay': MEDICARE.formatMoney(d.pay, 0, '.', ','),
+                        'AcquiredInfect': d.AcquiredInfect,
+                        'AcquiredConditions': d.AcquiredConditions,
+                        'PatientSafetySummary': d.PatientSafetySummary
                     };
 
                     var template = $('#tooltip-template').html();

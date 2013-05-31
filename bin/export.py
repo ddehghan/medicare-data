@@ -39,7 +39,7 @@ def write_options(drg, file_name):
 def write_csv(drgs, file_name):
     with open(os.path.join(DATA_ROOT, '%s.csv' % file_name), 'wb') as f:
         f.write(
-            "size_charge,size_pay,lat,lon,charge,pay,Air,BloodInf,UrinaryInf,Falls,Mismatch,Objects,Sores,Sugar,name\n")
+            "size_charge,size_pay,lat,lon,charge,pay,AcquiredInfect,AcquiredConditions,PatientSafetySummary,name\n")
 
         min_charge = 10000000
         max_charge = 0
@@ -66,16 +66,15 @@ def write_csv(drgs, file_name):
             if not ac:
                 ac = [0] * 9
 
-            f.write("%.2f,%.2f,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n" %
+            f.write("%.2f,%.2f,%s,%s,%s,%s,%.2f,%.2f,%.2f,%s\n" %
                     (scale(c.avg_charges, (min_charge, max_charge), (Decimal(2), Decimal(30))),
                      scale(c.avg_total_payments, (min_pay, max_pay), (Decimal(2), Decimal(30))),
                      c.hospital.lat,
                      c.hospital.lon,
                      c.avg_charges,
                      c.avg_total_payments,
-                     ac[1], ac[2], ac[3], ac[4], ac[5], ac[6], ac[7], ac[8],
-                     string.replace(c.hospital.name, ',', ''),   # escape the ','
-                    ))
+                     ac[0], ac[1], ac[2],
+                     string.replace(c.hospital.name, ',', '')))  # escape the ','
 
         hospital_data.disconnect()
 

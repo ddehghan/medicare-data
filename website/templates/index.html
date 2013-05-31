@@ -20,6 +20,23 @@
                 <div class='hover-data'> {{ d_pay }}</div>
             </div>
         </div>
+        <div class="hover-row">
+            <table>
+                <tr>
+                    <td>AcquiredInfect</td>
+                    <td>{{ AcquiredInfect }}</td>
+                </tr>
+                <tr>
+                    <td>AcquiredInfect</td>
+                    <td>{{ AcquiredInfect }}</td>
+                </tr>
+                <tr>
+                    <td>AcquiredInfect</td>
+                    <td>{{ AcquiredInfect }}</td>
+                </tr>
+
+            </table>
+        </div>
     </script>
 
     <script id="hlist-template" type="text/x-handlebars-template">
@@ -157,8 +174,8 @@
             <div class="row-fluid chart-title">
                 <div class="span12">
 
-                        <h4>Average Hospitals Bill</h4>
-                        <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>
+                    <h4>Average Hospitals Bill</h4>
+                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>
 
                 </div>
             </div>
@@ -180,8 +197,8 @@
             <div class="row-fluid chart-title">
                 <div class="span12">
 
-                        <h4>Average Medicare Reimbursement</h4>
-                        <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>
+                    <h4>Average Medicare Reimbursement</h4>
+                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>
 
                 </div>
             </div>
@@ -198,25 +215,50 @@
         </div>
     </div>
 
+
     <div class="big-top-margin row-fluid">
         <div class="span12">
             <div class="row-fluid chart-title">
                 <div class="span12">
 
-                        <h4>Bills vs Reimbursements</h4>
-                        <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>
+                    <h4>Bills vs Reimbursements</h4>
+                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>
 
                 </div>
             </div>
             <div class="row-fluid chart-body">
-                <div class="span9">
+                <div class="span12">
 
                     <div id="chart3"></div>
 
                 </div>
-                <div class="span3">
-                    <div id="first-last-list2"></div>
+{#                <div class="span3">#}
+{#                    <div id="first-last-list2"></div>#}
+{#                </div>#}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="big-top-margin row-fluid">
+        <div class="span12">
+            <div class="row-fluid chart-title">
+                <div class="span12">
+
+                    <h4>Cost vs Quality</h4>
+                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>
+
                 </div>
+            </div>
+            <div class="row-fluid chart-body">
+                <div class="span12">
+
+                    <div id="chart4"></div>
+
+                </div>
+{#                <div class="span3">#}
+{#                    <div id="first-last-list2"></div>#}
+{#                </div>#}
             </div>
         </div>
     </div>
@@ -235,7 +277,7 @@
             <h3 class="color-3">In the News:</h3>
 
             <div class="news">
-                <div class="border-row">
+                <div class="border-row news-row">
                     <div class="image-col">
                         <img class="news-image" src="{{ STATIC_URL }}images/time_cover.jpg">
                     </div>
@@ -247,7 +289,7 @@
                             only</a>
                     </div>
                 </div>
-                <div class="border-row">
+                <div class="border-row news-row">
                     <div class="image-col">
                         <img class="news-image" src="{{ STATIC_URL }}images/planet_money.png">
                     </div>
@@ -257,7 +299,7 @@
                             Read more</a>
                     </div>
                 </div>
-                <div class="border-row">
+                <div class="border-row news-row">
                     <div class="image-col">
                         <img class="news-image" src="{{ STATIC_URL }}images/wpost.png">
                     </div>
@@ -267,7 +309,7 @@
                             Read more</a>
                     </div>
                 </div>
-                <div class="border-row">
+                <div class="border-row news-row">
                     <div class="image-col">
                         <img class="news-image" src="{{ STATIC_URL }}images/nytimes.png">
                     </div>
@@ -297,7 +339,8 @@
         MYCHART.init = function (dataUrl) {
             MEDICARE.draw_chart('#chart1', dataUrl, 'size_charge');
             MEDICARE.draw_chart('#chart2', dataUrl, 'size_pay');
-            MEDICARE.plotXY(dataUrl);
+            MEDICARE.plotXY('#chart3', dataUrl);
+            MEDICARE.costVsQuality('#chart4', dataUrl, 'AcquiredInfect');
         };
 
         MYCHART.paint();

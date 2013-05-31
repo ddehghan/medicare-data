@@ -51,7 +51,7 @@ body {
 }
 
 .hover-text {
-    height: 140px;
+    height: 200px;
 }
 
 .hospital-name {
@@ -81,6 +81,13 @@ body {
     float: right;
     width: 50%;
 }
+
+.hover-row{
+    display: inline;
+    clear: both;
+    margin: 5px;
+}
+
 
 /* ------------------------------------------------  */
 
@@ -232,11 +239,11 @@ body {
     border-radius: 5px;
 
     clear: both;
-    /*height: 110px;*/
 }
 
-.news {
+.news-row {
     background-color: #F5F5F5;
+    height: 110px;
 }
 
 .chart-title{
