@@ -51,7 +51,7 @@ body {
 }
 
 .hover-text {
-    height: 200px;
+    height: 120px;
 }
 
 .hospital-name {
@@ -86,6 +86,7 @@ body {
     display: inline;
     clear: both;
     margin: 5px;
+    font-size: 14px;
 }
 
 /* ------------------------------------------------  */
