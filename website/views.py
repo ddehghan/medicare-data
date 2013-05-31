@@ -3,11 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
+from django.core.cache import cache
 
 import redis
 
 from website.models import LandingForm, ContributeForm
 from website.models import Hospital, Drug
+from project.myproject.settings import PROJECT_ROOT
 
 DEPLOY_ENV = os.environ['DEPLOY_ENV']
 
@@ -70,6 +72,29 @@ def login_test(request):
     return render_to_response('login.html', {
         'a': 'a',
     }, context_instance=RequestContext(request))
+
+
+def zipcode(request, zipcode):
+
+    data = cache.get('data')
+
+    if not data:
+        import csv
+
+        print "warmup cache  ------------" + zipcode + "-----"
+
+        data = {}
+        with open(os.path.join(PROJECT_ROOT, 'bin/data/zipcodes.csv'), 'rU')as f:
+            reader = csv.reader(f)
+
+            for row in reader:
+                data[str(row[0])] = '{ "lat": %s, "lon": %s }' % (row[1], row[2])
+
+            cache.set('data', data)
+
+            f.close()
+
+    return HttpResponse(data[zipcode], mimetype="application/json")
 
 
 def index(request):

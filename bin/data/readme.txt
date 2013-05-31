@@ -1,0 +1,1 @@
+zip codes are from: GreatData.com

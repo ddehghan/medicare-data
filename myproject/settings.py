@@ -16,6 +16,8 @@ if DEPLOY_ENV == 'dev':
 elif DEPLOY_ENV == 'prod':
     from myproject.settings_local_prod import *
 
+from django.core.cache import cache
+
 
 #########
 # PATHS #
@@ -253,3 +255,33 @@ DATABASES = {'default': dj_database_url.config(default='postgres://db_user:db_us
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+###############
+# LOCAL CACHE #
+###############
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake'
+    }
+}
+########## CACHE CONFIGURATION
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+#     }
+# }
+########## END CACHE CONFIGURATION
+
+# if not cache.get('98116'):
+#     import csv
+#     print "warmup cache  ------------"
+#
+#     with open(os.path.join(PROJECT_ROOT, 'bin/data/zipcodes.csv'), 'rU')as f:
+#         reader = csv.reader(f)
+#
+#         for row in reader:
+#             cache.set(str(row[0]), "{'lat': '%s', 'lon': '%s'}" % (row[1], row[2]))
+#
+#         f.close()

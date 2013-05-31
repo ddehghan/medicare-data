@@ -11,6 +11,7 @@ urlpatterns = patterns('',
                        url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
 
                        url(r'^$', 'website.views.index', name='index'),
+                       url(r'^zipcode/(?P<zipcode>.*)$', 'website.views.zipcode', name='zipcode'),
                        url(r'^login', 'website.views.login_test', name='login_test'),
                        url(r'^private', 'website.views.private', name='private'),
 
