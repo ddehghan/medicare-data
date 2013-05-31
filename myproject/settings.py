@@ -266,22 +266,11 @@ CACHES = {
         'LOCATION': 'unique-snowflake'
     }
 }
-########## CACHE CONFIGURATION
+
+########## CACHE CONFIGURATION  DEV MACHINE
 # CACHES = {
 #     'default': {
 #         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
 #     }
 # }
 ########## END CACHE CONFIGURATION
-
-# if not cache.get('98116'):
-#     import csv
-#     print "warmup cache  ------------"
-#
-#     with open(os.path.join(PROJECT_ROOT, 'bin/data/zipcodes.csv'), 'rU')as f:
-#         reader = csv.reader(f)
-#
-#         for row in reader:
-#             cache.set(str(row[0]), "{'lat': '%s', 'lon': '%s'}" % (row[1], row[2]))
-#
-#         f.close()

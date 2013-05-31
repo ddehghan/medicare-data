@@ -81,7 +81,7 @@ def zipcode(request, zipcode):
     if not data:
         import csv
 
-        print "warmup cache  ------------" + zipcode + "-----"
+        # print "warmup cache  ------------" + zipcode + "-----"
 
         data = {}
         with open(os.path.join(PROJECT_ROOT, 'bin/data/zipcodes.csv'), 'rU')as f:
