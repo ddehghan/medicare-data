@@ -155,11 +155,26 @@ MEDICARE.list_hospitals = function (position, Lat, Lon) {
     if (position === "#chart1") {
         $position = $('#first-last-list1');
     }
-    else {
+    else if (position === "#chart2") {
         $position = $('#first-last-list2');
+    }
+    else if (position === "#chart3") {
+        $position = $('#first-last-list3');
     }
 
     $position.html("");
     $position.html(compiledTemplate({'hospitals': result}));
 };
 
+
+MEDICARE.lookupZip = function () {
+
+    var zipcode = $("#input-zipcode")[0].value;
+
+    $.getJSON('/zipcode/'+zipcode, function (data) {
+
+    MEDICARE.list_hospitals("#chart3", data.lat, data.lon);
+
+    });
+
+};

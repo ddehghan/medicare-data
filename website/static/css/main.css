@@ -82,12 +82,11 @@ body {
     width: 50%;
 }
 
-.hover-row{
+.hover-row {
     display: inline;
     clear: both;
     margin: 5px;
 }
-
 
 /* ------------------------------------------------  */
 
@@ -150,6 +149,18 @@ body {
 
 .hlist td {
     vertical-align: top;
+}
+
+.zipcode-selector {
+    text-align: center;
+}
+
+.zipcode-selector input {
+    vertical-align: top;
+}
+
+.zipcode-selector input[type="text"] {
+    width: 100px;
 }
 
 /* ------------------------------------------------  */
@@ -246,7 +257,7 @@ body {
     height: 110px;
 }
 
-.chart-title{
+.chart-title {
     background: #F5F5F5;
 
     border: solid #ddd 1px;
@@ -263,7 +274,8 @@ body {
 
     clear: both;
 }
-.chart-body{
+
+.chart-body {
     border: solid #ddd 1px;
     border-top: none;
     padding: 10px;

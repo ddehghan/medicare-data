@@ -1,7 +1,7 @@
 MEDICARE.plotXY = function (chart_position, dataUrl) {
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        width = 800 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
 
     var x = d3.scale.linear()
         .range([0, width]);
@@ -132,8 +132,8 @@ MEDICARE.plotXY = function (chart_position, dataUrl) {
 
 MEDICARE.costVsQuality = function (chart_position, dataUrl, col_name) {
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        width = 800 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
 
     var x = d3.scale.linear()
         .range([0, width]);
