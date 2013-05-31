@@ -9,7 +9,7 @@ import redis
 
 from website.models import LandingForm, ContributeForm
 from website.models import Hospital, Drug
-from project.myproject.settings import PROJECT_ROOT
+from myproject.settings import PROJECT_ROOT
 
 DEPLOY_ENV = os.environ['DEPLOY_ENV']
 
