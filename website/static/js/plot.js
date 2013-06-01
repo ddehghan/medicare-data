@@ -47,7 +47,7 @@ MEDICARE.plotXY = function (chart_position, dataUrl) {
             .attr("x", width)
             .attr("y", -6)
             .style("text-anchor", "end")
-            .text("Medicare Reimbursement");
+            .text("Hospital Bill");
 
         svg.append("g")
             .attr("class", "y axis")
@@ -58,7 +58,7 @@ MEDICARE.plotXY = function (chart_position, dataUrl) {
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text("Hospital Bill");
+            .text("Medicare Reimbursement");
 
         svg.selectAll(".dot")
             .data(data)

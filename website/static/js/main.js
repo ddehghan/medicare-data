@@ -75,7 +75,7 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
                     var template = $('#tooltip-template').html();
                     var compiledTemplate = Handlebars.compile(template);
 
-                    MEDICARE.list_hospitals(chart_position, d.lat, d.lon);
+                    MEDICARE.list_hospitals("#first-last-list1", d.lat, d.lon);
 
                     return compiledTemplate(data);
 
@@ -97,46 +97,59 @@ MEDICARE.list_hospitals = function (position, Lat, Lon) {
         var d = MEDICARE.latLonDistance(Lat, Lon, g_test[i].lat, g_test[i].lon, "N");
         if (d < 100) {
             result.push(MEDICARE.ShallowCopy(g_test[i]));
-//            result.push({
-//                'name': g_test[i].name,
-//                'charge': formatMoney(g_test[i].charge, 0, '.', ','),
-//                'pay': formatMoney(g_test[i].pay, 0, '.', ',')
-//            });
         }
     }
 
-    result = result.sort(function (a, b) {
-        if (a.charge < b.charge) {
-            return 1;
-        } else {
-            return 0;
-        }
+
+//    result = result.sort(function (a, b) {
+//        if (a.charge < b.charge) {
+//            return 1;
+//        } else {
+//            return 0;
+//        }
+//    });
+//
+//    if (result.length > 2) {
+//        result.splice(1, result.length - 2);
+//        result[0].isMax = true;
+//        result[0].pay = MEDICARE.formatMoney(result[0].pay, 0, '.', ',');
+//        result[0].charge = MEDICARE.formatMoney(result[0].charge, 0, '.', ',');
+//        result[1].isMin = true;
+//        result[1].pay = MEDICARE.formatMoney(result[1].pay, 0, '.', ',');
+//        result[1].charge = MEDICARE.formatMoney(result[1].charge, 0, '.', ',');
+//    }
+
+    result = _.sortBy(_.clone(result), function (num) {
+        return num.charge;
+    }).reverse();
+
+
+    result = _.map(result, function(num){
+        num.pay = MEDICARE.formatMoney(result[1].pay, 0, '.', ',');
+        num.charge = MEDICARE.formatMoney(result[1].charge, 0, '.', ',');
+
+        return num;
     });
 
-    if (result.length > 2) {
-        result.splice(1, result.length - 2);
-        result[0].isMax = true;
-        result[0].pay = MEDICARE.formatMoney(result[0].pay, 0, '.', ',');
-        result[0].charge = MEDICARE.formatMoney(result[0].charge, 0, '.', ',');
-        result[1].isMin = true;
-        result[1].pay = MEDICARE.formatMoney(result[1].pay, 0, '.', ',');
-        result[1].charge = MEDICARE.formatMoney(result[1].charge, 0, '.', ',');
-    }
 
-    var $position;
 
-    if (position === "#chart1") {
-        $position = $('#first-last-list1');
-    }
-    else if (position === "#chart2") {
-        $position = $('#first-last-list2');
-    }
-    else if (position === "#chart3") {
-        $position = $('#first-last-list3');
-    }
+//    if (result.length > 2) {
+//        var item = _.first(result);
+//        item.isMin = true;
+//        item.pay = MEDICARE.formatMoney(result[1].pay, 0, '.', ',');
+//        item.charge = MEDICARE.formatMoney(result[1].charge, 0, '.', ',');
+//
+//        var item = _.last(result);
+//        item.isMin = true;
+//        item.pay = MEDICARE.formatMoney(result[1].pay, 0, '.', ',');
+//        item.charge = MEDICARE.formatMoney(result[1].charge, 0, '.', ',');
+//
+//        result.splice(1, result.length - 2);
+//    }
 
-    $position.html("");
-    $position.html(compiledTemplate({'hospitals': result}));
+
+    $(position).html("");
+    $(position).html(compiledTemplate({'hospitals': result}));
 };
 
 
@@ -144,9 +157,9 @@ MEDICARE.lookupZip = function () {
 
     var zipcode = $("#input-zipcode")[0].value;
 
-    $.getJSON('/zipcode/'+zipcode, function (data) {
+    $.getJSON('/zipcode/' + zipcode, function (data) {
 
-    MEDICARE.list_hospitals("#chart3", data.lat, data.lon);
+        MEDICARE.list_hospitals("#first-last-list3", data.lat, data.lon);
 
     });
 
