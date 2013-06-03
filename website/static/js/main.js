@@ -88,6 +88,31 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
 };
 
 
+MEDICARE.draw_highlight = function (chart_position, lat, lon) {
+    var group;
+
+    if ($(chart_position + " .highlighted").length === 0) {
+    } else {
+        group = $(chart_position + " .highlighted").remove();
+    }
+
+    var svg = d3.select(chart_position).select("svg");
+    group = svg.append("g");
+    var projection = d3.geo.albersUsa();
+
+    group.attr('transorm', 'scale(.3, .3)');
+
+    group.append("circle")
+        .attr("class", "highlighted")
+        .attr("cx", projection([lon, lat])[0])
+        .attr("cy", projection([lon, lat])[1])
+        .attr("r", 20)
+        .style("fill", "#111188")
+        .style("opacity", .8)
+        .style("stroke", "#2F0000");
+};
+
+
 MEDICARE.list_hospitals = function (position, Lat, Lon) {
     var template = $('#hlist-template').html();
     var compiledTemplate = Handlebars.compile(template);
@@ -101,7 +126,6 @@ MEDICARE.list_hospitals = function (position, Lat, Lon) {
         }
     });
 
-
     result = _.sortBy(result,function (num) {
         return num.charge;
     }).reverse();
@@ -113,7 +137,6 @@ MEDICARE.list_hospitals = function (position, Lat, Lon) {
 
         return num;
     });
-
 
     $(position).html();
     $(position).html(compiledTemplate({'hospitals': result}));

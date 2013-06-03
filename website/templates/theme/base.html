@@ -37,8 +37,8 @@
     <script src="{{ STATIC_URL }}js/libs/underscore-min.js"></script>
     <script src="{{ STATIC_URL }}js/common.js"></script>
 
-{#    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>#}
-    <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One|Lemon' rel='stylesheet' type='text/css'>
+    {#    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>#}
+{#    <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One|Lemon' rel='stylesheet' type='text/css'>#}
 
     {% block extra_css %}
     {% endblock %}
@@ -64,6 +64,7 @@
     <!-- FOOTER -->
     <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
+
         <p>
             <a href="https://github.com/ddehghan/medicare-data">View on GitHub</a>
         </p>
@@ -73,24 +74,32 @@
 <!-- /container -->
 
 
-
 {#<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>#}
 
 <script src="{{ STATIC_URL }}theme/js/bootstrap.min.js"></script>
 
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-12630940-6', 'herokuapp.com');
-  ga('send', 'pageview');
+    ga('create', 'UA-12630940-6', 'herokuapp.com');
+    ga('send', 'pageview');
 
 </script>
 
 {% block bottomscript %}
 {% endblock %}
+
+{#<link href='http://fonts.googleapis.com/css?family=Racing+Sans+One|Lemon' rel='stylesheet' type='text/css'>#}
 
 </body>
 </html>

@@ -49,12 +49,13 @@
 
             <div class='min-max-box'>
                 {{#list hospitals}}
-                <div class="h-row  {{#if isMax }} max-value {{else}} min-value {{/if}}">
+                <div class="h-row" onmouseover="MEDICARE.draw_highlight('#chart1', {{ this.lat }}, {{ this.lon }});">
                     <div class="hlist-head"><p>
                         {{#if isMax }} $$$ {{/if}}
                         {{#if isMin }} $ {{/if}}
                     </p>
                     </div>
+                    <div class="btn-danger" ></div>
                     <div class='hname'>{{this.name}}</div>
                     <div class="h-numbers">
                         Charge: <span class='hbill'>{{this.charge}}</span>

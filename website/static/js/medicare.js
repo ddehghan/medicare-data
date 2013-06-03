@@ -1,4 +1,4 @@
-var MYCHART = {'init': null, 'paint': null};
+MYCHART = {'init': null, 'paint': null};
 
 MEDICARE.get_drg = function () {
     $(".chart-svg").remove();
