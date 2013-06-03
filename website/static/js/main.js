@@ -1,7 +1,7 @@
 //    http://www.schneidy.com/Tutorials/MapsTutorial.html
 
 
-var g_test = {};
+MEDICARE.data = {};
 
 MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var centered;
@@ -32,7 +32,7 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
 
         d3.csv(dataUrl, function (error, data) {
 
-            g_test = data;
+            MEDICARE.data = data;
 
             group.selectAll("circle")
                 .data(data)
@@ -93,62 +93,29 @@ MEDICARE.list_hospitals = function (position, Lat, Lon) {
     var compiledTemplate = Handlebars.compile(template);
 
     var result = [];
-    for (var i = 0; i < g_test.length; i++) {
-        var d = MEDICARE.latLonDistance(Lat, Lon, g_test[i].lat, g_test[i].lon, "N");
+
+    _.each(MEDICARE.data, function (num) {
+        var d = MEDICARE.latLonDistance(Lat, Lon, num.lat, num.lon, "N");
         if (d < 100) {
-            result.push(MEDICARE.ShallowCopy(g_test[i]));
+            result.push(MEDICARE.ShallowCopy(num));
         }
-    }
+    });
 
 
-//    result = result.sort(function (a, b) {
-//        if (a.charge < b.charge) {
-//            return 1;
-//        } else {
-//            return 0;
-//        }
-//    });
-//
-//    if (result.length > 2) {
-//        result.splice(1, result.length - 2);
-//        result[0].isMax = true;
-//        result[0].pay = MEDICARE.formatMoney(result[0].pay, 0, '.', ',');
-//        result[0].charge = MEDICARE.formatMoney(result[0].charge, 0, '.', ',');
-//        result[1].isMin = true;
-//        result[1].pay = MEDICARE.formatMoney(result[1].pay, 0, '.', ',');
-//        result[1].charge = MEDICARE.formatMoney(result[1].charge, 0, '.', ',');
-//    }
-
-    result = _.sortBy(_.clone(result), function (num) {
+    result = _.sortBy(result,function (num) {
         return num.charge;
     }).reverse();
 
 
-    result = _.map(result, function(num){
-        num.pay = MEDICARE.formatMoney(result[1].pay, 0, '.', ',');
-        num.charge = MEDICARE.formatMoney(result[1].charge, 0, '.', ',');
+    result = _.map(result, function (num) {
+        num.pay = MEDICARE.formatMoney(num.pay, 0, '.', ',');
+        num.charge = MEDICARE.formatMoney(num.charge, 0, '.', ',');
 
         return num;
     });
 
 
-
-//    if (result.length > 2) {
-//        var item = _.first(result);
-//        item.isMin = true;
-//        item.pay = MEDICARE.formatMoney(result[1].pay, 0, '.', ',');
-//        item.charge = MEDICARE.formatMoney(result[1].charge, 0, '.', ',');
-//
-//        var item = _.last(result);
-//        item.isMin = true;
-//        item.pay = MEDICARE.formatMoney(result[1].pay, 0, '.', ',');
-//        item.charge = MEDICARE.formatMoney(result[1].charge, 0, '.', ',');
-//
-//        result.splice(1, result.length - 2);
-//    }
-
-
-    $(position).html("");
+    $(position).html();
     $(position).html(compiledTemplate({'hospitals': result}));
 };
 
