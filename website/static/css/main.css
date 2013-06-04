@@ -89,13 +89,10 @@ body {
     font-size: 14px;
 }
 
-/* ------------------------------------------------  */
 
 /* Hospital List  ---------------------------------  */
 
 .h-row {
-    min-height: 100px;
-
     margin: 2px 0;
     padding: 10px;
     border: solid #888 1px;

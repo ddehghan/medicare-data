@@ -133,7 +133,7 @@ MEDICARE.list_hospitals = function ($position, Lat, Lon) {
         return num;
     });
 
-    $position.remove();
+    $position.html();
     $position.html(compiledTemplate({'hospitals': result}));
 };
 
