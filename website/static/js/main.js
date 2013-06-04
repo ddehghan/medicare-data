@@ -4,6 +4,7 @@
 MEDICARE.data = undefined;
 MEDICARE.USMap = undefined;
 MEDICARE.drawRequests = [];
+MEDICARE.drawMapRequests = [];
 
 var drawDataPoints = function (data, scale, col_name, svg) {
 
@@ -38,10 +39,22 @@ var drawDataPoints = function (data, scale, col_name, svg) {
     MEDICARE.toolTip();
 };
 
+$('body').on('map-done', function (event, param1, param2) {
+
+    while (MEDICARE.drawMapRequests.length > 0) {
+        var svg = MEDICARE.drawMapRequests.pop();
+
+        var use = svg.append("use");
+        use.attr('xlink:href', '#usmap-svg');
+    }
+});
+
+
 MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var centered;
     var width = 780, height = 500;
     var scale = 'scale(.9, .9)';
+
 
     $(chart_position + " svg").remove();
 
@@ -71,15 +84,16 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
                 .style('fill', 'gray')
                 .style('stroke', 'white')
                 .style('stroke-width', 1);
+
+            MEDICARE.USMap = collection;
+            $('body').trigger('map-done', ['Custom', 'Event']);
+
         });
 
-        var use = svg.append("use");
-        use.attr('xlink:href', '#usmap-svg');
-        MEDICARE.USMap = true;
+        MEDICARE.drawMapRequests.push(svg);
     }
     else {
-        var use = svg.append("use");
-        use.attr('xlink:href', '#usmap-svg');
+        MEDICARE.drawMapRequests.push(svg);
     }
 
     if (MEDICARE.data === undefined) {
