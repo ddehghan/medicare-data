@@ -115,11 +115,8 @@ body {
 }
 
 .hlist {
-    margin-top: 80px;
     color: #333;
     padding: 10px 10px;
-    height: 500px;
-    overflow-y: scroll;
 }
 
 .h-numbers {
@@ -135,6 +132,8 @@ body {
 
 .min-max-box {
     margin-top: 20px;
+    overflow-y: scroll;
+    height: 450px;
 }
 
 .min-max-box-header {
@@ -143,12 +142,12 @@ body {
     line-height: 28px;
 }
 
-.h-row .hlist-head {
-    float: right;
-    font-weight: bold;
-    font-size: 18px;
-    margin-left: 5px;
-}
+/*.h-row .hlist-head {*/
+    /*float: right;*/
+    /*font-weight: bold;*/
+    /*font-size: 18px;*/
+    /*margin-left: 5px;*/
+/*}*/
 
 .zipcode-selector {
     text-align: center;
@@ -276,6 +275,14 @@ body {
     -ms-border-top-right-radius: 8px;
 
     clear: both;
+}
+
+.chart-title p {
+    font-size: 20px;
+}
+
+.chart-title h4 {
+    margin-top: 15px;
 }
 
 .chart-body {

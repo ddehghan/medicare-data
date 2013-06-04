@@ -1,4 +1,6 @@
 MEDICARE.plotXY = function (chart_position, dataUrl) {
+    $(chart_position + " svg").remove();
+
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
         width = 800 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
@@ -131,6 +133,8 @@ MEDICARE.plotXY = function (chart_position, dataUrl) {
 
 
 MEDICARE.costVsQuality = function (chart_position, dataUrl, col_name) {
+    $(chart_position + " svg").remove();
+
     var margin = {top: 20, right: 40, bottom: 30, left: 60},
         width = 800 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;

@@ -7,6 +7,9 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var centered;
     var width = 850, height = 500;
 
+    $(chart_position + " svg").remove();
+
+
     var svg = d3.select(chart_position).append("svg")
         .attr("width", width)
         .attr("height", height)
@@ -130,7 +133,7 @@ MEDICARE.list_hospitals = function ($position, Lat, Lon) {
         return num;
     });
 
-    $position.html();
+    $position.remove();
     $position.html(compiledTemplate({'hospitals': result}));
 };
 
