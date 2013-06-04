@@ -141,7 +141,7 @@ MEDICARE.draw_highlight = function (chart_position, lat, lon) {
     group = svg.append("g");
     var projection = d3.geo.albersUsa();
 
-    group.attr('transform', 'scale(.3, .3)');
+    group.attr('transform', 'scale(.9, .9)');
 
     group.append("circle")
         .attr("class", "highlighted")
