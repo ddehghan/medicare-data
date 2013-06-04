@@ -31,7 +31,7 @@
                     <td>{{ AcquiredInfect }}</td>
                 </tr>
                 <tr>
-                    <td>Patient Safety </td>
+                    <td>Patient Safety</td>
                     <td>{{ PatientSafetySummary }}</td>
                 </tr>
 
@@ -49,7 +49,8 @@
 
             <div class='min-max-box'>
                 {{#list hospitals}}
-                <div class="h-row" onmouseover="MEDICARE.draw_highlight('#chart1', {{ this.lat }}, {{ this.lon }});">
+                <div class="h-row"
+                     onmouseover="MEDICARE.draw_highlight('{{ this.chartName }}', {{ this.lat }}, {{ this.lon }});">
                     <div class='hname'>{{this.name}}</div>
                     <div class="h-numbers">
                         Charge: <span class='hbill'>{{this.charge}}</span>
@@ -183,7 +184,8 @@
                 <div id="h-list1" class="span3">
                     <div class="zipcode-selector">
                         <input class="input-zipcode" type="text" value="98116"/>
-                        <input type="button" class="btn-info" value="Search" onclick="MEDICARE.lookupZip('#h-list1');"/>
+                        <input type="button" class="btn-info" value="Search"
+                               onclick="MEDICARE.lookupZip('#h-list1', '#chart1');"/>
                     </div>
 
                     <div class="hospital-list"></div>
@@ -211,7 +213,8 @@
                 <div id="h-list2" class="span3">
                     <div class="zipcode-selector">
                         <input class="input-zipcode" type="text" value="98116"/>
-                        <input type="button" class="btn-info" value="Search" onclick="MEDICARE.lookupZip('#h-list2');"/>
+                        <input type="button" class="btn-info" value="Search"
+                               onclick="MEDICARE.lookupZip('#h-list2', '#chart2');"/>
                     </div>
 
                     <div class="hospital-list"></div>
@@ -227,7 +230,7 @@
                 <div class="span12">
 
                     <h4>Bills vs Reimbursements</h4>
-{#                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>#}
+                    {#                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>#}
 
                 </div>
             </div>
@@ -251,7 +254,7 @@
                 <div class="span12">
 
                     <h4>Cost vs Quality</h4>
-{#                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>#}
+                    {#                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>#}
 
                 </div>
             </div>
@@ -265,7 +268,8 @@
                 <div id="h-list3" class="span3">
                     <div class="zipcode-selector">
                         <input class="input-zipcode" type="text" value="98116"/>
-                        <input type="button" class="btn-info" value="Search" onclick="MEDICARE.lookupZip('#h-list3');"/>
+                        <input type="button" class="btn-info" value="Search"
+                               onclick="MEDICARE.lookupZip('#h-list3', '#chart3');"/>
                     </div>
 
                     <div class="hospital-list"></div>
@@ -355,7 +359,6 @@
         };
 
         MYCHART.paint();
-        MEDICARE.lookupZip();
 
     </script>
 
