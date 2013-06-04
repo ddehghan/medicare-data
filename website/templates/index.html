@@ -22,19 +22,37 @@
         </div>
         <div class="hover-row">
             <table>
+                <thead>
+                <td></td>
+                <td><span class="pull-left">Bad</span><span>Avg</span><span class="pull-right">good</span></td>
+                </thead>
                 <tr>
-                    <td>Acquired Infection</td>
-                    <td>{{ AcquiredInfect }}</td>
+                    <td class="lcol">Acquired Infection</td>
+                    <td>
+                        <div style="height: 5px; background-color: gray; width: 200px;">
+                            <div id="progress_bar"
+                                 style="height: 5px; background-color: red; width: {{ AcquiredInfect }}%;"></div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Acquired Conditions</td>
-                    <td>{{ AcquiredInfect }}</td>
+                    <td class="lcol">Acquired Conditions</td>
+                    <td>
+                        <div style="height: 5px; background-color: gray; width: 200px;">
+                            <div id="progress_bar"
+                                 style="height: 5px; background-color: red; width: {{ AcquiredInfect }}%;"></div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Patient Safety</td>
-                    <td>{{ PatientSafetySummary }}</td>
+                    <td class="lcol">Patient Safety</td>
+                    <td>
+                        <div style="height: 5px; background-color: gray; width: 200px;">
+                            <div id="progress_bar"
+                                 style="height: 5px; background-color: red; width: {{ PatientSafetySummary }}%;"></div>
+                        </div>
+                    </td>
                 </tr>
-
             </table>
         </div>
     </script>

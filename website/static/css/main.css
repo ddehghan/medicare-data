@@ -74,12 +74,12 @@ body {
 
 .pull-left {
     float: left;
-    width: 50%;
+    /*width: 50%;*/
 }
 
 .pull-right {
     float: right;
-    width: 50%;
+    /*width: 50%;*/
 }
 
 .hover-row {
@@ -87,6 +87,12 @@ body {
     clear: both;
     margin: 5px;
     font-size: 14px;
+}
+
+.lcol{
+    text-align: left;
+    float: left;
+    width: 150px;
 }
 
 

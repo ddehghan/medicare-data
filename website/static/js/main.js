@@ -45,9 +45,9 @@ var drawDataPoints = function (data, scale, col_name, svg) {
                 'd_name': d.name,
                 'd_charge': MEDICARE.formatMoney(d.charge, 0, '.', ','),
                 'd_pay': MEDICARE.formatMoney(d.pay, 0, '.', ','),
-                'AcquiredInfect': d.AcquiredInfect,
-                'AcquiredConditions': d.AcquiredConditions,
-                'PatientSafetySummary': d.PatientSafetySummary
+                'AcquiredInfect': d.AcquiredInfect *100,
+                'AcquiredConditions': d.AcquiredConditions*100,
+                'PatientSafetySummary': d.PatientSafetySummary*100
             };
 
             var template = $('#tooltip-template').html();
