@@ -354,8 +354,8 @@
         MYCHART.init = function (dataUrl) {
             MEDICARE.draw_chart('#chart1', dataUrl, 'size_charge');
             MEDICARE.draw_chart('#chart2', dataUrl, 'size_pay');
-            MEDICARE.plotXY('#chart3', dataUrl);
-            MEDICARE.costVsQuality('#chart4', dataUrl, 'AcquiredInfect');
+            MEDICARE.downloadAndPaint(drawDataPointsXY, '#chart3', dataUrl);
+            MEDICARE.downloadAndPaint2(costVsQuality, '#chart4', dataUrl, 'AcquiredInfect');
         };
 
         MYCHART.paint();
