@@ -5,7 +5,8 @@ MEDICARE.data = {};
 
 MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var centered;
-    var width = 850, height = 500;
+    var width = 780, height = 500;
+    var scale = 'scale(.9, .9)';
 
     $(chart_position + " svg").remove();
 
@@ -19,7 +20,7 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var projection = d3.geo.albersUsa();
     var path = d3.geo.path().projection(projection);
 
-    group.attr('transorm', 'scale(.3, .3)');
+    group.attr('transform', scale);
 
     d3.json('/static/json/us-states.json', function (collection) {
         group.selectAll('path')
@@ -36,6 +37,9 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
         d3.csv(dataUrl, function (error, data) {
 
             MEDICARE.data = data;
+
+            group = svg.append("g");
+            group.attr('transform', scale);
 
             group.selectAll("circle")
                 .data(data)
@@ -98,7 +102,7 @@ MEDICARE.draw_highlight = function (chart_position, lat, lon) {
     group = svg.append("g");
     var projection = d3.geo.albersUsa();
 
-    group.attr('transorm', 'scale(.3, .3)');
+    group.attr('transform', 'scale(.3, .3)');
 
     group.append("circle")
         .attr("class", "highlighted")
