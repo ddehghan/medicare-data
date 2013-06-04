@@ -186,8 +186,13 @@
                     <div id="chart1"></div>
 
                 </div>
-                <div class="span3">
-                    <div id="first-last-list1"></div>
+                <div id="h-list1" class="span3">
+                    <div class="zipcode-selector">
+                        <input class="input-zipcode" type="text" value="98116"/>
+                        <input type="button" class="btn-info" value="Search" onclick="MEDICARE.lookupZip('#h-list1');"/>
+                    </div>
+
+                    <div class="hospital-list"></div>
                 </div>
             </div>
         </div>
@@ -209,8 +214,13 @@
                     <div id="chart2"></div>
 
                 </div>
-                <div class="span3">
-                    <div id="first-last-list2"></div>
+                <div id="h-list2" class="span3">
+                    <div class="zipcode-selector">
+                        <input class="input-zipcode" type="text" value="98116"/>
+                        <input type="button" class="btn-info" value="Search" onclick="MEDICARE.lookupZip('#h-list2');"/>
+                    </div>
+
+                    <div class="hospital-list"></div>
                 </div>
             </div>
         </div>
@@ -258,13 +268,13 @@
 
                 </div>
 
-                <div class="span3">
+                <div id="h-list3" class="span3">
                     <div class="zipcode-selector">
-                        <input id="input-zipcode" type="text" value="98116"/>
-                        <input type="button" class="btn-info" value="Search" onclick="MEDICARE.lookupZip();"/>
+                        <input class="input-zipcode" type="text" value="98116"/>
+                        <input type="button" class="btn-info" value="Search" onclick="MEDICARE.lookupZip('#h-list3');"/>
                     </div>
 
-                    <div id="first-last-list3"></div>
+                    <div class="hospital-list"></div>
                 </div>
             </div>
         </div>

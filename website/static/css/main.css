@@ -150,7 +150,6 @@ body {
     margin-left: 5px;
 }
 
-
 .zipcode-selector {
     text-align: center;
 }
@@ -297,4 +296,10 @@ body {
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
+}
+
+.highlighted {
+    fill: #111188;
+    stroke: #000;
+    opacity: .8;
 }

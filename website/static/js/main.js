@@ -74,12 +74,7 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
 
                     var template = $('#tooltip-template').html();
                     var compiledTemplate = Handlebars.compile(template);
-
-                    MEDICARE.list_hospitals("#first-last-list1", d.lat, d.lon);
-
                     return compiledTemplate(data);
-
-
                 }
             });
 
@@ -106,14 +101,11 @@ MEDICARE.draw_highlight = function (chart_position, lat, lon) {
         .attr("class", "highlighted")
         .attr("cx", projection([lon, lat])[0])
         .attr("cy", projection([lon, lat])[1])
-        .attr("r", 20)
-        .style("fill", "#111188")
-        .style("opacity", .8)
-        .style("stroke", "#2F0000");
+        .attr("r", 20);
 };
 
 
-MEDICARE.list_hospitals = function (position, Lat, Lon) {
+MEDICARE.list_hospitals = function ($position, Lat, Lon) {
     var template = $('#hlist-template').html();
     var compiledTemplate = Handlebars.compile(template);
 
@@ -138,19 +130,15 @@ MEDICARE.list_hospitals = function (position, Lat, Lon) {
         return num;
     });
 
-    $(position).html();
-    $(position).html(compiledTemplate({'hospitals': result}));
+    $position.html();
+    $position.html(compiledTemplate({'hospitals': result}));
 };
 
 
-MEDICARE.lookupZip = function () {
-
-    var zipcode = $("#input-zipcode")[0].value;
+MEDICARE.lookupZip = function (position) {
+    var zipcode = $(position + " .input-zipcode")[0].value;
 
     $.getJSON('/zipcode/' + zipcode, function (data) {
-
-        MEDICARE.list_hospitals("#first-last-list3", data.lat, data.lon);
-
+        MEDICARE.list_hospitals($(position + " .hospital-list"), data.lat, data.lon);
     });
-
 };
