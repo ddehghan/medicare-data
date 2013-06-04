@@ -92,3 +92,27 @@ MEDICARE.latLonDistance = function (lat1, lon1, lat2, lon2, unit) {
     return dist
 };
 
+
+MEDICARE.toolTip = function(){
+    $('svg circle').tipsy({
+        gravity: 'w',
+        html: true,
+        title: function () {
+            var d = this.__data__;
+
+            var data = {
+                'name': d.name,
+                'charge': MEDICARE.formatMoney(d.charge, 0, '.', ','),
+                'pay': MEDICARE.formatMoney(d.pay, 0, '.', ','),
+                'AcquiredInfect': d.AcquiredInfect * 100,
+                'AcquiredConditions': d.AcquiredConditions * 100,
+                'PatientSafetySummary': d.PatientSafetySummary *100
+            };
+
+            var template = $('#tooltip-template').html();
+            var compiledTemplate = Handlebars.compile(template);
+
+            return compiledTemplate(data);
+        }
+    });
+};

@@ -35,26 +35,7 @@ var drawDataPoints = function (data, scale, col_name, svg) {
             d3.select(this).style("fill", "red");
         });
 
-    $('svg circle').tipsy({
-        gravity: 'w',
-        html: true,
-        title: function () {
-            var d = this.__data__;
-
-            var data = {
-                'd_name': d.name,
-                'd_charge': MEDICARE.formatMoney(d.charge, 0, '.', ','),
-                'd_pay': MEDICARE.formatMoney(d.pay, 0, '.', ','),
-                'AcquiredInfect': d.AcquiredInfect *100,
-                'AcquiredConditions': d.AcquiredConditions*100,
-                'PatientSafetySummary': d.PatientSafetySummary*100
-            };
-
-            var template = $('#tooltip-template').html();
-            var compiledTemplate = Handlebars.compile(template);
-            return compiledTemplate(data);
-        }
-    });
+    MEDICARE.toolTip();
 };
 
 MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
@@ -102,7 +83,6 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     }
 
     if (MEDICARE.data === undefined) {
-        console.log("server");
 
         MEDICARE.data = null;
 
@@ -119,13 +99,10 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
         });
     }
     else {
-        console.log("local");
-
         MEDICARE.drawRequests.push(function () {
             drawDataPoints(MEDICARE.data, scale, col_name, svg);
         });
     }
-
 };
 
 

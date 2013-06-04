@@ -104,30 +104,7 @@ var drawDataPointsXY = function (data, chart_position) {
             return d;
         });
 
-
-    $('svg circle').tipsy({
-        gravity: 'w',
-        html: true,
-        title: function () {
-            var d = this.__data__;
-
-            var data = {
-                'd_name': d.name,
-                'd_charge': MEDICARE.formatMoney(d.charge, 0, '.', ','),
-                'd_pay': MEDICARE.formatMoney(d.pay, 0, '.', ','),
-                'AcquiredInfect': d.AcquiredInfect,
-                'AcquiredConditions': d.AcquiredConditions,
-                'PatientSafetySummary': d.PatientSafetySummary
-            };
-
-            var template = $('#tooltip-template').html();
-            var compiledTemplate = Handlebars.compile(template);
-
-            return compiledTemplate(data);
-
-        }
-    });
-
+    MEDICARE.toolTip();
 };
 
 
@@ -235,36 +212,13 @@ var costVsQuality = function (data, chart_position, col_name) {
         });
 
 
-    $('svg circle').tipsy({
-        gravity: 'w',
-        html: true,
-        title: function () {
-            var d = this.__data__;
-
-            var data = {
-                'd_name': d.name,
-                'd_charge': MEDICARE.formatMoney(d.charge, 0, '.', ','),
-                'd_pay': MEDICARE.formatMoney(d.pay, 0, '.', ','),
-                'AcquiredInfect': d.AcquiredInfect,
-                'AcquiredConditions': d.AcquiredConditions,
-                'PatientSafetySummary': d.PatientSafetySummary
-            };
-
-            var template = $('#tooltip-template').html();
-            var compiledTemplate = Handlebars.compile(template);
-
-            return compiledTemplate(data);
-
-        }
-    });
+    MEDICARE.toolTip();
 
 };
 
 MEDICARE.downloadAndPaint = function (type, chart_position, dataUrl) {
 
     if (MEDICARE.data === undefined) {
-        console.log("server");
-
         MEDICARE.data = null;
 
         d3.csv(dataUrl, function (error, data) {
@@ -280,8 +234,6 @@ MEDICARE.downloadAndPaint = function (type, chart_position, dataUrl) {
         });
     }
     else {
-        console.log("local");
-
         MEDICARE.drawRequests.push(function () {
             type(MEDICARE.data, chart_position);
         });
@@ -291,8 +243,6 @@ MEDICARE.downloadAndPaint = function (type, chart_position, dataUrl) {
 MEDICARE.downloadAndPaint2 = function (type, chart_position, dataUrl, col_name) {
 
     if (MEDICARE.data === undefined) {
-        console.log("server");
-
         MEDICARE.data = null;
 
         d3.csv(dataUrl, function (error, data) {
@@ -308,8 +258,6 @@ MEDICARE.downloadAndPaint2 = function (type, chart_position, dataUrl, col_name) 
         });
     }
     else {
-        console.log("local");
-
         MEDICARE.drawRequests.push(function () {
             type(MEDICARE.data, chart_position, col_name);
         });
