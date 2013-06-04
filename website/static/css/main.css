@@ -162,6 +162,10 @@ body {
     width: 100px;
 }
 
+.h-row:hover{
+    background-color: #73a5cc;
+}
+
 /* ------------------------------------------------  */
 
 .post-img, .post-img a {
@@ -299,7 +303,7 @@ body {
 }
 
 .highlighted {
-    fill: #111188;
+    fill: #73A5CC;
     stroke: #000;
     opacity: .8;
 }
