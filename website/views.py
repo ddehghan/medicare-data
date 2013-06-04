@@ -26,39 +26,39 @@ def home(request):
     }, context_instance=RequestContext(request))
 
 
-def scale(val, src, dst):
-    """
-    Scale the given value from the scale of src to the scale of dst.
-    """
-    return ((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0]
+# def scale(val, src, dst):
+#     """
+#     Scale the given value from the scale of src to the scale of dst.
+#     """
+#     return ((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0]
+#
 
-
-def charges(reques, drug):
-    r = redis.from_url(REDIS_URL) #redis.StrictRedis(host=REDIS_SERVER,  port=18654, db=0)
-    result = r.get(drug)
-
-    if not result:
-        drugs = Drug.objects.filter(description=drug)
-
-        result = "size,lat,lon,price,name\n"
-
-        data = []
-        for d in drugs:
-            if not d.hospital.lat == 0 and not d.hospital.lon == 0:
-                data.append([d.avg_charges, d.hospital.lat, d.hospital.lon, d.hospital.name])
-
-        min_price = 10000000
-        max_price = 0
-        for d in data:
-            min_price = min(d[0], min_price)
-            max_price = max(d[0], max_price)
-
-        for d in data:
-            result += "%s,%s,%s,%s,%s\n" % (scale(d[0], (min_price, max_price), (2, 12)), d[1], d[2], d[0], d[3])
-
-        r.set(drug, result)
-
-    return HttpResponse(result, mimetype="text")
+# def charges(reques, drug):
+#     r = redis.from_url(REDIS_URL) #redis.StrictRedis(host=REDIS_SERVER,  port=18654, db=0)
+#     result = r.get(drug)
+#
+#     if not result:
+#         drugs = Drug.objects.filter(description=drug)
+#
+#         result = "size,lat,lon,price,name\n"
+#
+#         data = []
+#         for d in drugs:
+#             if not d.hospital.lat == 0 and not d.hospital.lon == 0:
+#                 data.append([d.avg_charges, d.hospital.lat, d.hospital.lon, d.hospital.name])
+#
+#         min_price = 10000000
+#         max_price = 0
+#         for d in data:
+#             min_price = min(d[0], min_price)
+#             max_price = max(d[0], max_price)
+#
+#         for d in data:
+#             result += "%s,%s,%s,%s,%s\n" % (scale(d[0], (min_price, max_price), (2, 12)), d[1], d[2], d[0], d[3])
+#
+#         r.set(drug, result)
+#
+#     return HttpResponse(result, mimetype="text")
 
 
 @login_required

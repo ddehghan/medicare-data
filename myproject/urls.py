@@ -15,7 +15,7 @@ urlpatterns = patterns('',
                        url(r'^login', 'website.views.login_test', name='login_test'),
                        url(r'^private', 'website.views.private', name='private'),
 
-                       url(r'^charges/(?P<drug>.*)$', 'website.views.charges', name='charges'),
+                       # url(r'^charges/(?P<drug>.*)$', 'website.views.charges', name='charges'),
 
                        # Static pages
                        url("^about-data", TemplateView.as_view(template_name='about-data.html'), name="about-data"),
