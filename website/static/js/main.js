@@ -3,40 +3,8 @@
 
 MEDICARE.data = undefined;
 MEDICARE.USMap = {"download": "not-started", "observers": []};
+MEDICARE.DRGData = {"download": "not-started", "observers": [], "data": undefined};
 MEDICARE.drawRequests = [];
-
-var drawDataPoints = function (data, scale, col_name, svg) {
-
-    var projection = d3.geo.albersUsa();
-
-    var group = svg.append("g");
-    group.attr('transform', scale);
-
-    group.selectAll("circle")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) {
-            return projection([d.lon, d.lat])[0];
-        })
-        .attr("cy", function (d) {
-            return projection([d.lon, d.lat])[1];
-        })
-        .attr("r", function (d) {
-            return d[col_name];
-        })
-        .style("fill", "red")
-        .style("opacity", .5)
-        .style("stroke", "#2F0000")
-        .on("mouseover", function () {
-            d3.select(this).style("fill", "blue");
-        })
-        .on("mouseout", function () {
-            d3.select(this).style("fill", "red");
-        });
-
-    MEDICARE.toolTip();
-};
 
 
 function DownloadMap(context) {
@@ -86,6 +54,61 @@ function DownloadMapFinished() {
     }
 }
 
+function DownloadDRGData(dataUrl, context) {
+
+    MEDICARE.DRGData.observers.push(context);
+
+    if (MEDICARE.DRGData.download == "not-started") {
+        MEDICARE.DRGData.download = "requested";
+
+        d3.csv(dataUrl, function (error, data) {
+            MEDICARE.DRGData.data = data;
+
+            DownloadDRGDataFinished();
+
+        });
+
+    } else if (MEDICARE.DRGData.download == "done") {
+        DownloadDRGDataFinished();
+    }
+}
+
+function DownloadDRGDataFinished() {
+    while (MEDICARE.DRGData.observers.length > 0) {
+        var context = MEDICARE.DRGData.observers.pop();
+
+        var projection = d3.geo.albersUsa();
+
+        var group = context.svg.append("g");
+        group.attr('transform', context.scale);
+
+        group.selectAll("circle")
+            .data(MEDICARE.DRGData.data)
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) {
+                return projection([d.lon, d.lat])[0];
+            })
+            .attr("cy", function (d) {
+                return projection([d.lon, d.lat])[1];
+            })
+            .attr("r", function (d) {
+                return d[context.col_name];
+            })
+            .style("fill", "red")
+            .style("opacity", .5)
+            .style("stroke", "#2F0000")
+            .on("mouseover", function () {
+                d3.select(this).style("fill", "blue");
+            })
+            .on("mouseout", function () {
+                d3.select(this).style("fill", "red");
+            });
+
+        MEDICARE.toolTip();
+    }
+}
+
 MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var centered;
     var width = 780, height = 500;
@@ -102,30 +125,8 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var projection = d3.geo.albersUsa();
     var path = d3.geo.path().projection(projection);
 
-    DownloadMap({"svg": svg});
-
-
-    if (MEDICARE.data === undefined) {
-
-        MEDICARE.data = null;
-
-        d3.csv(dataUrl, function (error, data) {
-            MEDICARE.data = data;
-
-            MEDICARE.drawRequests.push(function () {
-                drawDataPoints(MEDICARE.data, scale, col_name, svg);
-            });
-
-            while (MEDICARE.drawRequests.length > 0) {
-                MEDICARE.drawRequests.pop()();
-            }
-        });
-    }
-    else {
-        MEDICARE.drawRequests.push(function () {
-            drawDataPoints(MEDICARE.data, scale, col_name, svg);
-        });
-    }
+    DownloadMap({"svg": svg, "scale": scale});
+    DownloadDRGData(dataUrl, {"svg": svg, "col_name": col_name, "scale": scale});
 };
 
 
