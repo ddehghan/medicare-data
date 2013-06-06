@@ -95,76 +95,6 @@
 {% endblock %}
 
 {% block maincontent %}
-    <div class="big-top-margin row-fluid">
-        <div class="span12">
-            <div class="hero-unit">
-                <h1 class="main-title">Medicare reimbursements disparities</h1>
-
-                <p>text text </p>
-
-                <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="big-top-margin row-fluid">
-        <div class="span7">
-
-            <p>
-                The lack of price transparency has long plagued the U.S. healthcare industry. Although all hospitals
-                have
-                list prices (a.k.a. “the chargemaster”) for every treatment, drug, and procedure, these prices are never
-                made public. In addition, private insurers and the government (i.e. Medicare) reimburse hospitals
-                according
-                to their own negotiated price list, which for the most part has also remained shrouded in mystery—until
-                now.
-                Recently, Medicare released data regarding the payments for the top 100 medical conditions by patient
-                volume. It’s no surprise that there are huge disparities between what hospitals charge for the same
-                treatment. The map below shows the price disparity between hospitals located in the same hospital
-                referral
-                region.
-            </p>
-
-            <h4>How Medicare pays hospitals:</h4>
-
-            <p>
-                Medicare pays hospital for each patient treated. This rate not only varies with the type of disease that
-                the patient has but with comorbid conditions, geographical location, and demographics of the hospital’s
-                patient population. For example, hospitals located in a region with a higher cost of living would be
-                reimbursed at a higher rate—as would hospitals that have a high percentage of underserved populations or
-                teaching hospitals.
-                Medicare’s reimbursement schedule is designed to cover the actual cost of the treatment plus a small
-                percentage to cover. Private insurers generally pay more than Medicare.
-            </p>
-
-            <h4>Definitions:</h4>
-
-            <p>
-                Disease Related Groups (or DRGs) are a grouping of healthcare claims codes (known as ICD or
-                International Classification of Disease codes).
-            </p>
-
-        </div>
-        <div class="span5">
-            <div class="social-box">
-                <span class='st_facebook_hcount' displayText='Facebook'></span>
-                <span class='st_twitter_hcount' displayText='Tweet' st_via='ddehghan'
-                      st_title='Medicare price variation between hospitals #health #medicare'></span>
-                <span class='st_googleplus_hcount' displayText='Google +'></span>
-                <span class='st_sharethis_hcount' displayText='Share'></span>
-            </div>
-
-            <br><br>
-            <br><br>
-
-            <div class="post-img">
-                <a>
-                    <img src="{{ STATIC_URL }}images/default_image.png">
-
-                    <p>Check out the full infographic</p>
-                </a>
-            </div>
-        </div>
-    </div>
 
     <div class="big-top-margin row-fluid">
         <div class="span12">
@@ -190,78 +120,6 @@
 
         <div class="span3 visible-desktop">
             <img class="big-arrow" src="{{ STATIC_URL }}images/arrow_yellow.png">
-        </div>
-    </div>
-
-    <div class="big-top-margin row-fluid">
-        <div class="span12">
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="chart-title">
-
-                        <p><strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span></p>
-                        <h4>Average Hospitals Bill</h4>
-
-                    </div>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span9">
-                    <div class="chart-body">
-
-                        <div id="chart1">
-                            <svg class="chart-svg">
-                                <g class="map-group"></g>
-                                <g class="data-group"></g>
-                            </svg>
-                        </div>
-
-                    </div>
-                </div>
-                <div id="h-list1" class="span3">
-                    <div class="zipcode-selector">
-                        <input class="input-zipcode" type="text" value="98116"/>
-                        <input type="button" class="btn-info" value="Search"
-                               onclick="MEDICARE.lookupZip('#h-list1', '#chart1');"/>
-                    </div>
-
-                    <div class="hospital-list"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="big-top-margin row-fluid">
-        <div class="span12">
-            <div class="row-fluid chart-title">
-                <div class="span12">
-
-                    <p><strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span></p>
-                    <h4>Average Medicare Reimbursement</h4>
-
-                </div>
-            </div>
-            <div class="row-fluid chart-body">
-                <div class="span9">
-
-                    <div id="chart2">
-                        <svg class="chart-svg">
-                            <g class="map-group"></g>
-                            <g class="data-group"></g>
-                        </svg>
-                    </div>
-
-                </div>
-                <div id="h-list2" class="span3">
-                    <div class="zipcode-selector">
-                        <input class="input-zipcode" type="text" value="98116"/>
-                        <input type="button" class="btn-info" value="Search"
-                               onclick="MEDICARE.lookupZip('#h-list2', '#chart2');"/>
-                    </div>
-
-                    <div class="hospital-list"></div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -333,27 +191,25 @@
     <script type="text/javascript">
 
         MYCHART.init = function (dataUrl) {
-            MEDICARE.draw_chart('#chart1', dataUrl, 'size_charge');
-            MEDICARE.draw_chart('#chart2', dataUrl, 'size_pay');
             MEDICARE.downloadAndPaint(drawDataPointsXY, '#chart3', dataUrl);
             MEDICARE.downloadAndPaint2(costVsQuality, '#chart4', dataUrl, 'AcquiredInfect');
         };
 
-        MEDICARE.LoadOptions(MYCHART.init);
+    MEDICARE.LoadOptions(MYCHART.init);
 
     </script>
 
-    {#    <script type="text/javascript">#}
-    {#        var switchTo5x = false;#}
-    {#    </script>#}
-    {#    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>#}
-    {#    <script type="text/javascript">#}
-    {#        stLight.options({#}
-    {#            publisher: "6d8da8ae-b61c-486f-a29b-e4c32b2e3259",#}
-    {#            doNotHash: false,#}
-    {#            doNotCopy: false,#}
-    {#            hashAddressBar: false#}
-    {#        });#}
-    {#    </script>#}
+{#    <script type="text/javascript">#}
+{#        var switchTo5x = false;#}
+{#    </script>#}
+{#    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>#}
+{#    <script type="text/javascript">#}
+{#        stLight.options({#}
+{#            publisher: "6d8da8ae-b61c-486f-a29b-e4c32b2e3259",#}
+{#            doNotHash: false,#}
+{#            doNotCopy: false,#}
+{#            hashAddressBar: false#}
+{#        });#}
+{#    </script>#}
 
 {% endblock %}

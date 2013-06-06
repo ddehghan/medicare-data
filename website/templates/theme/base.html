@@ -38,7 +38,7 @@
     <script src="{{ STATIC_URL }}js/common.js"></script>
 
     {#    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>#}
-{#    <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One|Lemon' rel='stylesheet' type='text/css'>#}
+    {#    <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One|Lemon' rel='stylesheet' type='text/css'>#}
 
     {% block extra_css %}
     {% endblock %}
@@ -52,10 +52,21 @@
 {% block hero %}
 {% endblock %}
 
-<div class="container">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            {% include "theme/side_nav.html" %}
+        </div>
+        <!--/span-->
+        <div class="span10">
 
-    {% block maincontent %}
-    {% endblock %}
+            {% block maincontent %}
+            {% endblock %}
+
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
 
     <br>
     <br>
@@ -71,7 +82,7 @@
     </footer>
 
 </div>
-<!-- /container -->
+<!--/.fluid-container-->
 
 
 {#<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>#}

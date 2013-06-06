@@ -1,0 +1,33 @@
+{% extends 'theme/base.html' %}
+{% load i18n %}
+
+{% trans "Medicare cost" as the_title %}
+
+{% block meta_description %}{{ the_title }}{% endblock %}
+{% block title %}{{ the_title }}{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block maincontent %}
+
+    <div class="big-top-margin row-fluid">
+        <div class="span12">
+
+            <h3>About the data:</h3>
+
+            <p>The graphs on this page are plotted with the "Medicare Provider Charge Data" released by CMS.GOV.
+                <a href="/about-data">Find out more</a> about this dataset. </p>
+
+            <br>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+{% block bottomscript %}
+
+{% endblock %}

@@ -18,7 +18,10 @@ urlpatterns = patterns('',
                        # url(r'^charges/(?P<drug>.*)$', 'website.views.charges', name='charges'),
 
                        # Static pages
-                       url("^about-data", TemplateView.as_view(template_name='about-data.html'), name="about-data"),
+                       url("^news", TemplateView.as_view(template_name='news.html'), name="news"),
+                       url("^about", TemplateView.as_view(template_name='about.html'), name="about"),
+                       url("^bills", TemplateView.as_view(template_name='bills.html'), name="bills"),
+                       url("^quality", TemplateView.as_view(template_name='quality.html'), name="quality"),
 
                        url("^plot$", TemplateView.as_view(template_name='plot.html'), name="plot"),
 
