@@ -2,9 +2,8 @@
 
 
 MEDICARE.data = undefined;
-MEDICARE.USMap = undefined;
+MEDICARE.USMap = {"download": "not-started", "observers": []};
 MEDICARE.drawRequests = [];
-MEDICARE.drawMapRequests = [];
 
 var drawDataPoints = function (data, scale, col_name, svg) {
 
@@ -39,16 +38,53 @@ var drawDataPoints = function (data, scale, col_name, svg) {
     MEDICARE.toolTip();
 };
 
-$('body').on('map-done', function (event, param1, param2) {
 
-    while (MEDICARE.drawMapRequests.length > 0) {
-        var svg = MEDICARE.drawMapRequests.pop();
+function DownloadMap(context) {
 
-        var use = svg.append("use");
+    MEDICARE.USMap.observers.push(context);
+
+    if (MEDICARE.USMap.download == "not-started") {
+        MEDICARE.USMap.download = "requested";
+
+        d3.json('/static/json/us-states.json', function (collection) {
+            MEDICARE.USMap.download = "done";
+
+            var projection = d3.geo.albersUsa();
+            var path = d3.geo.path().projection(projection);
+
+            var defs = context.svg.append("defs");
+            var group = defs.append("g");
+            group.attr('transform', context.scale);
+            group.attr('id', 'usmap-svg');
+
+            group.selectAll('path')
+                .data(collection.features)
+                .enter().append('path')
+                .attr('d', d3.geo.path().projection(projection))
+                .attr('id', function (d) {
+                    return d.properties.name.replace(/\s+/g, '')
+                })
+                .style('fill', 'gray')
+                .style('stroke', 'white')
+                .style('stroke-width', 1);
+
+            DownloadMapFinished();
+
+        });
+
+    } else if (MEDICARE.USMap.download == "done") {
+        DownloadMapFinished();
+    }
+}
+
+function DownloadMapFinished() {
+    while (MEDICARE.USMap.observers.length > 0) {
+        var context = MEDICARE.USMap.observers.pop();
+
+        var use = context.svg.append("use");
         use.attr('xlink:href', '#usmap-svg');
     }
-});
-
+}
 
 MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var centered;
@@ -66,35 +102,8 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var projection = d3.geo.albersUsa();
     var path = d3.geo.path().projection(projection);
 
+    DownloadMap({"svg": svg});
 
-    if (MEDICARE.USMap === undefined) {
-        var defs = svg.append("defs");
-        var group = defs.append("g");
-        group.attr('transform', scale);
-        group.attr('id', 'usmap-svg');
-
-        d3.json('/static/json/us-states.json', function (collection) {
-            group.selectAll('path')
-                .data(collection.features)
-                .enter().append('path')
-                .attr('d', d3.geo.path().projection(projection))
-                .attr('id', function (d) {
-                    return d.properties.name.replace(/\s+/g, '')
-                })
-                .style('fill', 'gray')
-                .style('stroke', 'white')
-                .style('stroke-width', 1);
-
-            MEDICARE.USMap = collection;
-            $('body').trigger('map-done', ['Custom', 'Event']);
-
-        });
-
-        MEDICARE.drawMapRequests.push(svg);
-    }
-    else {
-        MEDICARE.drawMapRequests.push(svg);
-    }
 
     if (MEDICARE.data === undefined) {
 
