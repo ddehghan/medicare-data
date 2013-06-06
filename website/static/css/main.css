@@ -306,6 +306,10 @@ body {
 }
 
 /* ------ SVG style ------------------------------------------  */
+.chart-svg {
+    width: 780px;
+    height: 500px;
+}
 
 .axis path,
 .axis line {

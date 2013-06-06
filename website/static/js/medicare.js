@@ -1,11 +1,13 @@
 var MYCHART = {'init': null, 'paint': null};
 
 MEDICARE.get_drg = function () {
-    $(".chart-svg").remove();
+    $(".chart-svg circle").remove();
 
     var e = document.getElementById("drug_name");
 
     $(".selected_drg").html(e.options[e.selectedIndex].text);
+
+//    MEDICARE.DRGData.download="not-downloaded";
 
     return e.options[e.selectedIndex].value;
 };

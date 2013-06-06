@@ -49,7 +49,7 @@ function DownloadMapFinished() {
     while (MEDICARE.USMap.observers.length > 0) {
         var context = MEDICARE.USMap.observers.pop();
 
-        var use = context.svg.append("use");
+        var use = context.svg.select(".map-group").append("use");
         use.attr('xlink:href', '#usmap-svg');
     }
 }
@@ -79,7 +79,7 @@ function DownloadDRGDataFinished() {
 
         var projection = d3.geo.albersUsa();
 
-        var group = context.svg.append("g");
+        var group = context.svg.select(".data-group");
         group.attr('transform', context.scale);
 
         group.selectAll("circle")
@@ -111,16 +111,13 @@ function DownloadDRGDataFinished() {
 
 MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var centered;
-    var width = 780, height = 500;
+
     var scale = 'scale(.9, .9)';
 
 
-    $(chart_position + " svg").remove();
+//    $(chart_position + " svg").remove();
 
-    var svg = d3.select(chart_position).append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("class", 'chart-svg');
+    var svg = d3.select(chart_position + " svg");
 
     var projection = d3.geo.albersUsa();
     var path = d3.geo.path().projection(projection);
