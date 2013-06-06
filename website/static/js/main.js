@@ -155,7 +155,7 @@ MEDICARE.list_hospitals = function (list_position, chart_position, Lat, Lon) {
 
     var result = [];
 
-    _.each(MEDICARE.data, function (num) {
+    _.each(MEDICARE.DRGData.data, function (num) {
         var d = MEDICARE.latLonDistance(Lat, Lon, num.lat, num.lon, "N");
         if (d < 100) {
             result.push(MEDICARE.ShallowCopy(num));
