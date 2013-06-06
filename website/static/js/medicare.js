@@ -7,7 +7,7 @@ MEDICARE.get_drg = function () {
 
     $(".selected_drg").html(e.options[e.selectedIndex].text);
 
-//    MEDICARE.DRGData.download="not-downloaded";
+    MEDICARE.DRGData.download="not-started";
 
     return e.options[e.selectedIndex].value;
 };
@@ -29,6 +29,6 @@ MEDICARE.LoadOptions = function (callback) {
 
 
 MYCHART.paint = function () {
-    MEDICARE.LoadOptions(MYCHART.init);
+   MYCHART.init(MEDICARE.dataUrl());
 };
 
