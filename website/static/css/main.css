@@ -320,8 +320,17 @@ body {
     opacity: .8;
 }
 
+.chart-svg {
+    width: 900px;
+    height: 500px;
+}
+
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+    .chart-svg {
+        width: 500px;
+        height: 250px;
+    }
 
     .min-max-box {
         margin-top: 20px;
