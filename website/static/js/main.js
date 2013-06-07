@@ -22,7 +22,9 @@ function DownloadMap(context) {
 
             var defs = context.svg.append("defs");
             var group = defs.append("g");
-            group.attr('transform', context.scale);
+//            group.attr("viewBox", "0, 0, 500, 300");
+//            group.attr("preserveAspectRatio", "xMidYMid meet");
+            //            group.attr('transform', context.scale);
             group.attr('id', 'usmap-svg');
 
             group.selectAll('path')
@@ -80,7 +82,7 @@ function DownloadDRGDataFinished() {
         var projection = d3.geo.albersUsa();
 
         var group = context.svg.select(".data-group");
-        group.attr('transform', context.scale);
+//        group.attr('transform', context.scale);
 
         group.selectAll("circle")
             .data(MEDICARE.DRGData.data)
