@@ -328,8 +328,8 @@ body {
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
     .chart-svg {
-        width: 500px;
-        height: 250px;
+        width: 350px;
+        height: 180px;
     }
 
     .min-max-box {
