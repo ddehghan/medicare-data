@@ -14,29 +14,34 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print PROJECT_ROOT
 DATA_ROOT = os.path.join(PROJECT_ROOT, "website", "static", "data")
 
-from project.website.models import Hospital, Drg
+from project.website.models import Hospital, Drg, Charges
 
 
-def get_drg():
-    return Drg.objects.values('description').distinct()
+def write_options(drgs, file_name):
+    with open(os.path.join(DATA_ROOT, file_name + '.html'), 'wb') as f:
+        for d in Drg.objects.values('category1').distinct()[:2]:
+            f.write('<li>')
+            f.write('<a href="#">%s</a><ul class="dl-submenu">' % d['category1'])
 
+            for d in Drg.objects.values('category2').distinct()[:2]:
+                f.write('<li>')
+                f.write('<a href="#">%s</a><ul class="dl-submenu">' % d['category2'])
 
-def write_options(drg, file_name):
-    i = 1
+                for d in Drg.objects.values('category3').distinct()[:2]:
+                    f.write('<li>')
+                    f.write('<a href="#">%s</a>' % d['category3'])
+                    f.write('</li>')
 
-    result = []
+                f.write('</ul>')
+                f.write('</li>')
 
-    with open(os.path.join(DATA_ROOT, file_name), 'wb') as f:
-        for d in drg:
-            result.append({"value": i, "text": d['description']})
-            i += 1
-
-        f.write(json.dumps(result))
+            f.write('</ul>')
+            f.write('</li>')
 
     return
 
 
-def write_csv(drgs, file_name):
+def write_csv(drg, file_name):
     with open(os.path.join(DATA_ROOT, '%s.csv' % file_name), 'wb') as f:
         f.write(
             "size_charge,size_pay,lat,lon,charge,pay,AcquiredInfect,AcquiredConditions,PatientSafetySummary,name\n")
@@ -46,7 +51,7 @@ def write_csv(drgs, file_name):
         min_pay = 10000000
         max_pay = 0
 
-        for c in drgs:
+        for c in Charges.objects.filter(drg=drg):
             min_charge = min(c.avg_charges, min_charge)
             max_charge = max(c.avg_charges, max_charge)
             min_pay = min(c.avg_total_payments, min_pay)
@@ -60,7 +65,7 @@ def write_csv(drgs, file_name):
         hospital_data = HospitalData()
         hospital_data.connect()
 
-        for c in drgs:
+        for c in Charges.objects.filter(drg=drg):
             ac = hospital_data.get_aquired_conditions(int(c.hospital.provider_id))
 
             if not ac:
@@ -89,14 +94,12 @@ def scale(val, src, dst):
 
 
 def export_data():
-    unique_drugs = get_drg()
-    write_options(unique_drugs, 'drg_options.json')
+    unique_drugs = Drg.objects.all()
+    write_options(unique_drugs, 'drg_options')
 
-    i = 1
     for drg in unique_drugs:
-        write_csv(Drg.objects.filter(description=drg['description']), str(i))
-        i += 1
-        # break
+        write_csv(drg, drg.drg_id)
+        break
 
     return
 

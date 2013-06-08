@@ -88,7 +88,10 @@
     <script src="{{ STATIC_URL }}js/libs/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/topojson.v0.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/jquery.tipsy.js"></script>
+    <script src="{{ STATIC_URL }}js/libs/modernizr.custom.js"></script>
+    <script src="{{ STATIC_URL }}js/libs/jquery.dlmenu.js"></script>
     <link href="{{ STATIC_URL }}css/tipsy.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/component.css" rel="stylesheet">
     {#    <script src="{{ STATIC_URL }}js/libs/ember-1.0.0-rc.4.js"></script>#}
 
 
@@ -220,6 +223,17 @@
             <h3 class="section-title">Select a procedure:</h3>
             <select id="drug_name" onChange="MYCHART.paint();">
             </select>
+
+
+            <div id="dl-menu" class="dl-menuwrapper">
+                <button class="dl-trigger">Open Menu</button>
+                <ul class="dl-menu">
+                    {% include "drg_options.html" %}
+                </ul>
+            </div>
+            <!-- /dl-menuwrapper -->
+
+
         </div>
 
         <div class="span3 visible-desktop">
@@ -287,6 +301,12 @@
         };
 
         MEDICARE.LoadOptions(MYCHART.init);
+
+        $(function () {
+            $('#dl-menu').dlmenu({
+                animationClasses: { classin: 'dl-animate-in-5', classout: 'dl-animate-out-5' }
+            });
+        });
 
     </script>
 
