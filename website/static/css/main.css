@@ -172,6 +172,16 @@ body {
 
 /* ------------------------------------------------  */
 
+/*.multi-level-menu{*/
+    /*width: 600px;*/
+/*}*/
+/*.multi-level-menu img{*/
+    /*float: left;*/
+/*}*/
+
+
+
+
 .post-img, .post-img a {
     display: block;
     position: relative;

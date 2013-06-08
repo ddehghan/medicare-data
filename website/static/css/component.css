@@ -146,6 +146,7 @@
 /* Hide the inner submenus */
 .dl-menuwrapper li .dl-submenu {
 	display: none;
+    margin-left: 0;
 }
 
 /* 

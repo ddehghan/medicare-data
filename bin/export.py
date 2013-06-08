@@ -34,7 +34,7 @@ def write_options(drgs, file_name):
                     for drg in Drg.objects.filter(category1=c1['category1'], category2=c2['category2'],
                                                   category3=c3['category3']):
                         f.write('<li>\n')
-                        name = "%s-%s-%s" % (drg.category1, drg.category2, drg.category3)
+                        name = "%s-%s" % (drg.category2, drg.category3)
                         f.write('<a onclick="MEDICARE.get_data(\'%s\', \'%s\');">%s</a>\n' % (
                             drg.drg_id, name, name))
                         f.write('</li>\n')

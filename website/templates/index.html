@@ -220,22 +220,18 @@
     <div class="row-fluid">
         <div class="span8">
 
-            <h3 class="section-title">Select a procedure:</h3>
-            <select id="drug_name" onChange="MYCHART.paint();">
-            </select>
 
-            <div class="clearfix">
-
-                <div class="demo-3">
-                    <div id="dl-menu" class="dl-menuwrapper">
-                        <button class="dl-trigger">Open Menu</button>
-                        <ul class="dl-menu">
-                            {% include "drg_options.html" %}
-                        </ul>
-                    </div>
-                    <!-- /dl-menuwrapper -->
+            <div class="demo-3">
+                <div id="dl-menu" class="dl-menuwrapper">
+                    <button class="dl-trigger">Open Menu</button>
+                    <ul class="dl-menu">
+                        {% include "drg_options.html" %}
+                    </ul>
+                    <img src="{{ STATIC_URL }}images/clickhere.png" alt="click here">
                 </div>
+                <!-- /dl-menuwrapper -->
             </div>
+
 
         </div>
 
