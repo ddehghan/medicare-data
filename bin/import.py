@@ -126,7 +126,6 @@ def fix_addresses():
 
 
 def import_drg():
-
     with open('data/DRGCommonNames.csv', 'Urb') as f:
         reader = csv.reader(f)
 
@@ -152,5 +151,6 @@ def import_drg():
 
 
 if __name__ == '__main__':
-    # import_drg()
+# import_drg()
+#     Charges.objects.all().delete()
     read_charges()

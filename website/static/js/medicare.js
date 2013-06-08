@@ -7,9 +7,21 @@ MEDICARE.get_drg = function () {
 
     $(".selected_drg").html(e.options[e.selectedIndex].text);
 
-    MEDICARE.DRGData.download="not-started";
+    MEDICARE.DRGData.download = "not-started";
 
     return e.options[e.selectedIndex].value;
+};
+
+MEDICARE.get_data = function (drg_num, drg_name) {
+    $(".chart-svg circle").remove();
+    $(".selected_drg").html(drg_name);
+    MEDICARE.DRGData.download = "not-started";
+
+    console.log(drg_num);
+
+    var data_rul = '/static/data/' + drg_num + '.csv';
+    MYCHART.init(data_rul);
+
 };
 
 MEDICARE.dataUrl = function () {
@@ -27,8 +39,7 @@ MEDICARE.LoadOptions = function (callback) {
 };
 
 
-
 MYCHART.paint = function () {
-   MYCHART.init(MEDICARE.dataUrl());
+    MYCHART.init(MEDICARE.dataUrl());
 };
 

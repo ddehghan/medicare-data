@@ -13,30 +13,37 @@ os.environ.setdefault("DEPLOY_ENV", "dev")
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print PROJECT_ROOT
 DATA_ROOT = os.path.join(PROJECT_ROOT, "website", "static", "data")
+HTML_ROOT = os.path.join(PROJECT_ROOT, "website", "templates")
 
 from project.website.models import Hospital, Drg, Charges
 
 
 def write_options(drgs, file_name):
-    with open(os.path.join(DATA_ROOT, file_name + '.html'), 'wb') as f:
-        for d in Drg.objects.values('category1').distinct()[:2]:
-            f.write('<li>')
-            f.write('<a href="#">%s</a><ul class="dl-submenu">' % d['category1'])
+    with open(os.path.join(HTML_ROOT, file_name + '.html'), 'wb') as f:
+        for c1 in Drg.objects.values('category1').distinct():
+            f.write('<li>\n')
+            f.write('<a href="#">%s</a><ul class="dl-submenu">\n' % c1['category1'])
 
-            for d in Drg.objects.values('category2').distinct()[:2]:
-                f.write('<li>')
-                f.write('<a href="#">%s</a><ul class="dl-submenu">' % d['category2'])
+            for c2 in Drg.objects.filter(category1=c1['category1']).values('category2').distinct():
+                f.write('<li>\n')
+                f.write('<a href="#">%s</a><ul class="dl-submenu">\n' % c2['category2'])
 
-                for d in Drg.objects.values('category3').distinct()[:2]:
-                    f.write('<li>')
-                    f.write('<a href="#">%s</a>' % d['category3'])
-                    f.write('</li>')
+                for c3 in Drg.objects.filter(category1=c1['category1'], category2=c2['category2']).values(
+                        'category3').distinct():
 
-                f.write('</ul>')
-                f.write('</li>')
+                    for drg in Drg.objects.filter(category1=c1['category1'], category2=c2['category2'],
+                                                  category3=c3['category3']):
+                        f.write('<li>\n')
+                        name = "%s-%s-%s" % (drg.category1, drg.category2, drg.category3)
+                        f.write('<a onclick="MEDICARE.get_data(\'%s\', \'%s\');">%s</a>\n' % (
+                            drg.drg_id, name, name))
+                        f.write('</li>\n')
 
-            f.write('</ul>')
-            f.write('</li>')
+                f.write('</ul>\n')
+                f.write('</li>\n')
+
+            f.write('</ul>\n')
+            f.write('</li>\n')
 
     return
 
@@ -97,9 +104,9 @@ def export_data():
     unique_drugs = Drg.objects.all()
     write_options(unique_drugs, 'drg_options')
 
-    for drg in unique_drugs:
-        write_csv(drg, drg.drg_id)
-        break
+    # for drg in unique_drugs:
+    #     write_csv(drg, drg.drg_id)
+    # break
 
     return
 
