@@ -162,7 +162,7 @@ INSTALLED_APPS = (
     'social_auth',
     'storages',
 
-    # 'south',  # must be at the end of app list
+    'south',  # must be at the end of app list
 )
 
 # A sample logging configuration. The only tangible logging
