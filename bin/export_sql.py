@@ -44,7 +44,3 @@ class HospitalData():
             print 'Error %s' % e
             self.disconnect()
             sys.exit(1)
-
-
-
-

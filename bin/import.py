@@ -11,13 +11,13 @@ os.environ.setdefault("DEPLOY_ENV", "dev")
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print PROJECT_ROOT
 
-from project.website.models import Hospital, Drug
+from project.website.models import Hospital, Drg, Charges
 
 
 def read_hospitals():
     addresses = {}
 
-    with open('website/data.csv', 'rb') as f:
+    with open('data/data.csv', 'rb') as f:
         reader = csv.reader(f)
 
         rownum = 0
@@ -70,7 +70,7 @@ def read_hospitals():
 def read_charges():
     addresses = {}
 
-    with open('website/data.csv', 'rb') as f:
+    with open('data/data.csv', 'rb') as f:
         reader = csv.reader(f)
 
         rownum = 0
@@ -81,14 +81,15 @@ def read_charges():
             else:
 
                 hospital = Hospital.objects.get(provider_id=row[1])
+                drg = Drg.objects.get(description=row[0])
 
-                drug = Drug()
-                drug.description = row[0]
-                drug.total_discharges = row[8]
-                drug.avg_charges = row[9]
-                drug.avg_total_payments = row[10]
-                drug.hospital = hospital
-                drug.save()
+                charge = Charges()
+                charge.total_discharges = row[8]
+                charge.avg_charges = row[9]
+                charge.avg_total_payments = row[10]
+                charge.hospital = hospital
+                charge.drg = drg
+                charge.save()
 
             rownum += 1
 
@@ -124,7 +125,32 @@ def fix_addresses():
             print "err"
 
 
+def import_drg():
+
+    with open('data/DRGCommonNames.csv', 'Urb') as f:
+        reader = csv.reader(f)
+
+        rownum = 0
+        for row in reader:
+            # Save header row.
+            if rownum == 0:
+                header = row
+            else:
+                drg = Drg()
+                drg.description = row[0]
+                drg.category1 = row[1]
+                drg.category2 = row[2]
+                drg.category3 = row[3]
+                drg.drg_id = int(row[4])
+                drg.save()
+
+            rownum += 1
+
+        f.close()
+
+    return
+
 
 if __name__ == '__main__':
-
-    fix_addresses()
+    # import_drg()
+    read_charges()

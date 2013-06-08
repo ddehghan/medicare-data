@@ -14,11 +14,11 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print PROJECT_ROOT
 DATA_ROOT = os.path.join(PROJECT_ROOT, "website", "static", "data")
 
-from project.website.models import Hospital, Drug
+from project.website.models import Hospital, Drg
 
 
 def get_drg():
-    return Drug.objects.values('description').distinct()
+    return Drg.objects.values('description').distinct()
 
 
 def write_options(drg, file_name):
@@ -94,7 +94,7 @@ def export_data():
 
     i = 1
     for drg in unique_drugs:
-        write_csv(Drug.objects.filter(description=drg['description']), str(i))
+        write_csv(Drg.objects.filter(description=drg['description']), str(i))
         i += 1
         # break
 
