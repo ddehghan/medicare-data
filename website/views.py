@@ -8,7 +8,7 @@ from django.core.cache import cache
 import redis
 
 from website.models import LandingForm, ContributeForm
-from website.models import Hospital, Drug
+from website.models import Hospital, Drg
 from myproject.settings import PROJECT_ROOT
 
 DEPLOY_ENV = os.environ['DEPLOY_ENV']

@@ -19,11 +19,19 @@ class Hospital(models.Model):
     lon = models.DecimalField(max_digits=10, decimal_places=5)
 
 
-class Drug(models.Model):
+class Drg(models.Model):
     description = models.CharField(max_length=100, blank=True)
+    category1 = models.CharField(max_length=100, blank=True)
+    category2 = models.CharField(max_length=100, blank=True)
+    category3 = models.CharField(max_length=100, blank=True)
+    drg_id = models.IntegerField(default=0)
+
+
+class Charges(models.Model):
     total_discharges = models.IntegerField(default=0)
-    avg_charges = models.DecimalField(max_digits=10, decimal_places=2)
-    avg_total_payments = models.DecimalField(max_digits=10, decimal_places=2)
+    avg_charges = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    avg_total_payments = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    drg = models.ForeignKey(Drg, null=True, blank=True)
     hospital = models.ForeignKey(Hospital, null=True, blank=True)
 
 

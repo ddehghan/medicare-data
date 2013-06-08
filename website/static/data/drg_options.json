@@ -1,1 +1,402 @@
-[{"text": "563 - FX, SPRN, STRN & DISL EXCEPT FEMUR, HIP, PELVIS & THIGH W/O MCC", "value": 1}, {"text": "287 - CIRCULATORY DISORDERS EXCEPT AMI, W CARD CATH W/O MCC", "value": 2}, {"text": "480 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W MCC", "value": 3}, {"text": "057 - DEGENERATIVE NERVOUS SYSTEM DISORDERS W/O MCC", "value": 4}, {"text": "176 - PULMONARY EMBOLISM W/O MCC", "value": 5}, {"text": "149 - DYSEQUILIBRIUM", "value": 6}, {"text": "918 - POISONING & TOXIC EFFECTS OF DRUGS W/O MCC", "value": 7}, {"text": "291 - HEART FAILURE & SHOCK W MCC", "value": 8}, {"text": "684 - RENAL FAILURE W/O CC/MCC", "value": 9}, {"text": "247 - PERC CARDIOVASC PROC W DRUG-ELUTING STENT W/O MCC", "value": 10}, {"text": "065 - INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION W CC", "value": 11}, {"text": "293 - HEART FAILURE & SHOCK W/O CC/MCC", "value": 12}, {"text": "390 - G.I. OBSTRUCTION W/O CC/MCC", "value": 13}, {"text": "699 - OTHER KIDNEY & URINARY TRACT DIAGNOSES W CC", "value": 14}, {"text": "305 - HYPERTENSION W/O MCC", "value": 15}, {"text": "470 - MAJOR JOINT REPLACEMENT OR REATTACHMENT OF LOWER EXTREMITY W/O MCC", "value": 16}, {"text": "243 - PERMANENT CARDIAC PACEMAKER IMPLANT W CC", "value": 17}, {"text": "389 - G.I. OBSTRUCTION W CC", "value": 18}, {"text": "536 - FRACTURES OF HIP & PELVIS W/O MCC", "value": 19}, {"text": "811 - RED BLOOD CELL DISORDERS W MCC", "value": 20}, {"text": "281 - ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE W CC", "value": 21}, {"text": "314 - OTHER CIRCULATORY SYSTEM DIAGNOSES W MCC", "value": 22}, {"text": "252 - OTHER VASCULAR PROCEDURES W MCC", "value": 23}, {"text": "193 - SIMPLE PNEUMONIA & PLEURISY W MCC", "value": 24}, {"text": "064 - INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION W MCC", "value": 25}, {"text": "202 - BRONCHITIS & ASTHMA W CC/MCC", "value": 26}, {"text": "282 - ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE W/O CC/MCC", "value": 27}, {"text": "683 - RENAL FAILURE W CC", "value": 28}, {"text": "948 - SIGNS & SYMPTOMS W/O MCC", "value": 29}, {"text": "069 - TRANSIENT ISCHEMIA", "value": 30}, {"text": "177 - RESPIRATORY INFECTIONS & INFLAMMATIONS W MCC", "value": 31}, {"text": "378 - G.I. HEMORRHAGE W CC", "value": 32}, {"text": "074 - CRANIAL & PERIPHERAL NERVE DISORDERS W/O MCC", "value": 33}, {"text": "178 - RESPIRATORY INFECTIONS & INFLAMMATIONS W CC", "value": 34}, {"text": "280 - ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE W MCC", "value": 35}, {"text": "870 - SEPTICEMIA OR SEVERE SEPSIS W MV 96+ HOURS", "value": 36}, {"text": "253 - OTHER VASCULAR PROCEDURES W CC", "value": 37}, {"text": "303 - ATHEROSCLEROSIS W/O MCC", "value": 38}, {"text": "301 - PERIPHERAL VASCULAR DISORDERS W/O CC/MCC", "value": 39}, {"text": "313 - CHEST PAIN", "value": 40}, {"text": "469 - MAJOR JOINT REPLACEMENT OR REATTACHMENT OF LOWER EXTREMITY W MCC", "value": 41}, {"text": "238 - MAJOR CARDIOVASC PROCEDURES W/O MCC", "value": 42}, {"text": "491 - BACK & NECK PROC EXC SPINAL FUSION W/O CC/MCC", "value": 43}, {"text": "066 - INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION W/O CC/MCC", "value": 44}, {"text": "194 - SIMPLE PNEUMONIA & PLEURISY W CC", "value": 45}, {"text": "377 - G.I. HEMORRHAGE W MCC", "value": 46}, {"text": "460 - SPINAL FUSION EXCEPT CERVICAL W/O MCC", "value": 47}, {"text": "871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV 96+ HOURS W MCC", "value": 48}, {"text": "244 - PERMANENT CARDIAC PACEMAKER IMPLANT W/O CC/MCC", "value": 49}, {"text": "552 - MEDICAL BACK PROBLEMS W/O MCC", "value": 50}, {"text": "391 - ESOPHAGITIS, GASTROENT & MISC DIGEST DISORDERS W MCC", "value": 51}, {"text": "690 - KIDNEY & URINARY TRACT INFECTIONS W/O MCC", "value": 52}, {"text": "439 - DISORDERS OF PANCREAS EXCEPT MALIGNANCY W CC", "value": 53}, {"text": "308 - CARDIAC ARRHYTHMIA & CONDUCTION DISORDERS W MCC", "value": 54}, {"text": "473 - CERVICAL SPINAL FUSION W/O CC/MCC", "value": 55}, {"text": "191 - CHRONIC OBSTRUCTIVE PULMONARY DISEASE W CC", "value": 56}, {"text": "379 - G.I. HEMORRHAGE W/O CC/MCC", "value": 57}, {"text": "603 - CELLULITIS W/O MCC", "value": 58}, {"text": "394 - OTHER DIGESTIVE SYSTEM DIAGNOSES W CC", "value": 59}, {"text": "330 - MAJOR SMALL & LARGE BOWEL PROCEDURES W CC", "value": 60}, {"text": "641 - MISC DISORDERS OF NUTRITION,METABOLISM,FLUIDS/ELECTROLYTES W/O MCC", "value": 61}, {"text": "419 - LAPAROSCOPIC CHOLECYSTECTOMY W/O C.D.E. W/O CC/MCC", "value": 62}, {"text": "189 - PULMONARY EDEMA & RESPIRATORY FAILURE", "value": 63}, {"text": "885 - PSYCHOSES", "value": 64}, {"text": "251 - PERC CARDIOVASC PROC W/O CORONARY ARTERY STENT W/O MCC", "value": 65}, {"text": "640 - MISC DISORDERS OF NUTRITION,METABOLISM,FLUIDS/ELECTROLYTES W MCC", "value": 66}, {"text": "812 - RED BLOOD CELL DISORDERS W/O MCC", "value": 67}, {"text": "192 - CHRONIC OBSTRUCTIVE PULMONARY DISEASE W/O CC/MCC", "value": 68}, {"text": "309 - CARDIAC ARRHYTHMIA & CONDUCTION DISORDERS W CC", "value": 69}, {"text": "310 - CARDIAC ARRHYTHMIA & CONDUCTION DISORDERS W/O CC/MCC", "value": 70}, {"text": "203 - BRONCHITIS & ASTHMA W/O CC/MCC", "value": 71}, {"text": "292 - HEART FAILURE & SHOCK W CC", "value": 72}, {"text": "329 - MAJOR SMALL & LARGE BOWEL PROCEDURES W MCC", "value": 73}, {"text": "698 - OTHER KIDNEY & URINARY TRACT DIAGNOSES W MCC", "value": 74}, {"text": "249 - PERC CARDIOVASC PROC W NON-DRUG-ELUTING STENT W/O MCC", "value": 75}, {"text": "286 - CIRCULATORY DISORDERS EXCEPT AMI, W CARD CATH W MCC", "value": 76}, {"text": "372 - MAJOR GASTROINTESTINAL DISORDERS & PERITONEAL INFECTIONS W CC", "value": 77}, {"text": "190 - CHRONIC OBSTRUCTIVE PULMONARY DISEASE W MCC", "value": 78}, {"text": "254 - OTHER VASCULAR PROCEDURES W/O CC/MCC", "value": 79}, {"text": "853 - INFECTIOUS & PARASITIC DISEASES W O.R. PROCEDURE W MCC", "value": 80}, {"text": "195 - SIMPLE PNEUMONIA & PLEURISY W/O CC/MCC", "value": 81}, {"text": "300 - PERIPHERAL VASCULAR DISORDERS W CC", "value": 82}, {"text": "039 - EXTRACRANIAL PROCEDURES W/O CC/MCC", "value": 83}, {"text": "392 - ESOPHAGITIS, GASTROENT & MISC DIGEST DISORDERS W/O MCC", "value": 84}, {"text": "312 - SYNCOPE & COLLAPSE", "value": 85}, {"text": "872 - SEPTICEMIA OR SEVERE SEPSIS W/O MV 96+ HOURS W/O MCC", "value": 86}, {"text": "917 - POISONING & TOXIC EFFECTS OF DRUGS W MCC", "value": 87}, {"text": "207 - RESPIRATORY SYSTEM DIAGNOSIS W VENTILATOR SUPPORT 96+ HOURS", "value": 88}, {"text": "482 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W/O CC/MCC", "value": 89}, {"text": "638 - DIABETES W CC", "value": 90}, {"text": "689 - KIDNEY & URINARY TRACT INFECTIONS W MCC", "value": 91}, {"text": "418 - LAPAROSCOPIC CHOLECYSTECTOMY W/O C.D.E. W CC", "value": 92}, {"text": "481 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W CC", "value": 93}, {"text": "208 - RESPIRATORY SYSTEM DIAGNOSIS W VENTILATOR SUPPORT <96 HOURS", "value": 94}, {"text": "602 - CELLULITIS W MCC", "value": 95}, {"text": "682 - RENAL FAILURE W MCC", "value": 96}, {"text": "315 - OTHER CIRCULATORY SYSTEM DIAGNOSES W CC", "value": 97}, {"text": "897 - ALCOHOL/DRUG ABUSE OR DEPENDENCE W/O REHABILITATION THERAPY W/O MCC", "value": 98}, {"text": "101 - SEIZURES W/O MCC", "value": 99}, {"text": "246 - PERC CARDIOVASC PROC W DRUG-ELUTING STENT W MCC OR 4+ VESSELS/STENTS", "value": 100}]
+[
+    {
+        "text": "563 - FX, SPRN, STRN & DISL EXCEPT FEMUR, HIP, PELVIS & THIGH W/O MCC",
+        "value": 1
+    },
+    {
+        "text": "287 - CIRCULATORY DISORDERS EXCEPT AMI, W CARD CATH W/O MCC",
+        "value": 2
+    },
+    {
+        "text": "480 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W MCC",
+        "value": 3
+    },
+    {
+        "text": "057 - DEGENERATIVE NERVOUS SYSTEM DISORDERS W/O MCC",
+        "value": 4
+    },
+    {
+        "text": "176 - PULMONARY EMBOLISM W/O MCC",
+        "value": 5
+    },
+    {
+        "text": "149 - DYSEQUILIBRIUM",
+        "value": 6
+    },
+    {
+        "text": "918 - POISONING & TOXIC EFFECTS OF DRUGS W/O MCC",
+        "value": 7
+    },
+    {
+        "text": "291 - HEART FAILURE & SHOCK W MCC",
+        "value": 8
+    },
+    {
+        "text": "684 - RENAL FAILURE W/O CC/MCC",
+        "value": 9
+    },
+    {
+        "text": "247 - PERC CARDIOVASC PROC W DRUG-ELUTING STENT W/O MCC",
+        "value": 10
+    },
+    {
+        "text": "065 - INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION W CC",
+        "value": 11
+    },
+    {
+        "text": "293 - HEART FAILURE & SHOCK W/O CC/MCC",
+        "value": 12
+    },
+    {
+        "text": "390 - G.I. OBSTRUCTION W/O CC/MCC",
+        "value": 13
+    },
+    {
+        "text": "699 - OTHER KIDNEY & URINARY TRACT DIAGNOSES W CC",
+        "value": 14
+    },
+    {
+        "text": "305 - HYPERTENSION W/O MCC",
+        "value": 15
+    },
+    {
+        "text": "470 - MAJOR JOINT REPLACEMENT OR REATTACHMENT OF LOWER EXTREMITY W/O MCC",
+        "value": 16
+    },
+    {
+        "text": "243 - PERMANENT CARDIAC PACEMAKER IMPLANT W CC",
+        "value": 17
+    },
+    {
+        "text": "389 - G.I. OBSTRUCTION W CC",
+        "value": 18
+    },
+    {
+        "text": "536 - FRACTURES OF HIP & PELVIS W/O MCC",
+        "value": 19
+    },
+    {
+        "text": "811 - RED BLOOD CELL DISORDERS W MCC",
+        "value": 20
+    },
+    {
+        "text": "281 - ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE W CC",
+        "value": 21
+    },
+    {
+        "text": "314 - OTHER CIRCULATORY SYSTEM DIAGNOSES W MCC",
+        "value": 22
+    },
+    {
+        "text": "252 - OTHER VASCULAR PROCEDURES W MCC",
+        "value": 23
+    },
+    {
+        "text": "193 - SIMPLE PNEUMONIA & PLEURISY W MCC",
+        "value": 24
+    },
+    {
+        "text": "064 - INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION W MCC",
+        "value": 25
+    },
+    {
+        "text": "202 - BRONCHITIS & ASTHMA W CC/MCC",
+        "value": 26
+    },
+    {
+        "text": "282 - ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE W/O CC/MCC",
+        "value": 27
+    },
+    {
+        "text": "683 - RENAL FAILURE W CC",
+        "value": 28
+    },
+    {
+        "text": "948 - SIGNS & SYMPTOMS W/O MCC",
+        "value": 29
+    },
+    {
+        "text": "069 - TRANSIENT ISCHEMIA",
+        "value": 30
+    },
+    {
+        "text": "177 - RESPIRATORY INFECTIONS & INFLAMMATIONS W MCC",
+        "value": 31
+    },
+    {
+        "text": "378 - G.I. HEMORRHAGE W CC",
+        "value": 32
+    },
+    {
+        "text": "074 - CRANIAL & PERIPHERAL NERVE DISORDERS W/O MCC",
+        "value": 33
+    },
+    {
+        "text": "178 - RESPIRATORY INFECTIONS & INFLAMMATIONS W CC",
+        "value": 34
+    },
+    {
+        "text": "280 - ACUTE MYOCARDIAL INFARCTION, DISCHARGED ALIVE W MCC",
+        "value": 35
+    },
+    {
+        "text": "870 - SEPTICEMIA OR SEVERE SEPSIS W MV 96+ HOURS",
+        "value": 36
+    },
+    {
+        "text": "253 - OTHER VASCULAR PROCEDURES W CC",
+        "value": 37
+    },
+    {
+        "text": "303 - ATHEROSCLEROSIS W/O MCC",
+        "value": 38
+    },
+    {
+        "text": "301 - PERIPHERAL VASCULAR DISORDERS W/O CC/MCC",
+        "value": 39
+    },
+    {
+        "text": "313 - CHEST PAIN",
+        "value": 40
+    },
+    {
+        "text": "469 - MAJOR JOINT REPLACEMENT OR REATTACHMENT OF LOWER EXTREMITY W MCC",
+        "value": 41
+    },
+    {
+        "text": "238 - MAJOR CARDIOVASC PROCEDURES W/O MCC",
+        "value": 42
+    },
+    {
+        "text": "491 - BACK & NECK PROC EXC SPINAL FUSION W/O CC/MCC",
+        "value": 43
+    },
+    {
+        "text": "066 - INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION W/O CC/MCC",
+        "value": 44
+    },
+    {
+        "text": "194 - SIMPLE PNEUMONIA & PLEURISY W CC",
+        "value": 45
+    },
+    {
+        "text": "377 - G.I. HEMORRHAGE W MCC",
+        "value": 46
+    },
+    {
+        "text": "460 - SPINAL FUSION EXCEPT CERVICAL W/O MCC",
+        "value": 47
+    },
+    {
+        "text": "871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV 96+ HOURS W MCC",
+        "value": 48
+    },
+    {
+        "text": "244 - PERMANENT CARDIAC PACEMAKER IMPLANT W/O CC/MCC",
+        "value": 49
+    },
+    {
+        "text": "552 - MEDICAL BACK PROBLEMS W/O MCC",
+        "value": 50
+    },
+    {
+        "text": "391 - ESOPHAGITIS, GASTROENT & MISC DIGEST DISORDERS W MCC",
+        "value": 51
+    },
+    {
+        "text": "690 - KIDNEY & URINARY TRACT INFECTIONS W/O MCC",
+        "value": 52
+    },
+    {
+        "text": "439 - DISORDERS OF PANCREAS EXCEPT MALIGNANCY W CC",
+        "value": 53
+    },
+    {
+        "text": "308 - CARDIAC ARRHYTHMIA & CONDUCTION DISORDERS W MCC",
+        "value": 54
+    },
+    {
+        "text": "473 - CERVICAL SPINAL FUSION W/O CC/MCC",
+        "value": 55
+    },
+    {
+        "text": "191 - CHRONIC OBSTRUCTIVE PULMONARY DISEASE W CC",
+        "value": 56
+    },
+    {
+        "text": "379 - G.I. HEMORRHAGE W/O CC/MCC",
+        "value": 57
+    },
+    {
+        "text": "603 - CELLULITIS W/O MCC",
+        "value": 58
+    },
+    {
+        "text": "394 - OTHER DIGESTIVE SYSTEM DIAGNOSES W CC",
+        "value": 59
+    },
+    {
+        "text": "330 - MAJOR SMALL & LARGE BOWEL PROCEDURES W CC",
+        "value": 60
+    },
+    {
+        "text": "641 - MISC DISORDERS OF NUTRITION,METABOLISM,FLUIDS/ELECTROLYTES W/O MCC",
+        "value": 61
+    },
+    {
+        "text": "419 - LAPAROSCOPIC CHOLECYSTECTOMY W/O C.D.E. W/O CC/MCC",
+        "value": 62
+    },
+    {
+        "text": "189 - PULMONARY EDEMA & RESPIRATORY FAILURE",
+        "value": 63
+    },
+    {
+        "text": "885 - PSYCHOSES",
+        "value": 64
+    },
+    {
+        "text": "251 - PERC CARDIOVASC PROC W/O CORONARY ARTERY STENT W/O MCC",
+        "value": 65
+    },
+    {
+        "text": "640 - MISC DISORDERS OF NUTRITION,METABOLISM,FLUIDS/ELECTROLYTES W MCC",
+        "value": 66
+    },
+    {
+        "text": "812 - RED BLOOD CELL DISORDERS W/O MCC",
+        "value": 67
+    },
+    {
+        "text": "192 - CHRONIC OBSTRUCTIVE PULMONARY DISEASE W/O CC/MCC",
+        "value": 68
+    },
+    {
+        "text": "309 - CARDIAC ARRHYTHMIA & CONDUCTION DISORDERS W CC",
+        "value": 69
+    },
+    {
+        "text": "310 - CARDIAC ARRHYTHMIA & CONDUCTION DISORDERS W/O CC/MCC",
+        "value": 70
+    },
+    {
+        "text": "203 - BRONCHITIS & ASTHMA W/O CC/MCC",
+        "value": 71
+    },
+    {
+        "text": "292 - HEART FAILURE & SHOCK W CC",
+        "value": 72
+    },
+    {
+        "text": "329 - MAJOR SMALL & LARGE BOWEL PROCEDURES W MCC",
+        "value": 73
+    },
+    {
+        "text": "698 - OTHER KIDNEY & URINARY TRACT DIAGNOSES W MCC",
+        "value": 74
+    },
+    {
+        "text": "249 - PERC CARDIOVASC PROC W NON-DRUG-ELUTING STENT W/O MCC",
+        "value": 75
+    },
+    {
+        "text": "286 - CIRCULATORY DISORDERS EXCEPT AMI, W CARD CATH W MCC",
+        "value": 76
+    },
+    {
+        "text": "372 - MAJOR GASTROINTESTINAL DISORDERS & PERITONEAL INFECTIONS W CC",
+        "value": 77
+    },
+    {
+        "text": "190 - CHRONIC OBSTRUCTIVE PULMONARY DISEASE W MCC",
+        "value": 78
+    },
+    {
+        "text": "254 - OTHER VASCULAR PROCEDURES W/O CC/MCC",
+        "value": 79
+    },
+    {
+        "text": "853 - INFECTIOUS & PARASITIC DISEASES W O.R. PROCEDURE W MCC",
+        "value": 80
+    },
+    {
+        "text": "195 - SIMPLE PNEUMONIA & PLEURISY W/O CC/MCC",
+        "value": 81
+    },
+    {
+        "text": "300 - PERIPHERAL VASCULAR DISORDERS W CC",
+        "value": 82
+    },
+    {
+        "text": "039 - EXTRACRANIAL PROCEDURES W/O CC/MCC",
+        "value": 83
+    },
+    {
+        "text": "392 - ESOPHAGITIS, GASTROENT & MISC DIGEST DISORDERS W/O MCC",
+        "value": 84
+    },
+    {
+        "text": "312 - SYNCOPE & COLLAPSE",
+        "value": 85
+    },
+    {
+        "text": "872 - SEPTICEMIA OR SEVERE SEPSIS W/O MV 96+ HOURS W/O MCC",
+        "value": 86
+    },
+    {
+        "text": "917 - POISONING & TOXIC EFFECTS OF DRUGS W MCC",
+        "value": 87
+    },
+    {
+        "text": "207 - RESPIRATORY SYSTEM DIAGNOSIS W VENTILATOR SUPPORT 96+ HOURS",
+        "value": 88
+    },
+    {
+        "text": "482 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W/O CC/MCC",
+        "value": 89
+    },
+    {
+        "text": "638 - DIABETES W CC",
+        "value": 90
+    },
+    {
+        "text": "689 - KIDNEY & URINARY TRACT INFECTIONS W MCC",
+        "value": 91
+    },
+    {
+        "text": "418 - LAPAROSCOPIC CHOLECYSTECTOMY W/O C.D.E. W CC",
+        "value": 92
+    },
+    {
+        "text": "481 - HIP & FEMUR PROCEDURES EXCEPT MAJOR JOINT W CC",
+        "value": 93
+    },
+    {
+        "text": "208 - RESPIRATORY SYSTEM DIAGNOSIS W VENTILATOR SUPPORT <96 HOURS",
+        "value": 94
+    },
+    {
+        "text": "602 - CELLULITIS W MCC",
+        "value": 95
+    },
+    {
+        "text": "682 - RENAL FAILURE W MCC",
+        "value": 96
+    },
+    {
+        "text": "315 - OTHER CIRCULATORY SYSTEM DIAGNOSES W CC",
+        "value": 97
+    },
+    {
+        "text": "897 - ALCOHOL/DRUG ABUSE OR DEPENDENCE W/O REHABILITATION THERAPY W/O MCC",
+        "value": 98
+    },
+    {
+        "text": "101 - SEIZURES W/O MCC",
+        "value": 99
+    },
+    {
+        "text": "246 - PERC CARDIOVASC PROC W DRUG-ELUTING STENT W MCC OR 4+ VESSELS/STENTS",
+        "value": 100
+    }
+]
