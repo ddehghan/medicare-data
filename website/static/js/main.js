@@ -68,6 +68,9 @@ function DownloadDRGData(dataUrl, context) {
 
             DownloadDRGDataFinished();
 
+            $("#wait-icon").css('display', 'none');
+
+
         });
 
     } else if (MEDICARE.DRGData.download == "done") {

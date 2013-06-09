@@ -178,7 +178,11 @@ body {
 /*.multi-level-menu img{*/
     /*float: left;*/
 /*}*/
-
+#wait-icon{
+    display: none;
+    color: red;
+    float: left;
+}
 
 
 
