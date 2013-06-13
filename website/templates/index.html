@@ -221,7 +221,7 @@
         <div class="span12">
 
             <div class="demo-3">
-                <div id="dl-menu" class="dl-menuwrapper">
+                <div class="drg-menu dl-menuwrapper">
                     <button class="dl-trigger">Open Menu</button>
                     <ul class="dl-menu">
                         {% include "drg_options.html" %}
@@ -299,7 +299,7 @@
         };
 
         $(function () {
-            $('#dl-menu').dlmenu({
+            $('.dl-menu').dlmenu({
                 animationClasses: { classin: 'dl-animate-in-5', classout: 'dl-animate-out-5' }
             });
         });
