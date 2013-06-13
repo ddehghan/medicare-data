@@ -218,48 +218,54 @@ var costVsQuality = function (data, chart_position, col_name) {
 
 MEDICARE.downloadAndPaint = function (type, chart_position, dataUrl) {
 
-    if (MEDICARE.data === undefined) {
-        MEDICARE.data = null;
+    if (MEDICARE.DRGData.data === undefined) {
+        MEDICARE.DRGData.data = null;
 
         d3.csv(dataUrl, function (error, data) {
-            MEDICARE.data = data;
+            MEDICARE.DRGData.data = data;
 
             MEDICARE.drawRequests.push(function () {
-                type(MEDICARE.data, chart_position);
+                type(MEDICARE.DRGData.data, chart_position);
             });
 
             while (MEDICARE.drawRequests.length > 0) {
                 MEDICARE.drawRequests.pop()();
             }
+
+            $("#wait-icon").css('display', 'none');
+
         });
     }
     else {
         MEDICARE.drawRequests.push(function () {
-            type(MEDICARE.data, chart_position);
+            type(MEDICARE.DRGData.data, chart_position);
         });
     }
 };
 
-MEDICARE.downloadAndPaint2 = function (type, chart_position, dataUrl, col_name) {
+MEDICARE.downloadAndPaintQuality = function (type, chart_position, dataUrl, col_name) {
 
-    if (MEDICARE.data === undefined) {
-        MEDICARE.data = null;
+    if (MEDICARE.DRGData.data === undefined) {
+        MEDICARE.DRGData.data = null;
 
         d3.csv(dataUrl, function (error, data) {
-            MEDICARE.data = data;
+            MEDICARE.DRGData.data = data;
 
             MEDICARE.drawRequests.push(function () {
-                type(MEDICARE.data, chart_position, col_name);
+                type(MEDICARE.DRGData.data, chart_position, col_name);
             });
 
             while (MEDICARE.drawRequests.length > 0) {
                 MEDICARE.drawRequests.pop()();
             }
+
+            $("#wait-icon").css('display', 'none');
+
         });
     }
     else {
         MEDICARE.drawRequests.push(function () {
-            type(MEDICARE.data, chart_position, col_name);
+            type(MEDICARE.DRGData.data, chart_position, col_name);
         });
     }
 };

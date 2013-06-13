@@ -230,7 +230,7 @@
 
         MYCHART.init = function (dataUrl) {
             MEDICARE.downloadAndPaint(drawDataPointsXY, '#chart3', dataUrl);
-            MEDICARE.downloadAndPaint2(costVsQuality, '#chart4', dataUrl, 'AcquiredInfect');
+            MEDICARE.downloadAndPaintQuality(costVsQuality, '#chart4', dataUrl, 'AcquiredInfect');
         };
 
         $(function () {
