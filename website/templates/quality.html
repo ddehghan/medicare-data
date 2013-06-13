@@ -88,7 +88,10 @@
     <script src="{{ STATIC_URL }}js/libs/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/topojson.v0.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/jquery.tipsy.js"></script>
+    <script src="{{ STATIC_URL }}js/libs/modernizr.custom.js"></script>
+    <script src="{{ STATIC_URL }}js/libs/jquery.dlmenu.js"></script>
     <link href="{{ STATIC_URL }}css/tipsy.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/component.css" rel="stylesheet">
     {#    <script src="{{ STATIC_URL }}js/libs/ember-1.0.0-rc.4.js"></script>#}
 
 
@@ -111,15 +114,20 @@
     </div>
 
     <div class="big-top-margin row-fluid">
-        <div class="span8">
+        <div class="span12">
 
-            <h3 class="section-title">Select a procedure:</h3>
-            <select id="drug_name" onChange="MYCHART.paint();">
-            </select>
-        </div>
+            <div class="demo-3">
+                <div id="dl-menu" class="dl-menuwrapper">
+                    <button class="dl-trigger">Open Menu</button>
+                    <ul class="dl-menu">
+                        {% include "drg_options.html" %}
+                    </ul>
+                    <img src="{{ STATIC_URL }}images/clickhere.png" alt="click here">
+                </div>
+                <!-- /dl-menuwrapper -->
+                <div id="wait-icon">Wait please!</div>
+            </div>
 
-        <div class="span3 visible-desktop">
-            <img class="big-arrow" src="{{ STATIC_URL }}images/arrow_yellow.png">
         </div>
     </div>
 
@@ -130,8 +138,8 @@
                 <div class="span12">
                     <div class="chart-title">
 
-                    <h4>Bills vs Reimbursements</h4>
-                    {#                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>#}
+                        <h4>Bills vs Reimbursements</h4>
+                        {#                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>#}
 
                     </div>
                 </div>
@@ -172,8 +180,8 @@
                 <div class="span12">
                     <div class="chart-title">
 
-                    <h4>Cost vs Quality</h4>
-                    {#                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>#}
+                        <h4>Cost vs Quality</h4>
+                        {#                    <strong>Process name: </strong>&nbsp;&nbsp;&nbsp;<span class="selected_drg"></span>#}
 
                     </div>
                 </div>
@@ -225,21 +233,26 @@
             MEDICARE.downloadAndPaint2(costVsQuality, '#chart4', dataUrl, 'AcquiredInfect');
         };
 
-    MEDICARE.LoadOptions(MYCHART.init);
+        $(function () {
+            $('#dl-menu').dlmenu({
+                animationClasses: { classin: 'dl-animate-in-5', classout: 'dl-animate-out-5' }
+            });
+        });
+
 
     </script>
 
-{#    <script type="text/javascript">#}
-{#        var switchTo5x = false;#}
-{#    </script>#}
-{#    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>#}
-{#    <script type="text/javascript">#}
-{#        stLight.options({#}
-{#            publisher: "6d8da8ae-b61c-486f-a29b-e4c32b2e3259",#}
-{#            doNotHash: false,#}
-{#            doNotCopy: false,#}
-{#            hashAddressBar: false#}
-{#        });#}
-{#    </script>#}
+    {#    <script type="text/javascript">#}
+    {#        var switchTo5x = false;#}
+    {#    </script>#}
+    {#    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>#}
+    {#    <script type="text/javascript">#}
+    {#        stLight.options({#}
+    {#            publisher: "6d8da8ae-b61c-486f-a29b-e4c32b2e3259",#}
+    {#            doNotHash: false,#}
+    {#            doNotCopy: false,#}
+    {#            hashAddressBar: false#}
+    {#        });#}
+    {#    </script>#}
 
 {% endblock %}

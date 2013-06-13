@@ -88,7 +88,10 @@
     <script src="{{ STATIC_URL }}js/libs/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/topojson.v0.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/jquery.tipsy.js"></script>
+    <script src="{{ STATIC_URL }}js/libs/modernizr.custom.js"></script>
+    <script src="{{ STATIC_URL }}js/libs/jquery.dlmenu.js"></script>
     <link href="{{ STATIC_URL }}css/tipsy.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/component.css" rel="stylesheet">
     {#    <script src="{{ STATIC_URL }}js/libs/ember-1.0.0-rc.4.js"></script>#}
 
 
@@ -111,15 +114,20 @@
     </div>
 
     <div class="big-top-margin row-fluid">
-        <div class="span8">
+        <div class="span12">
 
-            <h3 class="section-title">Select a procedure:</h3>
-            <select id="drug_name" onChange="MYCHART.paint();">
-            </select>
-        </div>
+            <div class="demo-3">
+                <div id="dl-menu" class="dl-menuwrapper">
+                    <button class="dl-trigger">Open Menu</button>
+                    <ul class="dl-menu">
+                        {% include "drg_options.html" %}
+                    </ul>
+                    <img src="{{ STATIC_URL }}images/clickhere.png" alt="click here">
+                </div>
+                <!-- /dl-menuwrapper -->
+                <div id="wait-icon">Wait please!</div>
+            </div>
 
-        <div class="span3 visible-desktop">
-            <img class="big-arrow" src="{{ STATIC_URL }}images/arrow_yellow.png">
         </div>
     </div>
 
@@ -225,7 +233,11 @@
             MEDICARE.draw_chart('#chart2', dataUrl, 'size_pay');
         };
 
-        MEDICARE.LoadOptions(MYCHART.init);
+        $(function () {
+            $('#dl-menu').dlmenu({
+                animationClasses: { classin: 'dl-animate-in-5', classout: 'dl-animate-out-5' }
+            });
+        });
 
     </script>
 
