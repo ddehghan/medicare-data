@@ -7,83 +7,7 @@
 {% block title %}{{ the_title }}{% endblock %}
 
 {% block extra_css %}
-    {% verbatim %}
-    <script id="tooltip-template" type="text/x-handlebars-template">
-        <div class='hover-text'>
-            <div class='hospital-name'>{{ name }}</div>
-            <div class="pull-left">
-                <div class='hover-label'>Hospital Bill:</div>
-                <div class='hover-data'> {{ charge }}</div>
-            </div>
-            <div class="pull-right">
-                <div class='hover-label'>Medicare<br>reimbursement:</div>
-                <div class='hover-data'> {{ pay }}</div>
-            </div>
-            <div class="hover-row">
-                <table>
-                    <thead>
-                    <td></td>
-                    <td><span class="pull-left">Below</span><span>Avg</span><span class="pull-right">Above</span></td>
-                    </thead>
-                    <tr>
-                        <td class="lcol">Acquired Infection</td>
-                        <td>
-                            <div class="progress-bar-background">
-                                <div class="progress-bar" style="width: {{ AcquiredInfect }}%;"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="lcol">Acquired Conditions</td>
-                        <td>
-                            <div style="height: 5px; background-color: gray; width: 200px;">
-                                <div class="progress_bar"
-                                     style="height: 5px; background-color: red; width: {{ AcquiredInfect }}%;"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="lcol">Patient Safety</td>
-                        <td>
-                            <div style="height: 5px; background-color: gray; width: 200px;">
-                                <div id="progress_bar"
-                                     style="height: 5px; background-color: red; width: {{ PatientSafetySummary }}%;"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </script>
-
-    <script id="hlist-template" type="text/x-handlebars-template">
-        {{#if hospitals }}
-        <div class="hlist blue-box">
-
-            <h4 class="section-title min-max-box-header">Nearby Hospitals:</h4>
-
-            <p>Hospitals within the 100 miles that charge the most or the least</p>
-
-            <div class='min-max-box'>
-                {{#list hospitals}}
-                <div class="h-row"
-                     onmouseover="MEDICARE.draw_highlight('{{ this.chartName }}', {{ this.lat }}, {{ this.lon }});">
-                    <div class='hname'>{{this.name}}</div>
-                    <div class="h-numbers">
-                        Charge: <span class='hbill'>{{this.charge}}</span>
-                        <br>
-                        Reimbursement: <span class='hbill'>{{this.pay}}</span>
-                    </div>
-                </div>
-                {{/list}}
-            </div>
-        </div>
-
-        {{/if}}
-    </script>
-
-
-    {% endverbatim %}
+    {% include "fragments/mustash_templates1.html" %}
 
     <script src="{{ STATIC_URL }}js/libs/d3.v3.min.js"></script>
     <script src="{{ STATIC_URL }}js/libs/topojson.v0.min.js"></script>
@@ -158,13 +82,18 @@
                             </div>
                             <div class="span3">
                                 <div id="h-list3">
-                                    <div class="zipcode-selector">
+                                    <div class="zipcode-selector blue-box">
+
+                                        <h4 class="section-title min-max-box-header">Nearby Hospitals:</h4>
+
+                                        <p>Search hospitals by Zip code:</p>
+
                                         <input class="input-zipcode" type="text" value="98116"/>
                                         <input type="button" class="btn-info" value="Search"
                                                onclick="MEDICARE.lookupZip('#h-list3', '#chart4');"/>
-                                    </div>
 
-                                    <div class="hospital-list"></div>
+                                        <div class="hospital-list"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

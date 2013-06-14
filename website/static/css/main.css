@@ -143,7 +143,6 @@ body {
 }
 
 .min-max-box {
-    margin-top: 20px;
     overflow-y: scroll;
     height: 450px;
 }
