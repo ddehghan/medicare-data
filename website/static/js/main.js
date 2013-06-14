@@ -22,9 +22,6 @@ function DownloadMap(context) {
 
             var defs = context.svg.append("defs");
             var group = defs.append("g");
-//            group.attr("viewBox", "0, 0, 500, 300");
-//            group.attr("preserveAspectRatio", "xMidYMid meet");
-            //            group.attr('transform', context.scale);
             group.attr('id', 'usmap-svg');
 
             group.selectAll('path')
@@ -84,7 +81,6 @@ function DownloadDRGDataFinished() {
         var projection = d3.geo.albersUsa();
 
         var group = context.svg.select(".data-group");
-//        group.attr('transform', context.scale);
 
         group.selectAll("circle")
             .data(MEDICARE.DRGData.data)
@@ -116,18 +112,13 @@ function DownloadDRGDataFinished() {
 MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var centered;
 
-    var scale = 'scale(.9, .9)';
-
-
-//    $(chart_position + " svg").remove();
-
     var svg = d3.select(chart_position + " svg");
 
     var projection = d3.geo.albersUsa();
     var path = d3.geo.path().projection(projection);
 
-    DownloadMap({"svg": svg, "scale": scale});
-    DownloadDRGData(dataUrl, {"svg": svg, "col_name": col_name, "scale": scale});
+    DownloadMap({"svg": svg});
+    DownloadDRGData(dataUrl, {"svg": svg, "col_name": col_name});
 };
 
 
@@ -142,8 +133,6 @@ MEDICARE.draw_highlight = function (chart_position, lat, lon) {
     var svg = d3.select(chart_position).select("svg");
     group = svg.append("g");
     var projection = d3.geo.albersUsa();
-
-    group.attr('transform', 'scale(.9, .9)');
 
     group.append("circle")
         .attr("class", "highlighted")
