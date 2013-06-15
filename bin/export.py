@@ -78,11 +78,12 @@ def write_csv(drg, file_name):
             if not ac:
                 ac = [0] * 9
 
-            f.write("%.2f,%.2f,%s,%s,%s,%s,%.2f,%.2f,%.2f,%s\n" %
+            f.write("%.2f,%.2f,%s,%s,%s,%s,%s,%.2f,%.2f,%.2f,%s\n" %
                     (scale(c.avg_charges, (min_charge, max_charge), (Decimal(2), Decimal(30))),
                      scale(c.avg_total_payments, (min_pay, max_pay), (Decimal(2), Decimal(30))),
                      c.hospital.lat,
                      c.hospital.lon,
+                     c.hospital.state,
                      c.avg_charges,
                      c.avg_total_payments,
                      ac[0], ac[1], ac[2],
@@ -100,16 +101,25 @@ def scale(val, src, dst):
     return ((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0]
 
 
-def export_data():
-    unique_drugs = Drg.objects.all()
-    write_options(unique_drugs, 'drg_options')
+def export_hospital_list(my_list=None):
+    if my_list:
+        for drg in Drg.objects.filter(drg_id__in=my_list):
+            write_csv(drg, drg.drg_id)
 
-    # for drg in unique_drugs:
-    #     write_csv(drg, drg.drg_id)
-    # break
+    else:
+        for drg in Drg.objects.all():
+            write_csv(drg, drg.drg_id)
+
+    return
+
+
+def export_categories():
+    write_options(Drg.objects.all(), 'drg_options')
 
     return
 
 
 if __name__ == '__main__':
-    export_data()
+    # export_categories()
+    # export_hospital_list(my_list=[39])
+    export_hospital_list()
