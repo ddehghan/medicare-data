@@ -187,14 +187,12 @@
                         <div class="row-fluid">
                             <div class="span9">
                                 <div class="layout-slider">
-                                    <label for="amount">Price range:</label>
+                                    <div>Price range:</div>
                                     <input type="text" id="amount"
-                                           style="border: 0; color: #f6931f; font-weight: bold; width:200px"/>
+                                     style="color: #f6931f; font-weight: bold; width:200px"/>
 
                                     <div id="slider-range" style="width:500px"></div>
                                 </div>
-                                <input type="button" class="btn-info" value="Apply"
-                                       onclick="MEDICARE.get_data('291', 'Heart Failure-2');"/>
 
                                 <div id="chart1">
                                     <svg class="chart-svg" viewBox="0 0 1000 500" preserveAspectRatio="YMid">
@@ -245,6 +243,9 @@
             values: [ 100, 150000 ],
             slide: function (event, ui) {
                 $("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
+            },
+            change: function (event, ui) {
+                MYCHART.paint();
             }
         });
         $("#amount").val("$" + $("#slider-range").slider("values", 0) +
@@ -260,7 +261,8 @@
             });
         });
 
-        MEDICARE.get_data('291', 'Heart Failure-2');
+        MYCHART.paintParameters = ['291', 'Heart Failure-2'];
+        MYCHART.paint();
 
     </script>
 

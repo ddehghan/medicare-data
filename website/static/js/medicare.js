@@ -1,4 +1,4 @@
-var MYCHART = {'init': null, 'paint': null};
+var MYCHART = {'init': null, 'paint': null, 'paintParameters': null};
 
 
 MEDICARE.get_data = function (drg_num, drg_name) {
@@ -12,4 +12,8 @@ MEDICARE.get_data = function (drg_num, drg_name) {
     var data_rul = '/static/data/' + drg_num + '.csv';
 
     MYCHART.init(data_rul);
+};
+
+MYCHART.paint = function() {
+        MEDICARE.get_data(MYCHART.paintParameters[0],MYCHART.paintParameters[1]);
 };
