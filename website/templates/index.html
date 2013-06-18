@@ -16,9 +16,13 @@
     <script src="{{ STATIC_URL }}js/libs/jquery.tipsy.js"></script>
     <script src="{{ STATIC_URL }}js/libs/modernizr.custom.js"></script>
     <script src="{{ STATIC_URL }}js/libs/jquery.dlmenu.js"></script>
+
     <link href="{{ STATIC_URL }}css/tipsy.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/component.css" rel="stylesheet">
     {#    <script src="{{ STATIC_URL }}js/libs/ember-1.0.0-rc.4.js"></script>#}
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 
 {% endblock %}
@@ -182,6 +186,16 @@
                     <div class="chart-body">
                         <div class="row-fluid">
                             <div class="span9">
+                                <div class="layout-slider">
+                                    <label for="amount">Price range:</label>
+                                    <input type="text" id="amount"
+                                           style="border: 0; color: #f6931f; font-weight: bold; width:200px"/>
+
+                                    <div id="slider-range" style="width:500px"></div>
+                                </div>
+                                <input type="button" class="btn-info" value="Apply"
+                                       onclick="MEDICARE.get_data('291', 'Heart Failure-2');"/>
+
                                 <div id="chart1">
                                     <svg class="chart-svg" viewBox="0 0 1000 500" preserveAspectRatio="YMid">
                                         <g class="map-group"></g>
@@ -224,6 +238,17 @@
     <script src="{{ STATIC_URL }}js/plot.js"></script>
 
     <script type="text/javascript">
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 200000,
+            values: [ 100, 150000 ],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
+            }
+        });
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1));
 
         MYCHART.init = function (dataUrl) {
             MEDICARE.draw_chart('#chart1', dataUrl, 'size_charge');

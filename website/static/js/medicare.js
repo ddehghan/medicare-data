@@ -10,6 +10,6 @@ MEDICARE.get_data = function (drg_num, drg_name) {
     $("#wait-icon").css('display', 'inline');
 
     var data_rul = '/static/data/' + drg_num + '.csv';
-    MYCHART.init(data_rul);
 
+    MYCHART.init(data_rul);
 };

@@ -86,6 +86,9 @@ function DownloadDRGDataFinished() {
             .data(MEDICARE.DRGData.data)
             .enter()
             .append("circle")
+            .filter(function (d) {
+                return d.charge < context.max;
+            })
             .attr("cx", function (d) {
                 return projection([d.lon, d.lat])[0];
             })
@@ -118,7 +121,14 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
     var path = d3.geo.path().projection(projection);
 
     DownloadMap({"svg": svg});
-    DownloadDRGData(dataUrl, {"svg": svg, "col_name": col_name});
+
+    var min = $('#slider-range').slider('values', 0);
+    var max = $('#slider-range').slider('values', 1);
+
+    console.log(min);
+    console.log(max);
+
+    DownloadDRGData(dataUrl, {"svg": svg, "col_name": col_name, "min": min, "max": max});
 };
 
 
