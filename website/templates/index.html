@@ -187,11 +187,11 @@
                         <div class="row-fluid">
                             <div class="span9">
                                 <div class="layout-slider">
-                                    <div>Price range:</div>
-                                    <input type="text" id="amount"
-                                     style="color: #f6931f; font-weight: bold; width:200px"/>
-
-                                    <div id="slider-range" style="width:500px"></div>
+                                    <div class="price-slider">
+                                        <div class="price-slider-title">Price range:</div>
+                                        <div class="price-slider-price" id="amount"></div>
+                                        <div class="price-slider-range" id="slider-range"></div>
+                                    </div>
                                 </div>
 
                                 <div id="chart1">
@@ -242,13 +242,13 @@
             max: 200000,
             values: [ 100, 150000 ],
             slide: function (event, ui) {
-                $("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
+                $("#amount").text("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
             },
             change: function (event, ui) {
                 MYCHART.paint();
             }
         });
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+        $("#amount").text("$" + $("#slider-range").slider("values", 0) +
                 " - $" + $("#slider-range").slider("values", 1));
 
         MYCHART.init = function (dataUrl) {

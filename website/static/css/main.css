@@ -323,6 +323,22 @@ body {
     clear: both;
 }
 
+.price-slider-title {
+    display: inline-block;
+}
+
+.price-slider-price {
+    display: inline-block;
+    color: #f6931f;
+    font-weight: bold;
+    width: 200px;
+}
+
+.price-slider-range {
+    display: inline-block;
+    width: 350px;
+}
+
 /* ------ SVG style ------------------------------------------  */
 
 .axis path,
