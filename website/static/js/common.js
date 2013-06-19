@@ -101,7 +101,7 @@ MEDICARE.toolTip = function(){
             var d = this.__data__;
 
             var data = {
-                'name': d.name,
+                'name': d.name + ", " + d.state,
                 'charge': MEDICARE.formatMoney(d.charge, 0, '.', ','),
                 'pay': MEDICARE.formatMoney(d.pay, 0, '.', ','),
                 'AcquiredInfect': d.AcquiredInfect * 100,
