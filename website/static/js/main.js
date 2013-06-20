@@ -1,11 +1,9 @@
 //    http://www.schneidy.com/Tutorials/MapsTutorial.html
 
-
 MEDICARE.data = undefined;
 MEDICARE.USMap = {"download": "not-started", "observers": []};
 MEDICARE.DRGData = {"download": "not-started", "observers": [], "data": undefined};
 MEDICARE.drawRequests = [];
-
 
 function DownloadMap(context) {
 
@@ -157,7 +155,7 @@ MEDICARE.list_hospitals = function (list_position, chart_position, Lat, Lon) {
 
     _.each(MEDICARE.DRGData.data, function (num) {
         var d = MEDICARE.latLonDistance(Lat, Lon, num.lat, num.lon, "N");
-        if (d < 100) {
+        if (d < 100) {                                                        // 100 Miles of distance
             result.push(MEDICARE.ShallowCopy(num));
         }
     });
