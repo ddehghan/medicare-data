@@ -1,4 +1,4 @@
-angular.module('photoApp').factory('loadDataService', function ($rootScope, $http) {
+angular.module('medicareApp').factory('loadDataService', function ($rootScope, $http) {
     var loadDataService = {};
 
     loadDataService.data = {};

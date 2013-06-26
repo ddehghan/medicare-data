@@ -80,12 +80,44 @@ function DownloadDRGDataFinished() {
 
         var group = context.svg.select(".data-group");
 
+        if (MEDICARE.DRGData.delta === undefined) {
+
+            MEDICARE.DRGData.max = 0;
+            MEDICARE.DRGData.min = 10000000;
+
+            _.each(MEDICARE.DRGData.data, function (num) {
+                MEDICARE.DRGData.min = Math.min(MEDICARE.DRGData.min, num[context.col_name]);
+                MEDICARE.DRGData.max = Math.max(MEDICARE.DRGData.min, num[context.col_name]);
+            });
+
+            MEDICARE.DRGData.delta = MEDICARE.DRGData.max - MEDICARE.DRGData.min;
+
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: MEDICARE.DRGData.max,
+                values: [ MEDICARE.DRGData.min, MEDICARE.DRGData.max ],
+                slide: function (event, ui) {
+                    $("#amount").text("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
+                },
+                change: function (event, ui) {
+                    MYCHART.paint();
+                }
+            });
+            $("#amount").text("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1));
+
+        }
+
+        var min = $('#slider-range').slider('values', 0);
+        var max = $('#slider-range').slider('values', 1);
+
         group.selectAll("circle")
             .data(MEDICARE.DRGData.data)
             .enter()
             .append("circle")
             .filter(function (d) {
-                return (d.charge < context.max) && (d.charge > context.min);
+                return (d.charge < max) && (d.charge > min);
             })
             .attr("cx", function (d) {
                 return projection([d.lon, d.lat])[0];
@@ -94,7 +126,10 @@ function DownloadDRGDataFinished() {
                 return projection([d.lon, d.lat])[1];
             })
             .attr("r", function (d) {
-                return d[context.col_name];
+                return ((d[context.col_name] - MEDICARE.DRGData.min) / MEDICARE.DRGData.delta) * 10 + 2;
+
+
+//                return d[context.col_name] * 15.0 / MEDICARE.DRGData.delta;
             })
             .style("fill", "red")
             .style("opacity", .5)
@@ -120,10 +155,7 @@ MEDICARE.draw_chart = function (chart_position, dataUrl, col_name) {
 
     DownloadMap({"svg": svg});
 
-    var min = $('#slider-range').slider('values', 0);
-    var max = $('#slider-range').slider('values', 1);
-
-    DownloadDRGData(dataUrl, {"svg": svg, "col_name": col_name, "min": min, "max": max});
+    DownloadDRGData(dataUrl, {"svg": svg, "col_name": col_name});
 };
 
 
