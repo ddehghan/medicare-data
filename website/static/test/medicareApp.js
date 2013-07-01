@@ -41,7 +41,7 @@ myApp.config(function ($routeProvider) {
     var urlBase = '/static/test/partials/';
 
     $routeProvider
-        .when('/1',
+        .when('/quality',
         {
             controller: 'MainController',
             templateUrl: urlBase + '1.html'

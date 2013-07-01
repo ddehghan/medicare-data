@@ -3,17 +3,9 @@
 
 <head lang="en">
     <meta charset="utf-8">
-    <title>Photo App</title>
+    <title>Medicent.org</title>
     <link rel="stylesheet" href="dark-html-theme.css" type="text/css"/>
     <link rel="stylesheet" href="photo-app.css" type="text/css"/>
-
-    <script type="text/javascript">
-        function toTitleCase(str) {
-            return str.replace(/\w\S*/g, function (txt) {
-                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-            });
-        }
-    </script>
 
     <script src="../js/libs/jquery-1.10.1.min.js"></script>
     <script src="../js/libs/underscore-min.js"></script>
@@ -21,8 +13,8 @@
     <script src="../js/libs/angular-1.0.7.min.js"></script>
 
 
-    <script src="MainController.js"></script>
-    <script src="photoApp.js"></script>
+    <script src="mainController.js"></script>
+    <script src="medicareApp.js"></script>
     <script src="photoSearchService.js"></script>
 
 </head>
@@ -37,8 +29,7 @@
         <span class="search-message">Filtered by {{ filter.searchKeyword }} and {{ filter.price }}</span>
     </form>
 
-    <a href="#/1">1111</a><br>
-    <a href="#/2">2222</a>
+    <a href="#/quality">Hospital list</a><br>
 
     <div ng-view=""></div>
 
