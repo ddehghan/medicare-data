@@ -51,7 +51,7 @@ def write_options(drgs, file_name):
 def write_csv(drg, file_name):
     with open(os.path.join(DATA_ROOT, '%s.csv' % file_name), 'wb') as f:
         f.write(
-            "size_charge,size_pay,lat,lon,charge,pay,AcquiredInfect,AcquiredConditions,PatientSafetySummary,name\n")
+            "size_charge,size_pay,lat,lon,state,charge,pay,AcquiredInfect,AcquiredConditions,PatientSafetySummary,name\n")
 
         min_charge = 10000000
         max_charge = 0
