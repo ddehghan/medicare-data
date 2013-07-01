@@ -6,6 +6,7 @@
     <title>Medicent.org</title>
     <link rel="stylesheet" href="dark-html-theme.css" type="text/css"/>
     <link rel="stylesheet" href="photo-app.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css"/>
 
     <script src="../js/libs/jquery-1.10.1.min.js"></script>
     <script src="../js/libs/underscore-min.js"></script>
@@ -15,7 +16,7 @@
 
     <script src="mainController.js"></script>
     <script src="medicareApp.js"></script>
-    <script src="photoSearchService.js"></script>
+    <script src="dataLoadService.js"></script>
 
 </head>
 
@@ -24,12 +25,12 @@
 <div ng-controller="MainController">
     <form class="search-field" ng-submit="filterByPrice()">
         Name: <input type="text" ng-model="filter.searchKeyword">
-        Price: <input type="text" ng-model="filter.price">
+        <!-- Price: <input type="text" ng-model="filter.price"> -->
         <input type="submit" value="Search">
-        <span class="search-message">Filtered by {{ filter.searchKeyword }} and {{ filter.price }}</span>
+        <!-- <span class="search-message">Filtered by {{ filter.searchKeyword }} and {{ filter.price }}</span> -->
     </form>
 
-    <a href="#/quality">Hospital list</a><br>
+    <!-- <a href="#/quality">Hospital list</a><br> -->
 
     <div ng-view=""></div>
 

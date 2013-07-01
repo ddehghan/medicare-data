@@ -44,7 +44,7 @@ myApp.config(function ($routeProvider) {
         .when('/quality',
         {
             controller: 'MainController',
-            templateUrl: urlBase + '1.html'
+            templateUrl: urlBase + 'quality.html'
         })
         //Define a route that has a route parameter in it (:customerID)
         .when('/2',
