@@ -99,21 +99,17 @@ def write_csv(drg, file_name):
 
 
 def round_num(amount):
-
-    roundedAmount = amount
     if amount >= 0:
         if amount % 1000 < 500:
-            roundedAmount = (amount - (amount % 500))
+            return amount - (amount % 500)
         else:
-            roundedAmount = (amount - (amount % 500) + 500)
+            return amount - (amount % 500) + 500
 
     else:
         if -amount % 1000 < 500:
-            roundedAmount = (-amount - (-amount % 500))
+            return -amount - (-amount % 500)
         else:
-            roundedAmount = (-amount - (-amount % 500) + 500)
-
-    return roundedAmount
+            return-amount - (-amount % 500) + 500
 
 
 def scale(val, src, dst):
@@ -143,5 +139,5 @@ def export_categories():
 
 if __name__ == '__main__':
     # export_categories()
-    export_hospital_list(my_list=[39])
-    # export_hospital_list()
+    # export_hospital_list(my_list=[39])
+    export_hospital_list()
