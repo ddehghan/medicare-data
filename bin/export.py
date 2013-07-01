@@ -78,7 +78,9 @@ def write_csv(drg, file_name):
             if not ac:
                 ac = [0] * 9
 
-            f.write("%.2f,%.2f,%s,%s,%s,%s,%s,%.2f,%.2f,%.2f,%s\n" %
+            hospt_name = string.replace(c.hospital.name, ',', '').title()  # escape the ','
+
+            f.write("%.2f,%.2f,%s,%s,%s,%s,%s,%d,%d,%d,%s\n" %
                     (scale(c.avg_charges, (min_charge, max_charge), (Decimal(2), Decimal(30))),
                      scale(c.avg_total_payments, (min_pay, max_pay), (Decimal(2), Decimal(30))),
                      c.hospital.lat,
@@ -86,8 +88,10 @@ def write_csv(drg, file_name):
                      c.hospital.state,
                      c.avg_charges,
                      c.avg_total_payments,
-                     ac[0], ac[1], ac[2],
-                     string.replace(c.hospital.name, ',', '')))  # escape the ','
+                     ac[0] * 100,
+                     ac[1] * 100,
+                     ac[2] * 100,
+                     hospt_name))
 
         hospital_data.disconnect()
 
