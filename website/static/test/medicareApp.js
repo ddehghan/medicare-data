@@ -7,26 +7,10 @@ myApp.filter('noFractionRoundedCurrency',
             var currencyFilter = filter('currency');
             var formats = locale.NUMBER_FORMATS;
             return function (amount, currencySymbol) {
-                var roundedAmount;
-                if (amount >= 0) {
-                    if (amount % 1000 < 500) {
-                        roundedAmount = (amount - (amount % 500));
-                    } else {
-                        roundedAmount = (amount - (amount % 500) + 500);
-                    }
-
-                }
-                else {
-                    if (-amount % 1000 < 500) {
-                        roundedAmount = (-amount - (-amount % 500));
-                    } else {
-                        roundedAmount = (-amount - (-amount % 500) + 500);
-                    }
-                }
-                var value = currencyFilter(roundedAmount, currencySymbol);
+                var value = currencyFilter(amount, currencySymbol);
                 var sep = value.indexOf(formats.DECIMAL_SEP);
 
-                if (roundedAmount >= 0) {
+                if (amount >= 0) {
                     return value.substring(0, sep);
                 }
                 return value.substring(0, sep) + ')';
