@@ -1,5 +1,10 @@
-<ul>
-    <li ng-repeat="drg in data.drgs | filter:filter.searchKeyword">
-        <div>{{ drg.name }} {{ drg.charge  | noFractionRoundedCurrency }}</div>
-    </li>
-</ul>
+<table>
+    <tr ng-repeat="drg in data.drgs | filter:filter.searchKeyword">
+        <td>{{ drg.name }}</td>
+        <td>{{ drg.charge| noFractionRoundedCurrency }}</td>
+        <td>{{ drg.pay| noFractionRoundedCurrency }}</td>
+        <td>{{ drg.AcquiredInfect }}</td>
+        <td>{{ drg.AcquiredConditions }}</td>
+        <td>{{ drg.PatientSafetySummary }}</td>
+    </tr>
+</table>

@@ -30,18 +30,17 @@
 <body ng-app="medicareApp">
 
 <div ng-controller="MainController">
-    <form class="search-field" ng-submit="filterByState()">
-        <input type="text" ng-model="filter.searchKeyword">
-        <input type="submit" value="Filter">
-        <span class="search-message">photos of {{ filter.searchKeyword }}</span>
+    <form class="search-field" ng-submit="filterByPrice()">
+        Name: <input type="text" ng-model="filter.searchKeyword">
+        Price: <input type="text" ng-model="filter.price">
+        <input type="submit" value="Search">
+        <span class="search-message">Filtered by {{ filter.searchKeyword }} and {{ filter.price }}</span>
     </form>
 
     <a href="#/1">1111</a><br>
     <a href="#/2">2222</a>
 
-
     <div ng-view=""></div>
-
 
 </div>
 
