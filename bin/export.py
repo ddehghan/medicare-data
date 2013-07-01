@@ -80,14 +80,14 @@ def write_csv(drg, file_name):
 
             hospt_name = string.replace(c.hospital.name, ',', '').title()  # escape the ','
 
-            f.write("%.2f,%.2f,%s,%s,%s,%s,%s,%d,%d,%d,%s\n" %
+            f.write("%.2f,%.2f,%s,%s,%s,%d,%d,%d,%d,%d,%s\n" %
                     (scale(c.avg_charges, (min_charge, max_charge), (Decimal(2), Decimal(30))),
                      scale(c.avg_total_payments, (min_pay, max_pay), (Decimal(2), Decimal(30))),
                      c.hospital.lat,
                      c.hospital.lon,
                      c.hospital.state,
-                     c.avg_charges,
-                     c.avg_total_payments,
+                     round_num(c.avg_charges),
+                     round_num(c.avg_total_payments),
                      ac[0] * 100,
                      ac[1] * 100,
                      ac[2] * 100,
@@ -96,6 +96,24 @@ def write_csv(drg, file_name):
         hospital_data.disconnect()
 
     return
+
+
+def round_num(amount):
+
+    roundedAmount = amount
+    if amount >= 0:
+        if amount % 1000 < 500:
+            roundedAmount = (amount - (amount % 500))
+        else:
+            roundedAmount = (amount - (amount % 500) + 500)
+
+    else:
+        if -amount % 1000 < 500:
+            roundedAmount = (-amount - (-amount % 500))
+        else:
+            roundedAmount = (-amount - (-amount % 500) + 500)
+
+    return roundedAmount
 
 
 def scale(val, src, dst):
@@ -125,5 +143,5 @@ def export_categories():
 
 if __name__ == '__main__':
     # export_categories()
-    # export_hospital_list(my_list=[39])
-    export_hospital_list()
+    export_hospital_list(my_list=[39])
+    # export_hospital_list()
