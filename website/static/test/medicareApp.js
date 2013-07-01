@@ -36,7 +36,7 @@ myApp.config(function ($routeProvider) {
             controller: 'MainController',
             templateUrl: urlBase + '2.html'
         })
-        .otherwise({ redirectTo: '/1' });
+        .otherwise({ redirectTo: '/quality' });
 });
 
 
