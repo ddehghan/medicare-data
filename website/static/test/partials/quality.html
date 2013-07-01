@@ -1,20 +1,27 @@
 <table>
+    <thead>
+    <tr>
+        <td style="min-width: 200px;">Name</td>
+        <td style="width: 110px;">Hospital Bill</td>
+        <td style="width: 110px;">Reimbursement</td>
+        <td style="width: 100px;">Acquired Infection</td>
+        <td style="width: 100px;">Acquired Conditions</td>
+        <td style="width: 100px;">Patient Safety Summary</td>
+    </tr>
+    </thead>
     <tr ng-repeat="drg in data.drgs | filter:filter.searchKeyword">
         <td>{{ drg.name }}</td>
         <td>{{ drg.charge| noFractionRoundedCurrency }}</td>
         <td>{{ drg.pay| noFractionRoundedCurrency }}</td>
-        <td>{{ drg.AcquiredInfect }}</td>
-        <td>{{ drg.AcquiredConditions }}</td>
-        <td>{{ drg.PatientSafetySummary }}</td>
 
-        <td style="height: 5px; width: 50px;">
-            <div class="progress_bar" style="height: 5px; background-color: red; width: {{ AcquiredInfect }}%;"></div>
+        <td class="progress-bar-background">
+            <div class="progress-bar" style="width: {{ drg.AcquiredInfect }}%;"></div>
         </td>
-        <td style="height: 5px; width: 50px;">
-            <div class="progress_bar" style="height: 5px; background-color: red; width: {{ AcquiredConditions }}%;"></div>
+        <td class="progress-bar-background">
+            <div class="progress-bar" style="width: {{ drg.AcquiredConditions }}%;"></div>
         </td>
-        <td style="height: 5px; width: 50px;">
-            <div class="progress_bar" style="height: 5px; background-color: red; width: {{ PatientSafetySummary }}%;"></div>
+        <td class="progress-bar-background">
+            <div class="progress-bar" style="width: {{ drg.PatientSafetySummary }}%;"></div>
         </td>
     </tr>
 </table>

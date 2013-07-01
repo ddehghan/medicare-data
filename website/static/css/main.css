@@ -96,8 +96,8 @@ body {
 
 .progress-bar-background {
     height: 5px;
-    background-color: gray;
-    width: 200px;
+    /*background-color: gray;*/
+    /*width: 200px;*/
 }
 
 .progress-bar {
