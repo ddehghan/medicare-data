@@ -1,10 +1,10 @@
 from decimal import Decimal
-import json
 
 import os
 import string
 import sys
 from project.bin.export_sql import HospitalData
+from project.bin.utility import round_, scale
 
 sys.path.append("/Users/daviddehghan/gitroot/hackatons/medicare/project")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
@@ -15,7 +15,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_ROOT = os.path.join(PROJECT_ROOT, "website", "static", "data")
 HTML_ROOT = os.path.join(PROJECT_ROOT, "website", "templates")
 
-from project.website.models import Hospital, Drg, Charges
+from project.website.models import Drg, Charges
 
 
 def write_options(drgs, file_name):
@@ -86,8 +86,8 @@ def write_csv(drg, file_name):
                      c.hospital.lat,
                      c.hospital.lon,
                      c.hospital.state,
-                     round_num(c.avg_charges),
-                     round_num(c.avg_total_payments),
+                     round_(c.avg_charges),
+                     round_(c.avg_total_payments),
                      ac[0] * 100,
                      ac[1] * 100,
                      ac[2] * 100,
@@ -96,27 +96,6 @@ def write_csv(drg, file_name):
         hospital_data.disconnect()
 
     return
-
-
-def round_num(amount):
-    if amount >= 0:
-        if amount % 1000 < 500:
-            return amount - (amount % 500)
-        else:
-            return amount - (amount % 500) + 500
-
-    else:
-        if -amount % 1000 < 500:
-            return -amount - (-amount % 500)
-        else:
-            return-amount - (-amount % 500) + 500
-
-
-def scale(val, src, dst):
-    """
-    Scale the given value from the scale of src to the scale of dst.
-    """
-    return ((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0]
 
 
 def export_hospital_list(my_list=None):
@@ -139,5 +118,5 @@ def export_categories():
 
 if __name__ == '__main__':
     # export_categories()
-    # export_hospital_list(my_list=[39])
-    export_hospital_list()
+    export_hospital_list(my_list=[39])
+    # export_hospital_list()
