@@ -31,11 +31,11 @@ myApp.config(function ($routeProvider) {
             templateUrl: urlBase + 'quality.html'
         })
         //Define a route that has a route parameter in it (:customerID)
-        .when('/2',
-        {
-            controller: 'MainController',
-            templateUrl: urlBase + '2.html'
-        })
+//        .when('/2',
+//        {
+//            controller: 'MainController',
+//            templateUrl: urlBase + '2.html'
+//        })
         .otherwise({ redirectTo: '/quality' });
 });
 
