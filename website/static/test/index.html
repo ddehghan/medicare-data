@@ -4,25 +4,24 @@
 <head lang="en">
     <meta charset="utf-8">
     <title>Medicent.org</title>
-    <link rel="stylesheet" href="dark-html-theme.css" type="text/css"/>
-    <link rel="stylesheet" href="photo-app.css" type="text/css"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css"/>
 
     <script src="../js/libs/jquery-1.10.1.min.js"></script>
     <script src="../js/libs/underscore-min.js"></script>
     <script src="../js/libs/jquery-csv.js"></script>
     <script src="../js/libs/angular-1.0.7.min.js"></script>
+    <script src="../js/libs/sticky-table-header.js"></script>  <!-- depends on Jquery -->
 
 
-    <script src="mainController.js"></script>
     <script src="medicareApp.js"></script>
+    <script src="mainController.js"></script>
     <script src="dataLoadService.js"></script>
 
 </head>
 
 <body ng-app="medicareApp">
 
-<div ng-controller="MainController">
+<div>
     <form class="search-field" ng-submit="filterByPrice()">
         Name: <input type="text" ng-model="filter.searchKeyword">
         <!-- Price: <input type="text" ng-model="filter.price"> -->

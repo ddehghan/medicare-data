@@ -38,3 +38,36 @@ myApp.config(function ($routeProvider) {
         })
         .otherwise({ redirectTo: '/1' });
 });
+
+
+myApp.directive('repeatDone', function() {
+    return function(scope, element, attrs) {
+        if (scope.$last) { // all are rendered
+            scope.$eval(attrs.repeatDone);
+        }
+    }
+});
+
+
+myApp.factory('loadDataService', function ($rootScope, $http) {
+    var loadDataService = {};
+
+    loadDataService.data = {};
+
+    loadDataService.getData = function () {
+        $http.get('../data/39.csv')
+            .success(function (data) {
+                console.log("download finish");
+                loadDataService.data.drgs = $.csv.toObjects(data);
+            });
+
+//        $http.get('../json/us-states.json')
+//            .success(function (data) {
+//                loadDataService.data.usStates = data;
+//            });
+//
+        return loadDataService.data;
+    };
+
+    return loadDataService;
+});

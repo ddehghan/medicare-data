@@ -105,6 +105,22 @@ body {
     background-color: red;
 }
 
+.floatingHeader {
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+    display: table-row;
+}
+
+.persist-header {
+    background-color: #f0f0f0;
+}
+
+.persist-header tr {
+    padding: 2px;
+    margin: 2px;
+}
+
 /* Hospital List  ---------------------------------  */
 
 .h-row {
