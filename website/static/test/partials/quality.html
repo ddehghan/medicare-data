@@ -1,36 +1,28 @@
 <table class="persist-area">
     <thead>
-    <tr  class="persist-header">
+    <tr class="persist-header">
         <td style="width: 350px;">Name</td>
         <td style="width: 110px;">Hospital Bill</td>
-        <td style="width: 110px;">Reimbursement</td>
-        <td style="width: 100px;">Acquired Infection</td>
-        <td style="width: 100px;">Acquired Conditions</td>
-        <td style="width: 100px;">Patient Safety Summary</td>
-    </tr>
-    <tr class="persist-header floatingHeader" style="visibility: hidden;">
-        <td style="width: 350px;">Name</td>
-        <td style="width: 110px;">Hospital Bill</td>
-        <td style="width: 110px;">Reimbursement</td>
-        <td style="width: 100px;">Acquired Infection</td>
-        <td style="width: 100px;">Acquired Conditions</td>
-        <td style="width: 100px;">Patient Safety Summary</td>
+        <td style="width: 130px;">Reimbursement</td>
+        <td style="width: 110px;">Acquired Infection</td>
+        <td style="width: 110px;">Acquired Conditions</td>
+        <td style="width: 110px;">Patient Safety Summary</td>
     </tr>
 
     </thead>
     <tbody>
     <tr ng-repeat="drg in data.drgs | filter:filter.searchKeyword" repeat-done="layoutDone()">
-        <td>{{ drg.name }}</td>
-        <td>{{ drg.charge| noFractionRoundedCurrency }}</td>
-        <td>{{ drg.pay| noFractionRoundedCurrency }}</td>
+        <td style="width: 350px;">{{ drg.name }}</td>
+        <td style="width: 110px;">{{ drg.charge| noFractionRoundedCurrency }}</td>
+        <td style="width: 130px;">{{ drg.pay| noFractionRoundedCurrency }}</td>
 
-        <td class="progress-bar-background">
+        <td class="progress-bar-background" style="width: 110px;">
             <div class="progress-bar" style="width: {{ drg.AcquiredInfect }}%;"></div>
         </td>
-        <td class="progress-bar-background">
+        <td class="progress-bar-background" style="width: 110px;">
             <div class="progress-bar" style="width: {{ drg.AcquiredConditions }}%;"></div>
         </td>
-        <td class="progress-bar-background">
+        <td class="progress-bar-background" style="width: 110px;">
             <div class="progress-bar" style="width: {{ drg.PatientSafetySummary }}%;"></div>
         </td>
     </tr>
