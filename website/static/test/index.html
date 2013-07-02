@@ -10,7 +10,8 @@
     <script src="../js/libs/underscore-min.js"></script>
     <script src="../js/libs/jquery-csv.js"></script>
     <script src="../js/libs/angular-1.0.7.min.js"></script>
-    <script src="../js/libs/fixto.min.js"></script>  <!-- depends on Jquery -->
+    <script src="../js/libs/fixto.min.js"></script>
+    <!-- depends on Jquery -->
 
 
     <script src="medicare-app.js"></script>
@@ -20,13 +21,13 @@
 </head>
 
 <body ng-app="medicareApp">
-
-<div>
+<div ng-controller="MainController">
     <form class="search-field" ng-submit="filterByPrice()">
-        Name: <input type="text" ng-model="filter.searchKeyword">
-        <!-- Price: <input type="text" ng-model="filter.price"> -->
-        <input type="submit" value="Search">
-        <!-- <span class="search-message">Filtered by {{ filter.searchKeyword }} and {{ filter.price }}</span> -->
+        Hospital Name: <input type="text" ng-model="searchKeyword">
+
+        <select ng-model="usstate" ng-options="state.c as state.name for state in usStates"> </select>
+
+        <!-- <span class="search-message">Filtered by {{ filter.searchKeyword }} and {{ filter.state }}</span> -->
     </form>
 
     <!-- <a href="#/quality">Hospital list</a><br> -->

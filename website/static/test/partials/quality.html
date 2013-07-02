@@ -11,7 +11,7 @@
 
     </thead>
     <tbody>
-    <tr ng-repeat="drg in data.drgs | filter:filter.searchKeyword" repeat-done="layoutDone()">
+    <tr ng-repeat="drg in data.drgs | filter:{state:usstate} |  filter:{name:searchKeyword}" repeat-done="layoutDone()">
         <td style="width: 350px;">{{ drg.name }}</td>
         <td style="width: 110px;">{{ drg.charge| noFractionRoundedCurrency }}</td>
         <td style="width: 130px;">{{ drg.pay| noFractionRoundedCurrency }}</td>

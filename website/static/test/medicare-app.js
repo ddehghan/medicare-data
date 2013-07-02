@@ -27,7 +27,7 @@ myApp.config(function ($routeProvider) {
     $routeProvider
         .when('/quality',
         {
-            controller: 'MainController',
+//            controller: 'MainController',
             templateUrl: urlBase + 'quality.html'
         })
         //Define a route that has a route parameter in it (:customerID)
@@ -40,8 +40,8 @@ myApp.config(function ($routeProvider) {
 });
 
 
-myApp.directive('repeatDone', function() {
-    return function(scope, element, attrs) {
+myApp.directive('repeatDone', function () {
+    return function (scope, element, attrs) {
         if (scope.$last) { // all are rendered
             scope.$eval(attrs.repeatDone);
         }
@@ -51,14 +51,16 @@ myApp.directive('repeatDone', function() {
 
 myApp.factory('loadDataService', function ($rootScope, $http) {
     var loadDataService = {};
-
     loadDataService.data = {};
+
+    console.log(loadDataService);
 
     loadDataService.getData = function () {
         $http.get('../data/39.csv')
             .success(function (data) {
                 console.log("download finish");
                 loadDataService.data.drgs = $.csv.toObjects(data);
+
             });
 
 //        $http.get('../json/us-states.json')
@@ -68,6 +70,7 @@ myApp.factory('loadDataService', function ($rootScope, $http) {
 //
         return loadDataService.data;
     };
+
 
     return loadDataService;
 });
