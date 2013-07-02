@@ -58,16 +58,17 @@ myApp.factory('loadDataService', function ($rootScope, $http) {
     loadDataService.getData = function () {
         $http.get('../data/39.csv')
             .success(function (data) {
-                console.log("download finish");
+                console.log("data download finish");
                 loadDataService.data.drgs = $.csv.toObjects(data);
 
             });
 
-//        $http.get('../json/us-states.json')
-//            .success(function (data) {
-//                loadDataService.data.usStates = data;
-//            });
-//
+        $http.get('../json/us-states.json')
+            .success(function (data) {
+                console.log("map download finish");
+                loadDataService.data.usStates = data;
+            });
+
         return loadDataService.data;
     };
 
